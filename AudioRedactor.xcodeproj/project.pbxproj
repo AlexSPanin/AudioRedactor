@@ -18,6 +18,8 @@
 		E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */; };
 		E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */; };
 		E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */; };
+		E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */; };
+		E22AAC2D27C54A8F007ADAF1 /* ButtonEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEManagerButtonsSliders.swift; sourceTree = "<group>"; };
 		E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AETableViewDataSource.swift; sourceTree = "<group>"; };
 		E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AENodeTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPlayerView.swift; sourceTree = "<group>"; };
+		E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonEffectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		E22AAC0827C547A8007ADAF1 /* AudioRedactor */ = {
 			isa = PBXGroup;
 			children = (
+				E22AAC2927C54A4D007ADAF1 /* View */,
 				E22AAC1D27C54875007ADAF1 /* ViewControllers */,
 				E22AAC0927C547A8007ADAF1 /* AppDelegate.swift */,
 				E22AAC0B27C547A8007ADAF1 /* SceneDelegate.swift */,
@@ -96,6 +101,15 @@
 				E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */,
 			);
 			path = ExtensionAE;
+			sourceTree = "<group>";
+		};
+		E22AAC2927C54A4D007ADAF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */,
+				E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,8 +189,10 @@
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
 				E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,
+				E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */,
 				E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */,
 				E22AAC0C27C547A8007ADAF1 /* SceneDelegate.swift in Sources */,
+				E22AAC2D27C54A8F007ADAF1 /* ButtonEffectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

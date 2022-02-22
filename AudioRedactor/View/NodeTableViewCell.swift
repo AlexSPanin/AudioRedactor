@@ -88,7 +88,7 @@ class NodeTableViewCell: UITableViewCell {
     }()
     
     
-    var indexCell: Int = 0
+    var indexCell: Int?
     private let setting = Setting.getSetting()
     
 //    override func awakeFromNib() {

@@ -116,7 +116,7 @@ class NodeTableViewCell: UITableViewCell {
         delegate.button(for: self)
     }
     
-    func configure( data: DataPlayingNode, indexRow: Int) {
+    func configure( data: DataPlayingNode, isHidingSwitch: Bool, indexRow: Int) {
    //     automaticallyUpdatesContentConfiguration = true
         configureUICell()
         self.dataPlaying = data
@@ -129,6 +129,7 @@ class NodeTableViewCell: UITableViewCell {
         current = Float(data.seekFrame)
         
         switchAdd.isOn = data.addPlayList
+        switchAdd.isHidden = isHidingSwitch
         
         buttonFX.backgroundColor = data.isEditing ? setting.colorTint : setting.colorBrgndPlayerButton
         

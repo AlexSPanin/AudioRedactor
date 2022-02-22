@@ -17,6 +17,8 @@ extension AudioEngineViewController {
         switch type {
         case .exit:
             hiddenEffectView()
+            clearIsEditing()
+            tableViewNode.reloadData()
         case .volume:
             typeButtosEffect = .volume
             setupColorButtonPressedEffect(track: activeEffectNode, type: typeButtosEffect)

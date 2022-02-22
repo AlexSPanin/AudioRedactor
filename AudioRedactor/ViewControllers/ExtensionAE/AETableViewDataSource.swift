@@ -17,7 +17,7 @@ extension AudioEngineViewController: UITableViewDataSource {
         
         let data = dataPlayingNodes[indexPath.row]
         
-        cell.configure( data: data, indexRow: indexPath.row )
+        cell.configure( data: data, isHidingSwitch: isPlaying, indexRow: indexPath.row )
         cell.delegate = self
         return cell
     }

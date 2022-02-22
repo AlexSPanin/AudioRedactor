@@ -160,6 +160,7 @@ class AudioEngineViewController: UIViewController {
             }
             isPlaying.toggle()
             changeImageButtonPlayPause(isPlaying)
+            tableViewNode.reloadData()
         }
     }
     

@@ -13,6 +13,8 @@
 		E22AAC1127C547A8007ADAF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC0F27C547A8007ADAF1 /* Main.storyboard */; };
 		E22AAC1327C547A9007ADAF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC1227C547A9007ADAF1 /* Assets.xcassets */; };
 		E22AAC1627C547A9007ADAF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC1427C547A9007ADAF1 /* LaunchScreen.storyboard */; };
+		E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC1F27C548FE007ADAF1 /* AESetupView.swift */; };
+		E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		E22AAC1227C547A9007ADAF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E22AAC1527C547A9007ADAF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E22AAC1727C547A9007ADAF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E22AAC1F27C548FE007ADAF1 /* AESetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESetupView.swift; sourceTree = "<group>"; };
+		E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESetupEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +75,18 @@
 			isa = PBXGroup;
 			children = (
 				E22AAC0D27C547A8007ADAF1 /* AudioEngineViewController.swift */,
+				E22AAC1E27C548C3007ADAF1 /* ExtensionAE */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E22AAC1E27C548C3007ADAF1 /* ExtensionAE */ = {
+			isa = PBXGroup;
+			children = (
+				E22AAC1F27C548FE007ADAF1 /* AESetupView.swift */,
+				E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */,
+			);
+			path = ExtensionAE;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,7 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E22AAC0E27C547A8007ADAF1 /* AudioEngineViewController.swift in Sources */,
+				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,
+				E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */,
 				E22AAC0C27C547A8007ADAF1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

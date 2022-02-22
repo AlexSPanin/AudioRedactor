@@ -26,6 +26,9 @@
 		E22AAC3727C54B6F007ADAF1 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3627C54B6F007ADAF1 /* TimeManager.swift */; };
 		E22AAC3927C54B8B007ADAF1 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3827C54B8B007ADAF1 /* SettingManager.swift */; };
 		E22AAC3B27C54BB0007ADAF1 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3A27C54BB0007ADAF1 /* AudioManager.swift */; };
+		E22AAC3D27C54BEA007ADAF1 /* ButtonsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3C27C54BEA007ADAF1 /* ButtonsEditor.swift */; };
+		E22AAC3F27C54C0B007ADAF1 /* ButtonsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3E27C54C0B007ADAF1 /* ButtonsEffect.swift */; };
+		E22AAC4227C54C32007ADAF1 /* ButtonsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC4127C54C32007ADAF1 /* ButtonsPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		E22AAC3627C54B6F007ADAF1 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		E22AAC3827C54B8B007ADAF1 /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		E22AAC3A27C54BB0007ADAF1 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		E22AAC3C27C54BEA007ADAF1 /* ButtonsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsEditor.swift; sourceTree = "<group>"; };
+		E22AAC3E27C54C0B007ADAF1 /* ButtonsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsEffect.swift; sourceTree = "<group>"; };
+		E22AAC4127C54C32007ADAF1 /* ButtonsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,9 @@
 		E22AAC3427C54B40007ADAF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E22AAC3C27C54BEA007ADAF1 /* ButtonsEditor.swift */,
+				E22AAC3E27C54C0B007ADAF1 /* ButtonsEffect.swift */,
+				E22AAC4127C54C32007ADAF1 /* ButtonsPlayer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,10 +233,13 @@
 				E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */,
 				E22AAC3927C54B8B007ADAF1 /* SettingManager.swift in Sources */,
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
+				E22AAC3D27C54BEA007ADAF1 /* ButtonsEditor.swift in Sources */,
+				E22AAC4227C54C32007ADAF1 /* ButtonsPlayer.swift in Sources */,
 				E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,
 				E22AAC2F27C54AC5007ADAF1 /* SliderEffectView.swift in Sources */,
 				E22AAC3B27C54BB0007ADAF1 /* AudioManager.swift in Sources */,
+				E22AAC3F27C54C0B007ADAF1 /* ButtonsEffect.swift in Sources */,
 				E22AAC3127C54AE6007ADAF1 /* ButtonEditorView.swift in Sources */,
 				E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */,
 				E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */,

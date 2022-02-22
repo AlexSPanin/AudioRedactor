@@ -11,7 +11,7 @@ class NodeTableViewCell: UITableViewCell {
     
     var delegate: NodeTableViewCellDelegate!
     var node: DataSong?
-    var dataPlaying: DataPlayingSong?
+    var dataPlaying: DataPlayingNode?
     
     var name: String = ""
     var length: Float = 1
@@ -88,7 +88,7 @@ class NodeTableViewCell: UITableViewCell {
     }()
     
     
-    
+    var indexCell: Int = 0
     private let setting = Setting.getSetting()
     
 //    override func awakeFromNib() {
@@ -116,11 +116,12 @@ class NodeTableViewCell: UITableViewCell {
         delegate.button(for: self)
     }
     
-    func configure(node: DataSong, data: DataPlayingSong, indexRow: IndexPath) {
+    func configure(node: DataSong, data: DataPlayingNode, indexRow: Int) {
    //     automaticallyUpdatesContentConfiguration = true
         configureUICell()
         self.node = node
         self.dataPlaying = data
+        indexCell = indexRow
         
         nameLabel.text = String("\(node.name.name) - \(node.name.format)")
         currentLabel.text = String("Current Time:  \(data.seekFrame)")
@@ -132,7 +133,7 @@ class NodeTableViewCell: UITableViewCell {
         
         buttonFX.backgroundColor = data.isEditing ? setting.colorTint : setting.colorBrgndPlayerButton
         
-        backgroundColor = (indexRow.row + 1) % 2 == 1 ? .white : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        backgroundColor = (indexRow + 1) % 2 == 1 ? .white : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         selectionStyle = .none
         
     }

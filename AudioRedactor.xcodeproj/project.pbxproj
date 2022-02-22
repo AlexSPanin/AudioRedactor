@@ -33,7 +33,8 @@
 		E22AAC4627C54CB2007ADAF1 /* DataSongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC4527C54CB2007ADAF1 /* DataSongsModel.swift */; };
 		E22AAC4827C54CD3007ADAF1 /* DataAudioNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC4727C54CD3007ADAF1 /* DataAudioNodes.swift */; };
 		E22AAC4B27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */; };
-		E22AAC4E27C54D0A007ADAF1 /* otbivka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC4D27C54D0A007ADAF1 /* otbivka.mp3 */; };
+		E22AAC5A27C5596D007ADAF1 /* otbivka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC5727C5590E007ADAF1 /* otbivka.mp3 */; };
+		E22AAC5B27C55974007ADAF1 /* 01 The St. Louis Blues.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC5627C55900007ADAF1 /* 01 The St. Louis Blues.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +66,8 @@
 		E22AAC4527C54CB2007ADAF1 /* DataSongsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSongsModel.swift; sourceTree = "<group>"; };
 		E22AAC4727C54CD3007ADAF1 /* DataAudioNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAudioNodes.swift; sourceTree = "<group>"; };
 		E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Scott Buckley - Life In Silico.mp3"; sourceTree = "<group>"; };
-		E22AAC4C27C54D06007ADAF1 /* 01 The St. Louis Blues.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01 The St. Louis Blues.m4a"; sourceTree = "<group>"; };
-		E22AAC4D27C54D0A007ADAF1 /* otbivka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = otbivka.mp3; sourceTree = "<group>"; };
+		E22AAC5627C55900007ADAF1 /* 01 The St. Louis Blues.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01 The St. Louis Blues.m4a"; sourceTree = "<group>"; };
+		E22AAC5727C5590E007ADAF1 /* otbivka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = otbivka.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +174,8 @@
 		E22AAC4927C54CF3007ADAF1 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				E22AAC4C27C54D06007ADAF1 /* 01 The St. Louis Blues.m4a */,
-				E22AAC4D27C54D0A007ADAF1 /* otbivka.mp3 */,
+				E22AAC5627C55900007ADAF1 /* 01 The St. Louis Blues.m4a */,
+				E22AAC5727C5590E007ADAF1 /* otbivka.mp3 */,
 				E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */,
 			);
 			path = Files;
@@ -238,8 +239,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22AAC5B27C55974007ADAF1 /* 01 The St. Louis Blues.m4a in Resources */,
+				E22AAC5A27C5596D007ADAF1 /* otbivka.mp3 in Resources */,
 				E22AAC1627C547A9007ADAF1 /* LaunchScreen.storyboard in Resources */,
-				E22AAC4E27C54D0A007ADAF1 /* otbivka.mp3 in Resources */,
 				E22AAC1327C547A9007ADAF1 /* Assets.xcassets in Resources */,
 				E22AAC1127C547A8007ADAF1 /* Main.storyboard in Resources */,
 				E22AAC4B27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 in Resources */,

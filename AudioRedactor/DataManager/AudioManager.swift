@@ -14,8 +14,9 @@ struct Songs {
     static func getSongs() -> [Songs] {
         [
             Songs(name: "Scott Buckley - Life In Silico", format: "mp3"),
-            Songs(name: "01 The St. Louis Blues", format: "m4a"),
-            Songs(name: "otbivka", format: "mp3")
+            Songs(name: "otbivka", format: "mp3"),
+            Songs(name: "01 The St. Louis Blues", format: "m4a")
+            
         ]
     }
 }

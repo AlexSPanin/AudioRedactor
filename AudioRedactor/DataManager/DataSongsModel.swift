@@ -23,7 +23,9 @@ struct DataSong {
         let music = Songs.getSongs()
         var dataSongs: [DataSong] = []
         for song in music {
-            guard let url = Bundle.main.url(forResource: song.name, withExtension: song.format) else { return dataSongs}
+            guard let url = Bundle.main.url(forResource: song.name, withExtension: song.format) else {
+                
+                return dataSongs}
             do {
                 let file = try AVAudioFile(forReading: url)
                 let format = file.processingFormat

@@ -18,9 +18,9 @@ class PlayerTime {
     
     private init() {}
 
-    static func getFormattedTime(seconds: Int) -> String {
+    static func getFormattedTime(seconds: Double) -> String {
         var formattedString = ""
-        var seconds = seconds
+        var seconds = Int(seconds)
         var mins = 0
         var hours = 0
         

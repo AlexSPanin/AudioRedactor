@@ -116,16 +116,15 @@ class NodeTableViewCell: UITableViewCell {
         delegate.button(for: self)
     }
     
-    func configure(node: DataSong, data: DataPlayingNode, indexRow: Int) {
+    func configure( data: DataPlayingNode, indexRow: Int) {
    //     automaticallyUpdatesContentConfiguration = true
         configureUICell()
-        self.node = node
         self.dataPlaying = data
         indexCell = indexRow
         
-        nameLabel.text = String("\(node.name.name) - \(node.name.format)")
+        nameLabel.text = String("\(data.nodeForSong.name.name) - \(data.nodeForSong.name.format)")
         currentLabel.text = String("Current Time:  \(data.seekFrame)")
-        lengthLabel.text = String("Total length: \(node.length)")
+        lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: data.nodeForSong.length))")
         
         current = Float(data.seekFrame)
         

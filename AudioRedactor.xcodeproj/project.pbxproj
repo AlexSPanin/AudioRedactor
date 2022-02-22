@@ -99,11 +99,11 @@
 		E22AAC0827C547A8007ADAF1 /* AudioRedactor */ = {
 			isa = PBXGroup;
 			children = (
+				E22AAC1D27C54875007ADAF1 /* ViewControllers */,
+				E22AAC2927C54A4D007ADAF1 /* View */,
 				E22AAC4927C54CF3007ADAF1 /* Files */,
 				E22AAC3527C54B53007ADAF1 /* DataManager */,
 				E22AAC3427C54B40007ADAF1 /* Model */,
-				E22AAC2927C54A4D007ADAF1 /* View */,
-				E22AAC1D27C54875007ADAF1 /* ViewControllers */,
 				E22AAC0927C547A8007ADAF1 /* AppDelegate.swift */,
 				E22AAC0B27C547A8007ADAF1 /* SceneDelegate.swift */,
 				E22AAC0F27C547A8007ADAF1 /* Main.storyboard */,

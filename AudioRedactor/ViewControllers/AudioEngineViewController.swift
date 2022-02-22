@@ -76,7 +76,7 @@ class AudioEngineViewController: UIViewController {
     // MARK: - Data Songs and Settings UI and start value
     let setting = Setting.getSetting()
     var dataSongs = DataSong.getDataSong()
-    var dataPlayingSong = DataPlayingSong.getDataPlayingSong()
+    var dataPlayingNodes = DataPlayingNodes.shared.getDataPlayingNodes()
     
     
     // MARK: - number song and start button effect
@@ -172,7 +172,7 @@ class AudioEngineViewController: UIViewController {
         // MARK: - create audio file and setting sign for ready play
     func scheduleAudioFile(_ track: Int) {
         let audioFile = dataSongs[track].file
-        if dataPlayingSong[track].needsFileScheduled {
+        if dataPlayingNodes[track].needsFileScheduled {
             switch track {
             case 0:
                 audioPlayerNode1.scheduleFile(audioFile, at: nil)
@@ -185,8 +185,8 @@ class AudioEngineViewController: UIViewController {
                 return
             }
         }
-        dataPlayingSong[track].needsFileScheduled.toggle()
-        dataPlayingSong[track].isPlayerReady.toggle()
+        dataPlayingNodes[track].needsFileScheduled.toggle()
+        dataPlayingNodes[track].isPlayerReady.toggle()
     }
     
     // MARK: -  запуск воспроизведения или пауза
@@ -196,19 +196,19 @@ class AudioEngineViewController: UIViewController {
         if isActiveAddPlayer {
             
             for node in 0...2 {
-                if dataPlayingSong[node].addPlayList || dataPlayingSong[node].needsFileScheduled { scheduleAudioFile(node)}
+                if dataPlayingNodes[node].addPlayList || dataPlayingNodes[node].needsFileScheduled { scheduleAudioFile(node)}
             }
             
             switch isPlaying {
                 
             case true:
-                if dataPlayingSong[0].addPlayList { audioPlayerNode1.pause()}
-                if dataPlayingSong[1].addPlayList { audioPlayerNode2.pause()}
-                if dataPlayingSong[2].addPlayList { audioPlayerNode3.pause()}
+                if dataPlayingNodes[0].addPlayList { audioPlayerNode1.pause()}
+                if dataPlayingNodes[1].addPlayList { audioPlayerNode2.pause()}
+                if dataPlayingNodes[2].addPlayList { audioPlayerNode3.pause()}
             case false:
-                if dataPlayingSong[0].addPlayList { audioPlayerNode1.play()}
-                if dataPlayingSong[1].addPlayList { audioPlayerNode2.play()}
-                if dataPlayingSong[2].addPlayList { audioPlayerNode3.play()}
+                if dataPlayingNodes[0].addPlayList { audioPlayerNode1.play()}
+                if dataPlayingNodes[1].addPlayList { audioPlayerNode2.play()}
+                if dataPlayingNodes[2].addPlayList { audioPlayerNode3.play()}
             }
             
             isPlaying.toggle()
@@ -221,12 +221,12 @@ class AudioEngineViewController: UIViewController {
     
     func clearIsEditing() {
         for count in 0...2 {
-            dataPlayingSong[count].isEditing = false
+            dataPlayingNodes[count].isEditing = false
         }
     }
   
     func checkAddPlayer() {
-       isActiveAddPlayer = dataPlayingSong.contains { data in
+       isActiveAddPlayer = dataPlayingNodes.contains { data in
             data.addPlayList
         }
     }

@@ -107,61 +107,19 @@ extension AudioEngineViewController {
     }
     // установка громкости
     func editingVolume(_ value: Float) {
-        switch activeEffectNode {
-        case 0:
-            audioPlayerNode1.volume = value
-        case 1:
-            audioPlayerNode2.volume = value
-        case 2:
-            audioPlayerNode3.volume = value
-        default:
-            print("Default Volume")
-            return
-        }
+        dataPlayingNodes[activeEffectNode].audioPlayerNode.volume = value
     }
     // установка среза низкой частоты
     func editingEQ(_ value: Float) {
-        switch activeEffectNode {
-        case 0:
-            let bands = equalizer1.bands
+            let bands = dataPlayingNodes[activeEffectNode].equalizer.bands
             bands[0].frequency = value * value * value / 10 // гипербола значений обработки частоты и положения слайдера
-        case 1:
-            let bands = equalizer2.bands
-            bands[0].frequency = value * value
-        case 2:
-            let bands = equalizer3.bands
-            bands[0].frequency = value * value
-        default:
-            print("Default EQ")
-            return
-        }
     }
     // установка объемного эффекта
     func editingReverb(_ value: Float) {
-        switch activeEffectNode {
-        case 0:
-            reverb1.wetDryMix = value
-        case 1:
-            reverb2.wetDryMix = value
-        case 2:
-            reverb3.wetDryMix = value
-        default:
-            print("Default Reverb")
-            return
-        }
+        dataPlayingNodes[activeEffectNode].reverb.wetDryMix = value
     }
     // установка времени задержки для эха
     func editingDelay(_ value: Float) {
-        switch activeEffectNode {
-        case 0:
-            delayEcho1.delayTime = Double(value)
-        case 1:
-            delayEcho2.delayTime = Double(value)
-        case 2:
-            delayEcho3.delayTime = Double(value)
-        default:
-            print("Default Delay")
-            return
-        }
+        dataPlayingNodes[activeEffectNode].delayEcho.delayTime = Double(value)
     }
 }

@@ -143,22 +143,19 @@ class AudioEngineViewController: UIViewController {
         
         if isActiveAddPlayer {
             
-            for node in 0...2 {
-                if dataPlayingNodes[node].addPlayList || dataPlayingNodes[node].needsFileScheduled { scheduleAudioFile(node)}
+            for dataPlayingNode in dataPlayingNodes {
+                if dataPlayingNode.addPlayList {
+                    if dataPlayingNode.needsFileScheduled { scheduleAudioFile(dataPlayingNode)}
+                    
+                    switch isPlaying {
+                        
+                    case true:
+                        dataPlayingNode.audioPlayerNode.pause()
+                    case false:
+                        dataPlayingNode.audioPlayerNode.play()
+                    }
+                }
             }
-            
-            switch isPlaying {
-                
-            case true:
-                if dataPlayingNodes[0].addPlayList { audioPlayerNode1.pause()}
-                if dataPlayingNodes[1].addPlayList { audioPlayerNode2.pause()}
-                if dataPlayingNodes[2].addPlayList { audioPlayerNode3.pause()}
-            case false:
-                if dataPlayingNodes[0].addPlayList { audioPlayerNode1.play()}
-                if dataPlayingNodes[1].addPlayList { audioPlayerNode2.play()}
-                if dataPlayingNodes[2].addPlayList { audioPlayerNode3.play()}
-            }
-            
             isPlaying.toggle()
             changeImageButtonPlayPause(isPlaying)
         }
@@ -168,8 +165,10 @@ class AudioEngineViewController: UIViewController {
     
     
     func clearIsEditing() {
-        for count in 0...2 {
-            dataPlayingNodes[count].isEditing = false
+        
+        for dataPlayingNode in dataPlayingNodes {
+            var dataPlayingNode = dataPlayingNode
+            dataPlayingNode.isEditing = false
         }
     }
   

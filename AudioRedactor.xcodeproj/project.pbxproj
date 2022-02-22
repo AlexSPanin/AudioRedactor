@@ -154,8 +154,6 @@
 				E22AAC3E27C54C0B007ADAF1 /* ButtonsEffect.swift */,
 				E22AAC4127C54C32007ADAF1 /* ButtonsPlayer.swift */,
 				E22AAC4327C54C72007ADAF1 /* SlidersEffect.swift */,
-				E22AAC4527C54CB2007ADAF1 /* DataSongsModel.swift */,
-				E22AAC4727C54CD3007ADAF1 /* DataAudioNodes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +164,8 @@
 				E22AAC3627C54B6F007ADAF1 /* TimeManager.swift */,
 				E22AAC3827C54B8B007ADAF1 /* SettingManager.swift */,
 				E22AAC3A27C54BB0007ADAF1 /* AudioManager.swift */,
+				E22AAC4527C54CB2007ADAF1 /* DataSongsModel.swift */,
+				E22AAC4727C54CD3007ADAF1 /* DataAudioNodes.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";

@@ -29,6 +29,17 @@ extension AudioEngineViewController {
             audioEngine.attach(dataPlayingNode.delayEcho)
             audioEngine.attach(dataPlayingNode.reverb)
             audioEngine.attach(dataPlayingNode.equalizer)
+            
+            let format = dataPlayingNode.nodeForSong.audioFormat
+            let freeBus = audioEngine.mainMixerNode.nextAvailableInputBus
+
+            audioEngine.connect(dataPlayingNode.audioPlayerNode, to: dataPlayingNode.delayEcho, format: format)
+            audioEngine.connect(dataPlayingNode.delayEcho, to: dataPlayingNode.reverb, format: format)
+            audioEngine.connect(dataPlayingNode.reverb, to: dataPlayingNode.equalizer, format: format)
+            audioEngine.connect(dataPlayingNode.equalizer, to: audioEngine.mainMixerNode, fromBus: 0, toBus: freeBus, format: format)
+            
+            audioEngine.prepare()
+            
         }
     }
 }

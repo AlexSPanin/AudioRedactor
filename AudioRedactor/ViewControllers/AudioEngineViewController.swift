@@ -116,35 +116,12 @@ class AudioEngineViewController: UIViewController {
         // setting start value effect
         configureSetupEffect()
         
-        let dataSongs = dataSongs
-        let audioFormat1 = dataSongs[0].audioFormat
-        let audioFormat2 = dataSongs[1].audioFormat
-        let audioFormat3 = dataSongs[2].audioFormat
-        
-        // MARK: - connect Node
-        
-        // Node1
-        audioEngine.connect(audioPlayerNode1, to: delayEcho1, format: audioFormat1)
-        audioEngine.connect(delayEcho1, to: reverb1, format: audioFormat1)
-        audioEngine.connect(reverb1, to: equalizer1, format: audioFormat1)
-        audioEngine.connect(equalizer1, to: audioEngine.mainMixerNode, fromBus: 0, toBus: 0, format: audioFormat1)
-        // Node2
-        audioEngine.connect(audioPlayerNode2, to: delayEcho2, format: audioFormat2)
-        audioEngine.connect(delayEcho2, to: reverb2, format: audioFormat2)
-        audioEngine.connect(reverb2, to: equalizer2, format: audioFormat2)
-        audioEngine.connect(equalizer2, to: audioEngine.mainMixerNode, fromBus: 0, toBus: 1, format: audioFormat2)
-        // Node3
-        audioEngine.connect(audioPlayerNode3, to: delayEcho3, format: audioFormat3)
-        audioEngine.connect(delayEcho3, to: reverb3, format: audioFormat3)
-        audioEngine.connect(reverb3, to: equalizer3, format: audioFormat3)
-        audioEngine.connect(equalizer3, to: audioEngine.mainMixerNode, fromBus: 0, toBus: 2, format: audioFormat3)
-        // монтирование движка
-        audioEngine.prepare()
         // старт движка и монтирование аудифайлов
         do {
             try audioEngine.start()
-            for node in 0...2 {
-                scheduleAudioFile(node)
+            
+            for dataPlayingNode in dataPlayingNodes {
+                scheduleAudioFile(dataPlayingNode)
             }
         } catch {
             print("error configure Engine")
@@ -152,23 +129,12 @@ class AudioEngineViewController: UIViewController {
     }
     
         // MARK: - create audio file and setting sign for ready play
-    func scheduleAudioFile(_ track: Int) {
-        let audioFile = dataSongs[track].file
-        if dataPlayingNodes[track].needsFileScheduled {
-            switch track {
-            case 0:
-                audioPlayerNode1.scheduleFile(audioFile, at: nil)
-            case 1:
-                audioPlayerNode2.scheduleFile(audioFile, at: nil)
-            case 2:
-                audioPlayerNode3.scheduleFile(audioFile, at: nil)
-            default:
-                print("Default Schedule Audio File")
-                return
-            }
-        }
-        dataPlayingNodes[track].needsFileScheduled.toggle()
-        dataPlayingNodes[track].isPlayerReady.toggle()
+    func scheduleAudioFile(_ node: DataPlayingNode) {
+        var audioNode = node
+        let audioFile = audioNode.nodeForSong.file
+        if audioNode.needsFileScheduled { audioNode.audioPlayerNode.scheduleFile(audioFile, at: nil) }
+        audioNode.needsFileScheduled.toggle()
+        audioNode.isPlayerReady.toggle()
     }
     
     // MARK: -  запуск воспроизведения или пауза

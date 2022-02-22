@@ -15,6 +15,8 @@
 		E22AAC1627C547A9007ADAF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC1427C547A9007ADAF1 /* LaunchScreen.storyboard */; };
 		E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC1F27C548FE007ADAF1 /* AESetupView.swift */; };
 		E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */; };
+		E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */; };
+		E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		E22AAC1727C547A9007ADAF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E22AAC1F27C548FE007ADAF1 /* AESetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESetupView.swift; sourceTree = "<group>"; };
 		E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESetupEngine.swift; sourceTree = "<group>"; };
+		E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEManagerButtonsSliders.swift; sourceTree = "<group>"; };
+		E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AETableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 			children = (
 				E22AAC1F27C548FE007ADAF1 /* AESetupView.swift */,
 				E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */,
+				E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */,
+				E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */,
 			);
 			path = ExtensionAE;
 			sourceTree = "<group>";
@@ -161,7 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E22AAC0E27C547A8007ADAF1 /* AudioEngineViewController.swift in Sources */,
+				E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */,
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
+				E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,
 				E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */,
 				E22AAC0C27C547A8007ADAF1 /* SceneDelegate.swift in Sources */,

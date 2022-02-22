@@ -40,7 +40,11 @@ extension AudioEngineViewController {
         guard let type = ButtonsEditor(rawValue: sender.tag) else { return }
         switch type {
         case .effect:
-            viewEffect.isHidden = false
+            if isActiveAddPlayer {
+                viewEffect.isHidden = false
+                dataPlayingNodes[activeEffectNode].isEditing = true
+                tableViewNode.reloadData()
+            }
         case .copy:
             return
         case .cut:

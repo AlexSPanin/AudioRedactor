@@ -56,7 +56,7 @@ class AudioEngineViewController: UIViewController {
     let micMixer = AVAudioMixerNode()
     
     // MARK: - Data Songs and Settings UI and start value
-    let setting = Setting.getSetting()
+    var setting = Setting.getSetting()
     var dataSongs = DataSong.getDataSong()
     var dataPlayingNodes = DataPlayingNodes.shared.getDataPlayingNodes()
     
@@ -79,9 +79,7 @@ class AudioEngineViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
-        print(Songs.getSongs().count)
-        print(dataSongs.count)
-        print(dataPlayingNodes.count)
+        
 
         setupUI(track: activeEffectNode, type: typeButtosEffect)
         
@@ -166,13 +164,10 @@ class AudioEngineViewController: UIViewController {
     }
     
     
-    
-    
     func clearIsEditing() {
-        
-        for dataPlayingNode in dataPlayingNodes {
-            var dataPlayingNode = dataPlayingNode
-            dataPlayingNode.isEditing = false
+        let count = dataPlayingNodes.count - 1
+        for index in 0...count {
+            dataPlayingNodes[index].isEditing = false
         }
     }
   
@@ -182,7 +177,6 @@ class AudioEngineViewController: UIViewController {
         }
     }
     
-    // выключение меню эффектов
     func hiddenEffectView() {
         viewEffect.isHidden = true
         tableViewNode.reloadData()

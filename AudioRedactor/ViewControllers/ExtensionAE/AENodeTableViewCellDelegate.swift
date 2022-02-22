@@ -10,8 +10,9 @@ import UIKit
 extension AudioEngineViewController: NodeTableViewCellDelegate {
     
     func button(for cell: NodeTableViewCell) {
+        guard let node = cell.indexCell else { return }
         
-        if let node = cell.indexCell, dataPlayingNodes[node].addPlayList {
+        if dataPlayingNodes[node].addPlayList {
             clearIsEditing()
             viewEffect.isHidden = false
             dataPlayingNodes[node].isEditing = true
@@ -28,6 +29,9 @@ extension AudioEngineViewController: NodeTableViewCellDelegate {
         
         if let node = cell.indexCell {
             dataPlayingNodes[node].addPlayList = cell.switchAdd.isOn
+            
+            activeEffectNode = node
+            
         }
         checkAddPlayer()
         tableViewNode.reloadData()

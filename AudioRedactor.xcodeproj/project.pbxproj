@@ -20,6 +20,9 @@
 		E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */; };
 		E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */; };
 		E22AAC2D27C54A8F007ADAF1 /* ButtonEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */; };
+		E22AAC2F27C54AC5007ADAF1 /* SliderEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */; };
+		E22AAC3127C54AE6007ADAF1 /* ButtonEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3027C54AE6007ADAF1 /* ButtonEditorView.swift */; };
+		E22AAC3327C54B08007ADAF1 /* NodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3227C54B08007ADAF1 /* NodeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AENodeTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPlayerView.swift; sourceTree = "<group>"; };
 		E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonEffectView.swift; sourceTree = "<group>"; };
+		E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderEffectView.swift; sourceTree = "<group>"; };
+		E22AAC3027C54AE6007ADAF1 /* ButtonEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonEditorView.swift; sourceTree = "<group>"; };
+		E22AAC3227C54B08007ADAF1 /* NodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,9 @@
 			children = (
 				E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */,
 				E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */,
+				E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */,
+				E22AAC3027C54AE6007ADAF1 /* ButtonEditorView.swift */,
+				E22AAC3227C54B08007ADAF1 /* NodeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,12 +192,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22AAC3327C54B08007ADAF1 /* NodeTableViewCell.swift in Sources */,
 				E22AAC0E27C547A8007ADAF1 /* AudioEngineViewController.swift in Sources */,
 				E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */,
 				E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */,
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
 				E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,
+				E22AAC2F27C54AC5007ADAF1 /* SliderEffectView.swift in Sources */,
+				E22AAC3127C54AE6007ADAF1 /* ButtonEditorView.swift in Sources */,
 				E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */,
 				E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */,
 				E22AAC0C27C547A8007ADAF1 /* SceneDelegate.swift in Sources */,

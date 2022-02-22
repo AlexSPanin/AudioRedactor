@@ -29,6 +29,11 @@
 		E22AAC3D27C54BEA007ADAF1 /* ButtonsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3C27C54BEA007ADAF1 /* ButtonsEditor.swift */; };
 		E22AAC3F27C54C0B007ADAF1 /* ButtonsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC3E27C54C0B007ADAF1 /* ButtonsEffect.swift */; };
 		E22AAC4227C54C32007ADAF1 /* ButtonsPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC4127C54C32007ADAF1 /* ButtonsPlayer.swift */; };
+		E22AAC4427C54C72007ADAF1 /* SlidersEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC4327C54C72007ADAF1 /* SlidersEffect.swift */; };
+		E22AAC4627C54CB2007ADAF1 /* DataSongsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC4527C54CB2007ADAF1 /* DataSongsModel.swift */; };
+		E22AAC4827C54CD3007ADAF1 /* DataAudioNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC4727C54CD3007ADAF1 /* DataAudioNodes.swift */; };
+		E22AAC4B27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */; };
+		E22AAC4E27C54D0A007ADAF1 /* otbivka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC4D27C54D0A007ADAF1 /* otbivka.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +61,12 @@
 		E22AAC3C27C54BEA007ADAF1 /* ButtonsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsEditor.swift; sourceTree = "<group>"; };
 		E22AAC3E27C54C0B007ADAF1 /* ButtonsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsEffect.swift; sourceTree = "<group>"; };
 		E22AAC4127C54C32007ADAF1 /* ButtonsPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsPlayer.swift; sourceTree = "<group>"; };
+		E22AAC4327C54C72007ADAF1 /* SlidersEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidersEffect.swift; sourceTree = "<group>"; };
+		E22AAC4527C54CB2007ADAF1 /* DataSongsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSongsModel.swift; sourceTree = "<group>"; };
+		E22AAC4727C54CD3007ADAF1 /* DataAudioNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAudioNodes.swift; sourceTree = "<group>"; };
+		E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Scott Buckley - Life In Silico.mp3"; sourceTree = "<group>"; };
+		E22AAC4C27C54D06007ADAF1 /* 01 The St. Louis Blues.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01 The St. Louis Blues.m4a"; sourceTree = "<group>"; };
+		E22AAC4D27C54D0A007ADAF1 /* otbivka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = otbivka.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +99,7 @@
 		E22AAC0827C547A8007ADAF1 /* AudioRedactor */ = {
 			isa = PBXGroup;
 			children = (
+				E22AAC4927C54CF3007ADAF1 /* Files */,
 				E22AAC3527C54B53007ADAF1 /* DataManager */,
 				E22AAC3427C54B40007ADAF1 /* Model */,
 				E22AAC2927C54A4D007ADAF1 /* View */,
@@ -141,6 +153,9 @@
 				E22AAC3C27C54BEA007ADAF1 /* ButtonsEditor.swift */,
 				E22AAC3E27C54C0B007ADAF1 /* ButtonsEffect.swift */,
 				E22AAC4127C54C32007ADAF1 /* ButtonsPlayer.swift */,
+				E22AAC4327C54C72007ADAF1 /* SlidersEffect.swift */,
+				E22AAC4527C54CB2007ADAF1 /* DataSongsModel.swift */,
+				E22AAC4727C54CD3007ADAF1 /* DataAudioNodes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +168,16 @@
 				E22AAC3A27C54BB0007ADAF1 /* AudioManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		E22AAC4927C54CF3007ADAF1 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				E22AAC4C27C54D06007ADAF1 /* 01 The St. Louis Blues.m4a */,
+				E22AAC4D27C54D0A007ADAF1 /* otbivka.mp3 */,
+				E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,8 +239,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E22AAC1627C547A9007ADAF1 /* LaunchScreen.storyboard in Resources */,
+				E22AAC4E27C54D0A007ADAF1 /* otbivka.mp3 in Resources */,
 				E22AAC1327C547A9007ADAF1 /* Assets.xcassets in Resources */,
 				E22AAC1127C547A8007ADAF1 /* Main.storyboard in Resources */,
+				E22AAC4B27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22AAC4827C54CD3007ADAF1 /* DataAudioNodes.swift in Sources */,
 				E22AAC3327C54B08007ADAF1 /* NodeTableViewCell.swift in Sources */,
 				E22AAC0E27C547A8007ADAF1 /* AudioEngineViewController.swift in Sources */,
 				E22AAC3727C54B6F007ADAF1 /* TimeManager.swift in Sources */,
@@ -243,6 +271,8 @@
 				E22AAC3127C54AE6007ADAF1 /* ButtonEditorView.swift in Sources */,
 				E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */,
 				E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */,
+				E22AAC4427C54C72007ADAF1 /* SlidersEffect.swift in Sources */,
+				E22AAC4627C54CB2007ADAF1 /* DataSongsModel.swift in Sources */,
 				E22AAC0C27C547A8007ADAF1 /* SceneDelegate.swift in Sources */,
 				E22AAC2D27C54A8F007ADAF1 /* ButtonEffectView.swift in Sources */,
 			);

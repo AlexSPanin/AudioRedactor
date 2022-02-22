@@ -17,6 +17,7 @@
 		E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */; };
 		E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */; };
 		E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */; };
+		E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESetupEngine.swift; sourceTree = "<group>"; };
 		E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEManagerButtonsSliders.swift; sourceTree = "<group>"; };
 		E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AETableViewDataSource.swift; sourceTree = "<group>"; };
+		E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AENodeTableViewCellDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */,
 				E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */,
 				E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */,
+				E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */,
 			);
 			path = ExtensionAE;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			files = (
 				E22AAC0E27C547A8007ADAF1 /* AudioEngineViewController.swift in Sources */,
 				E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */,
+				E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */,
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
 				E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,

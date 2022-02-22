@@ -55,24 +55,6 @@ class AudioEngineViewController: UIViewController {
     let audioMixer = AVAudioMixerNode()
     let micMixer = AVAudioMixerNode()
     
-    // Node 1
-    let audioPlayerNode1 = AVAudioPlayerNode()
-    let reverb1 = AVAudioUnitReverb()
-    let delayEcho1 = AVAudioUnitDelay()
-    let equalizer1 = AVAudioUnitEQ(numberOfBands: 1)
-    
-    // Node 2
-    let audioPlayerNode2 = AVAudioPlayerNode()
-    let reverb2 = AVAudioUnitReverb()
-    let delayEcho2 = AVAudioUnitDelay()
-    let equalizer2 = AVAudioUnitEQ(numberOfBands: 1)
-    
-    // Node 3
-    let audioPlayerNode3 = AVAudioPlayerNode()
-    let reverb3 = AVAudioUnitReverb()
-    let delayEcho3 = AVAudioUnitDelay()
-    let equalizer3 = AVAudioUnitEQ(numberOfBands: 1)
-    
     // MARK: - Data Songs and Settings UI and start value
     let setting = Setting.getSetting()
     var dataSongs = DataSong.getDataSong()

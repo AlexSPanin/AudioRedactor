@@ -81,9 +81,9 @@ class NodeTableViewCell: UITableViewCell {
     let progress: UIProgressView = {
         let progress = UIProgressView()
         let setting = Setting.getSetting()
-        progress.trackTintColor = setting.colorTint
-        progress.setProgress(0, animated: true)
-        
+        progress.setProgress(1, animated: true)
+        progress.progressTintColor = setting.colorTint
+
         return progress
     }()
     
@@ -122,11 +122,15 @@ class NodeTableViewCell: UITableViewCell {
         self.dataPlaying = data
         indexCell = indexRow
         
-        nameLabel.text = String("\(data.nodeForSong.name.name) - \(data.nodeForSong.name.format)")
-        currentLabel.text = String("Current Time:  \(data.seekFrame)")
-        lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: data.nodeForSong.length))")
-        
         current = Float(data.seekFrame)
+        length = Float(data.nodeForSong.audioLengthSeconds)
+        let time = Float(data.currentPosition) / Float(data.nodeForSong.audioSampleRate)
+        progress.progress = Float(data.currentPosition) / Float(data.nodeForSong.audioLengthSamples)
+        
+        nameLabel.text = String("\(data.nodeForSong.name.name) - \(data.nodeForSong.name.format)")
+        
+        currentLabel.text = String("Current Time:  \(PlayerTime.getFormattedTime(seconds: time))")
+        lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: length))")
         
         switchAdd.isOn = data.addPlayList
         switchAdd.isHidden = isHidingSwitch
@@ -134,6 +138,7 @@ class NodeTableViewCell: UITableViewCell {
         buttonFX.backgroundColor = data.isEditing ? setting.colorTint : setting.colorBrgndPlayerButton
         
         backgroundColor = (indexRow + 1) % 2 == 1 ? .white : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        progress.trackTintColor = (indexRow + 1) % 2 == 1 ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : .white
         selectionStyle = .none
         
     }

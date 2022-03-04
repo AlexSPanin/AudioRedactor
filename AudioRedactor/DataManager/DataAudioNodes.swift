@@ -9,28 +9,7 @@ import Foundation
 import AVFAudio
 
 
-struct DataPlayingNode {
-    var nodeForSong: DataSong
-    
-    var addPlayList: Bool                     //признак добавления к проигрованию
-    var isEditing: Bool                       //признак активного редактирования
-    var isPlaying: Bool                       //признак что началось проигрование
-    var isPlayerReady: Bool                   //признак что в плеере смонтирован аудио файл и плеер готов его проиговать
-    var needsFileScheduled: Bool              //признак необходимости смонтировать аудиофайл
-    
-    var seekFrame: AVAudioFramePosition
-    var currentPosition: AVAudioFramePosition
-    var audioSeekFrame: AVAudioFramePosition
-    var audioLengthSamples: AVAudioFramePosition
-    var currentFrame: AVAudioFramePosition
-    
-    var audioPlayerNode: AVAudioPlayerNode
-    var reverb: AVAudioUnitReverb
-    var delayEcho: AVAudioUnitDelay
-    var equalizer: AVAudioUnitEQ
-    
-    
-}
+
 
 
 class DataPlayingNodes {
@@ -39,14 +18,14 @@ class DataPlayingNodes {
     
     private init() {}
     
-    func getDataPlayingNodes() -> [DataPlayingNode] {
-        var dataPlayingNodes: [DataPlayingNode] = []
+    func getDataPlayingNodes() -> [DataAudioNode] {
+        var dataPlayingNodes: [DataAudioNode] = []
         let dataSongs = DataSong.getDataSong()
         
         for dataSong in dataSongs {
             
             dataPlayingNodes.append(
-                DataPlayingNode(
+                DataAudioNode(
                     nodeForSong: dataSong,
                     addPlayList: false,
                     isEditing: false,
@@ -56,7 +35,7 @@ class DataPlayingNodes {
                     seekFrame: 0,
                     currentPosition: 0,
                     audioSeekFrame: 0,
-                    audioLengthSamples: 0,
+   //                 audioLengthSamples: 0,
                     currentFrame: 0,
                     audioPlayerNode: AVAudioPlayerNode(),
                     reverb: AVAudioUnitReverb(),

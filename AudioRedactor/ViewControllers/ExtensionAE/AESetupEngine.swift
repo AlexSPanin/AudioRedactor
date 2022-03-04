@@ -8,6 +8,30 @@
 import UIKit
 
 extension AudioEngineViewController {
+    
+    func clearIsEditing() {
+        let count = dataPlayingNodes.count - 1
+        for index in 0...count {
+            dataPlayingNodes[index].isEditing = false
+        }
+    }
+  
+    func checkAddPlayer() {
+       isActiveAddPlayer = dataPlayingNodes.contains { data in
+            data.addPlayList
+        }
+    }
+    
+    func checkIsPlaying() -> Bool {
+        dataPlayingNodes.contains { data in
+            data.isPlaying
+        }
+    }
+    
+    func hiddenEffectView() {
+        viewEffect.isHidden = true
+        tableViewNode.reloadData()
+    }
  
     
     //MARK: -  первоначальные настройки эффектов по 3 нодам

@@ -8,18 +8,18 @@
 import Foundation
 import AVFAudio
 
-struct DataSong {
+struct DataSongs {
     let name: Songs
     let file: AVAudioFile
-    let lengthSamples: Int
-    let length: Double
-    let rate: Double
+    let audioLengthSamples: AVAudioFramePosition
+    let audioLengthSeconds: Double
+    let audioSampleRate: Double
     let audioFormat: AVAudioFormat
     
     private var lengthSeconds: Double {
-        Double(length) / rate
+        Double(audioLengthSeconds) / audioSampleRate
     }
-    static func getDataSong() -> [DataSong]{
+    static func getDataSong() -> DataSong{
         let music = Songs.getSongs()
         var dataSongs: [DataSong] = []
         for song in music {
@@ -32,9 +32,9 @@ struct DataSong {
                 let dataSong = DataSong(
                     name: song,
                     file: file,
-                    lengthSamples: Int(file.length),
-                    length: Double(file.length) / format.sampleRate,
-                    rate: format.sampleRate,
+                    audioLengthSamples: file.length,
+                    audioLengthSeconds: Double(file.length) / format.sampleRate,
+                    audioSampleRate: format.sampleRate,
                     audioFormat: format
                 )
                 dataSongs.append(dataSong)

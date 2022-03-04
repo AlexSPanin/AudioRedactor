@@ -73,14 +73,13 @@ class AudioEngineViewController: UIViewController {
     var tracksSlidersValue = TrackSlidersValue.getTrackSlidersValue()
     
     
-   
-
+    private var displayLink: CADisplayLink?
+    
+//MARK: - override func
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        
-        
-
         setupUI(track: activeEffectNode, type: typeButtosEffect)
         
         setupEffectValue()
@@ -88,7 +87,8 @@ class AudioEngineViewController: UIViewController {
         
         self.tableViewNode.register(NodeTableViewCell.self, forCellReuseIdentifier: "nodeCell")
         self.tableViewNode.dataSource = self
-       
+        
+        setupDisplayLink()
     }
     
     override func loadView() {
@@ -105,12 +105,6 @@ class AudioEngineViewController: UIViewController {
         
         self.tableViewNode = tableView
     }
-    
-   
-    
-    
-    
-   
     
     //MARK: - Подготовка аудио движка
     
@@ -131,7 +125,7 @@ class AudioEngineViewController: UIViewController {
     }
     
         // MARK: - create audio file and setting sign for ready play
-    func scheduleAudioFile(_ node: DataPlayingNode) {
+    func scheduleAudioFile(_ node: DataAudioNode) {
         var audioNode = node
         let audioFile = audioNode.nodeForSong.file
         if audioNode.needsFileScheduled { audioNode.audioPlayerNode.scheduleFile(audioFile, at: nil) }
@@ -153,8 +147,12 @@ class AudioEngineViewController: UIViewController {
                         
                     case true:
                         dataPlayingNode.audioPlayerNode.pause()
+                        dataPlayingNode.isPlaying = false
+                        displayLink?.isPaused = true
                     case false:
                         dataPlayingNode.audioPlayerNode.play()
+                        dataPlayingNode.isPlaying = true
+                        displayLink?.isPaused = false
                     }
                 }
             }
@@ -163,23 +161,35 @@ class AudioEngineViewController: UIViewController {
             tableViewNode.reloadData()
         }
     }
+
+    func setupDisplayLink() {
+        
+        displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))
+        displayLink?.add(to: .current, forMode: .default)
+        displayLink?.isPaused = true
+    }
     
-    
-    func clearIsEditing() {
-        let count = dataPlayingNodes.count - 1
-        for index in 0...count {
-            dataPlayingNodes[index].isEditing = false
+    @objc func updateDisplay() {
+        
+        for index in 0...dataPlayingNodes.count {
+            dataPlayingNodes[index].isPlaying
+            guard let lastRenderTime = dataPlayingNodes[index].audioPlayerNode.lastRenderTime else { return }
+            guard let playerTime = dataPlayingNodes[index].audioPlayerNode.playerTime(forNodeTime: lastRenderTime) else { return }
+            dataPlayingNodes[index].currentFrame = playerTime.sampleTime
+            dataPlayingNodes[index].currentPosition = dataPlayingNodes[index].currentFrame + dataPlayingNodes[index].seekFrame
+            dataPlayingNodes[index].currentPosition = max(dataPlayingNodes[index].currentPosition, 0)
+            dataPlayingNodes[index].currentPosition = min(dataPlayingNodes[index].currentPosition, dataPlayingNodes[index].nodeForSong.audioLengthSamples)
+            if dataPlayingNodes[index].currentPosition >= dataPlayingNodes[index].nodeForSong.audioLengthSamples {
+                dataPlayingNodes[index].audioPlayerNode.stop()
+                dataPlayingNodes[index].seekFrame = 0
+                dataPlayingNodes[index].currentFrame = 0
+                dataPlayingNodes[index].isPlaying = false
+            }
+            tableViewNode.reloadData()
         }
+        isPlaying = checkIsPlaying()
+        displayLink?.isPaused = !isPlaying
     }
-  
-    func checkAddPlayer() {
-       isActiveAddPlayer = dataPlayingNodes.contains { data in
-            data.addPlayList
-        }
-    }
+   
     
-    func hiddenEffectView() {
-        viewEffect.isHidden = true
-        tableViewNode.reloadData()
-    }
 }

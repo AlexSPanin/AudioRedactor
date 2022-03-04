@@ -10,11 +10,13 @@ import Foundation
 
 class SongsDataManager {
     
+    
+    
     static let shared = SongsDataManager()
     
     private init() {}
     
-    func fetchSongs() {
+    func fetchSongs() -> [Song] {
         
         var songs = [Song]()
         
@@ -33,6 +35,7 @@ class SongsDataManager {
         song1.format = Format.m4a.rawValue
         songs.append(song3)
         
+        return songs
     }
 }
 

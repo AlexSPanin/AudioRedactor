@@ -15,9 +15,5 @@ class DataSong {
     var audioLengthSeconds: Double = 0
     var audioSampleRate: Double = 0
     var audioFormat = AVAudioFormat()
-    
-    private var lengthSeconds: Double {
-        Double(audioLengthSeconds) / audioSampleRate
-    }
 }
 

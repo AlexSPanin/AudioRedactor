@@ -10,8 +10,8 @@ import UIKit
 class NodeTableViewCell: UITableViewCell {
     
     var delegate: NodeTableViewCellDelegate!
-    var node: DataSong?
-    var dataPlaying: DataPlayingNode?
+    var node: AudioData?
+    var dataAudioNode: DataAudioNode?
     
     var name: String = ""
     var length: Float = 1
@@ -116,10 +116,10 @@ class NodeTableViewCell: UITableViewCell {
         delegate.button(for: self)
     }
     
-    func configure( data: DataPlayingNode, isHidingSwitch: Bool, indexRow: Int) {
+    func configure( data: DataAudioNode, isHidingSwitch: Bool, indexRow: Int) {
    //     automaticallyUpdatesContentConfiguration = true
         configureUICell()
-        self.dataPlaying = data
+        self.dataAudioNode = data
         indexCell = indexRow
         
         current = Float(data.seekFrame)

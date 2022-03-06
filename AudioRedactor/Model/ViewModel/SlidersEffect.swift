@@ -88,7 +88,7 @@ struct TrackSlidersValue {
     var slidersValue: SlidersValue
     
     static func getTrackSlidersValue() -> [TrackSlidersValue] {
-        let tracks = Songs.getSongs()
+        let tracks = SongsDataManager.shared.fetchSongs()
         var tracksValue: [TrackSlidersValue] = []
         
         for _ in tracks {

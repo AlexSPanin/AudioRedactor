@@ -9,11 +9,7 @@ import Foundation
 
 
 class SongsDataManager {
-    
-    
-    
     static let shared = SongsDataManager()
-    
     private init() {}
     
     func fetchSongs() -> [Song] {
@@ -32,7 +28,7 @@ class SongsDataManager {
         
         let song3 = Song()
         song3.name = "01 The St. Louis Blues"
-        song1.format = Format.m4a.rawValue
+        song3.format = Format.m4a.rawValue
         songs.append(song3)
         
         return songs

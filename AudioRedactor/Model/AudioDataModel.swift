@@ -8,7 +8,7 @@
 import Foundation
 import AVFAudio
 
-class DataSong {
+class AudioData {
     var name = Song()
     var file = AVAudioFile()
     var audioLengthSamples: AVAudioFramePosition = 0

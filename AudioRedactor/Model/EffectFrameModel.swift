@@ -11,9 +11,9 @@ import Foundation
 
 class EffectFrameModel {
     
-    var volume: Float = 0
+    var volume: Float = 0.2
     var eqLow: Float = 0
-    var eqHight: Float = 0
+    var eqHight: Float = 10000
     var reverb: Float = 0
     var delay: Float = 0
     var incVolume = [VolumeFrameModel]()

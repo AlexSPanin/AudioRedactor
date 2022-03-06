@@ -59,7 +59,7 @@ struct EffectSliderValue {
     static func getEffectSliderValue() -> [EffectSliderValue] {
         [
             EffectSliderValue(type: .exit, count: 1, track: .minimum, value: 0.5, minimum: 0, maximum: 1),
-            EffectSliderValue(type: .volume, count: 1, track: .minimum, value: 0.1, minimum: 0, maximum: 1),
+            EffectSliderValue(type: .volume, count: 1, track: .minimum, value: 0.2, minimum: 0, maximum: 1),
             EffectSliderValue(type: .eq, count: 1, track: .maximum, value: 0, minimum: 0, maximum: 50),
             EffectSliderValue(type: .reverb, count: 1, track: .minimum, value: 0, minimum: 0, maximum: 100),
             EffectSliderValue(type: .delay, count: 1, track: .minimum, value: 0, minimum: 0, maximum: 1)

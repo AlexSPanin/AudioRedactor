@@ -9,7 +9,7 @@ import AVFAudio
 
 class AudioNodeModel {
     
-    var frameForNode = AudioFrameModel()
+    var framesForNode = [AudioFrameModel()]
     var nodeForSong = AudioDataModel()
     
     var addPlayList: Bool  = false                        //признак добавления к проигрованию
@@ -20,7 +20,6 @@ class AudioNodeModel {
     
     var seekFrame: AVAudioFramePosition = 0
     var currentPosition: AVAudioFramePosition = 0
-//    var audioSeekFrame: AVAudioFramePosition = 0
     var currentFrame: AVAudioFramePosition = 0            //текущий фрэйм
     
     var audioPlayerNode = AVAudioPlayerNode()

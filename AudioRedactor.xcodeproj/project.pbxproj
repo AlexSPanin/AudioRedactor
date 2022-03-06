@@ -167,9 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				E2A1096727D24CC200B29E87 /* AudioNodeModel.swift */,
+				E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */,
 				E2A1096D27D2526000B29E87 /* AudioDataModel.swift */,
 				E2A1096927D250B600B29E87 /* SongModel.swift */,
-				E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */,
 				E2A37A2F27D4B832008041ED /* EffectFrameModel.swift */,
 				E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */,
 				E2A1096C27D2523300B29E87 /* ViewModel */,

@@ -9,6 +9,8 @@ import Foundation
 import AVFAudio
 
 class DataAudioNode {
+    
+    var frameForNode = DataAudioFrame
     var nodeForSong = AudioData()
     
     var addPlayList: Bool  = false                        //признак добавления к проигрованию

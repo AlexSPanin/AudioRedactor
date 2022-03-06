@@ -38,6 +38,9 @@
 		E2A1096827D24CC200B29E87 /* AudioNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1096727D24CC200B29E87 /* AudioNodeModel.swift */; };
 		E2A1096A27D250B600B29E87 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1096927D250B600B29E87 /* SongModel.swift */; };
 		E2A1096E27D2526000B29E87 /* AudioDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1096D27D2526000B29E87 /* AudioDataModel.swift */; };
+		E2A37A3027D4B832008041ED /* EffectFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A2F27D4B832008041ED /* EffectFrameModel.swift */; };
+		E2A37A3227D4B85F008041ED /* VolumeFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */; };
+		E2A37A3427D4BB67008041ED /* AudioFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,9 @@
 		E2A1096727D24CC200B29E87 /* AudioNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioNodeModel.swift; sourceTree = "<group>"; };
 		E2A1096927D250B600B29E87 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		E2A1096D27D2526000B29E87 /* AudioDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDataModel.swift; sourceTree = "<group>"; };
+		E2A37A2F27D4B832008041ED /* EffectFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectFrameModel.swift; sourceTree = "<group>"; };
+		E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeFrameModel.swift; sourceTree = "<group>"; };
+		E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFrameModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,9 @@
 		E22AAC3427C54B40007ADAF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */,
+				E2A37A2F27D4B832008041ED /* EffectFrameModel.swift */,
+				E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */,
 				E2A1096727D24CC200B29E87 /* AudioNodeModel.swift */,
 				E2A1096D27D2526000B29E87 /* AudioDataModel.swift */,
 				E2A1096927D250B600B29E87 /* SongModel.swift */,
@@ -286,12 +295,15 @@
 				E22AAC3727C54B6F007ADAF1 /* TimeManager.swift in Sources */,
 				E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */,
 				E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */,
+				E2A37A3027D4B832008041ED /* EffectFrameModel.swift in Sources */,
 				E22AAC3927C54B8B007ADAF1 /* SettingManager.swift in Sources */,
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
+				E2A37A3227D4B85F008041ED /* VolumeFrameModel.swift in Sources */,
 				E22AAC3D27C54BEA007ADAF1 /* ButtonsEditor.swift in Sources */,
 				E2A1096E27D2526000B29E87 /* AudioDataModel.swift in Sources */,
 				E22AAC4227C54C32007ADAF1 /* ButtonsPlayer.swift in Sources */,
 				E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */,
+				E2A37A3427D4BB67008041ED /* AudioFrameModel.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,
 				E22AAC2F27C54AC5007ADAF1 /* SliderEffectView.swift in Sources */,
 				E22AAC3B27C54BB0007ADAF1 /* SongsDataManager.swift in Sources */,

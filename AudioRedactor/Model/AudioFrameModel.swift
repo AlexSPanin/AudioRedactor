@@ -1,15 +1,15 @@
 //
-//  AudioNodeModel.swift
+//  AudioFrameModel.swift
 //  AudioRedactor
 //
-//  Created by Александр Панин on 04.03.2022.
+//  Created by Александр Панин on 06.03.2022.
 //
 
-import Foundation
 import AVFAudio
 
-class DataAudioNode {
-    var nodeForSong = AudioData()
+class DataAudioFrame {
+    var audioForFrame = AudioData()
+    var effectFrame = EffectFrameModel()
     
     var addPlayList: Bool  = false                        //признак добавления к проигрованию
     var isEditing: Bool = false                           //признак активного редактирования
@@ -17,13 +17,10 @@ class DataAudioNode {
     var isPlayerReady: Bool = false                       //признак что в плеере смонтирован аудио файл и плеер готов его проиговать
     var needsFileScheduled: Bool = true                   //признак необходимости смонтировать аудиофайл
     
-    var seekFrame: AVAudioFramePosition = 0
     var currentPosition: AVAudioFramePosition = 0
-//    var audioSeekFrame: AVAudioFramePosition = 0
-    var currentFrame: AVAudioFramePosition = 0            //текущий фрэйм
+    var seekFrame: AVAudioFramePosition = 0
+    var startFrame: AVAudioFramePosition = 0
+    var currentFrame: AVAudioFramePosition = 0
+    var endFrame: AVAudioFramePosition = 0
     
-    var audioPlayerNode = AVAudioPlayerNode()
-    var reverb = AVAudioUnitReverb()
-    var delayEcho = AVAudioUnitDelay()
-    var equalizer = AVAudioUnitEQ()
 }

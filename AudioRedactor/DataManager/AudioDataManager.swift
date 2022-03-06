@@ -12,16 +12,16 @@ class AudioDataManager {
     static let shared = AudioDataManager()
     private init() {}
     
-    func fetchAudioData() -> [AudioData] {
+    func fetchAudioData() -> [AudioDataModel] {
         let songs = SongsDataManager.shared.fetchSongs()
-        var audioData = [AudioData]()
+        var audioData = [AudioDataModel]()
         
         for audio in songs {
             guard let url = Bundle.main.url(forResource: audio.name, withExtension: audio.format) else { return audioData }
             do {
                 let file = try AVAudioFile(forReading: url)
                 let format = file.processingFormat
-                let dataSong = AudioData()
+                let dataSong = AudioDataModel()
                 dataSong.name = audio
                 dataSong.file = file
                 dataSong.audioLengthSamples = file.length

@@ -8,10 +8,10 @@
 import Foundation
 import AVFAudio
 
-class DataAudioNode {
+class AudioNodeModel {
     
-    var frameForNode = DataAudioFrame
-    var nodeForSong = AudioData()
+    var frameForNode = AudioFrameModel()
+    var nodeForSong = AudioDataModel()
     
     var addPlayList: Bool  = false                        //признак добавления к проигрованию
     var isEditing: Bool = false                           //признак активного редактирования

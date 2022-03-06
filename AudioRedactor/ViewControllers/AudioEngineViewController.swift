@@ -57,8 +57,8 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - Data Songs and Settings UI and start value
     var setting = Setting.getSetting()
-    var dataSongs = [AudioData]()
-    var dataPlayingNodes = [DataAudioNode]()
+    var dataSongs = [AudioDataModel]()
+    var dataPlayingNodes = [AudioNodeModel]()
     
     
     // MARK: - number song and start button effect
@@ -80,7 +80,7 @@ class AudioEngineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSongs = AudioDataManager.shared.fetchAudioData()
-        dataPlayingNodes = DataAudioNodes.shared.getDataPlayingNodes()
+        dataPlayingNodes = AudioNodesDataManager.shared.getDataPlayingNodes()
         
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         setupUI(track: activeEffectNode, type: typeButtosEffect)
@@ -111,7 +111,7 @@ class AudioEngineViewController: UIViewController {
     
     //MARK: - Подготовка аудио движка
     
-    func configureEngine(_ dataSongs: [AudioData]) {
+    func configureEngine(_ dataSongs: [AudioDataModel]) {
         // setting start value effect
         configureSetupEffect()
         
@@ -128,7 +128,7 @@ class AudioEngineViewController: UIViewController {
     }
     
         // MARK: - create audio file and setting sign for ready play
-    func scheduleAudioFile(_ node: DataAudioNode) {
+    func scheduleAudioFile(_ node: AudioNodeModel) {
         let audioNode = node
         let audioFile = audioNode.nodeForSong.file
         if audioNode.needsFileScheduled { audioNode.audioPlayerNode.scheduleFile(audioFile, at: nil) }

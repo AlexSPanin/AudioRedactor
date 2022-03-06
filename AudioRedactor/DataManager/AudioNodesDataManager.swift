@@ -8,18 +8,18 @@
 import Foundation
 import AVFAudio
 
-class DataAudioNodes {
+class AudioNodesDataManager {
     
-    static var shared = DataAudioNodes()
+    static var shared = AudioNodesDataManager()
     
     private init() {}
     
-    func getDataPlayingNodes() -> [DataAudioNode] {
+    func getDataPlayingNodes() -> [AudioNodeModel] {
         let dataSongs = AudioDataManager.shared.fetchAudioData()
-        var dataAudioNodes = [DataAudioNode]()
+        var dataAudioNodes = [AudioNodeModel]()
         
         for dataSong in dataSongs {
-            let dataNode = DataAudioNode()
+            let dataNode = AudioNodeModel()
             dataNode.nodeForSong = dataSong
             dataAudioNodes.append(dataNode)
         }

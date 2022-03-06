@@ -7,8 +7,8 @@
 
 import AVFAudio
 
-class DataAudioFrame {
-    var audioForFrame = AudioData()
+class AudioFrameModel {
+    var audioForFrame = AudioDataModel()
     var effectFrame = EffectFrameModel()
     
     var addPlayList: Bool  = false                        //признак добавления к проигрованию

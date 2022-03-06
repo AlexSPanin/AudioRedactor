@@ -12,7 +12,7 @@ enum Format: String {
     case m4a = "m4a"
 }
 
-class Song {
+class SongModel {
     var name: String = ""
     var format: String = ""
 }

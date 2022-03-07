@@ -42,6 +42,7 @@
 		E2A37A3227D4B85F008041ED /* VolumeFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */; };
 		E2A37A3427D4BB67008041ED /* AudioFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */; };
 		E2A37A3627D4BF94008041ED /* AudioFrameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3527D4BF94008041ED /* AudioFrameDataManager.swift */; };
+		E2A37A3A27D4C63C008041ED /* AudioNodeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3927D4C63C008041ED /* AudioNodeDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeFrameModel.swift; sourceTree = "<group>"; };
 		E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFrameModel.swift; sourceTree = "<group>"; };
 		E2A37A3527D4BF94008041ED /* AudioFrameDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFrameDataManager.swift; sourceTree = "<group>"; };
+		E2A37A3927D4C63C008041ED /* AudioNodeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioNodeDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E22AAC4727C54CD3007ADAF1 /* AudioNodesDataManager.swift */,
+				E2A37A3927D4C63C008041ED /* AudioNodeDataManager.swift */,
 				E2A37A3527D4BF94008041ED /* AudioFrameDataManager.swift */,
 				E22AAC4527C54CB2007ADAF1 /* AudioDataManager.swift */,
 				E22AAC3A27C54BB0007ADAF1 /* SongsDataManager.swift */,
@@ -312,6 +315,7 @@
 				E22AAC3B27C54BB0007ADAF1 /* SongsDataManager.swift in Sources */,
 				E22AAC3F27C54C0B007ADAF1 /* ButtonsEffect.swift in Sources */,
 				E22AAC3127C54AE6007ADAF1 /* ButtonEditorView.swift in Sources */,
+				E2A37A3A27D4C63C008041ED /* AudioNodeDataManager.swift in Sources */,
 				E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */,
 				E2A1096827D24CC200B29E87 /* AudioNodeModel.swift in Sources */,
 				E2A1096A27D250B600B29E87 /* SongModel.swift in Sources */,

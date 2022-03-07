@@ -8,21 +8,20 @@
 import AVFAudio
 
 class AudioNodesDataManager {
-    
     static var shared = AudioNodesDataManager()
-    
     private init() {}
     
     func getDataPlayingNodes() -> [AudioNodeModel] {
-        let dataSongs = AudioDataManager.shared.fetchAudioData()
-        var dataAudioNodes = [AudioNodeModel]()
-        
-        for dataSong in dataSongs {
-            let dataNode = AudioNodeModel()
-            dataNode.nodeForSong = dataSong
-            dataAudioNodes.append(dataNode)
+        let songs = SongsDataManager.shared.fetchSongs()
+        var dataNodes = [AudioNodeModel]()
+        for song in songs {
+            var dataFrames = [AudioFrameModel]()
+            let audioData = AudioDataManager.shared.fetchAudioData(to: song)
+            dataFrames.append(AudioFrameDataManager.shared.getFrameDate(to: audioData))
+            let audioNode = AudioNodeDataManager.shared.getAudioNodeData(to: dataFrames)
+            dataNodes.append(audioNode)
         }
-        return dataAudioNodes
+        return dataNodes
     }
 }
 

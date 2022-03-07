@@ -6,15 +6,14 @@
 //
 
 class AudioFrameDataManager {
-    
     static var shared = AudioFrameDataManager()
-    
     private init() {}
     
     func getFrameDate(to audio: AudioDataModel) -> AudioFrameModel {
         let dataAudioFrame = AudioFrameModel()
         dataAudioFrame.audioForFrame = audio
         dataAudioFrame.effectFrame = EffectFrameModel()
+        dataAudioFrame.lengthFrame = audio.audioLengthSamples
         return dataAudioFrame
     }
 }

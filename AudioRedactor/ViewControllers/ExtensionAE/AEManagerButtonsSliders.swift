@@ -44,7 +44,7 @@ extension AudioEngineViewController {
         case .effect:
             if isActiveAddPlayer {
                 viewEffect.isHidden = false
-                dataPlayingNodes[activeEffectNode].isEditing = true
+                dataPlayingNodes[activeEffectNode].isEditingNode = true
                 tableViewNode.reloadData()
             }
         case .copy:

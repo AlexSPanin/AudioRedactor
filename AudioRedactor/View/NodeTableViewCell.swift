@@ -122,20 +122,20 @@ class NodeTableViewCell: UITableViewCell {
         self.dataAudioNode = data
         indexCell = indexRow
         
-        current = Float(data.seekFrame)
+        current = Float(data.seekFrameNode)
         length = Float(data.nodeForSong.audioLengthSeconds)
-        let time = Float(data.currentPosition) / Float(data.nodeForSong.audioSampleRate)
-        progress.progress = Float(data.currentPosition) / Float(data.nodeForSong.audioLengthSamples)
+        let time = Float(data.currentFrameNode) / Float(data.nodeForSong.audioSampleRate)
+        progress.progress = Float(data.currentFrameNode) / Float(data.nodeForSong.audioLengthSamples)
         
         nameLabel.text = String("\(data.nodeForSong.name.name) - \(data.nodeForSong.name.format)")
         
         currentLabel.text = String("Current Time:  \(PlayerTime.getFormattedTime(seconds: time))")
         lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: length))")
         
-        switchAdd.isOn = data.addPlayList
+        switchAdd.isOn = data.addPlayListNode
         switchAdd.isHidden = isHidingSwitch
         
-        buttonFX.backgroundColor = data.isEditing ? setting.colorTint : setting.colorBrgndPlayerButton
+        buttonFX.backgroundColor = data.isEditingNode ? setting.colorTint : setting.colorBrgndPlayerButton
         
         backgroundColor = (indexRow + 1) % 2 == 1 ? .white : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         progress.trackTintColor = (indexRow + 1) % 2 == 1 ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : .white

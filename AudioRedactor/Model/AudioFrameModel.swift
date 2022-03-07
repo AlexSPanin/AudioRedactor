@@ -8,19 +8,18 @@
 import AVFAudio
 
 class AudioFrameModel {
-    var audioForFrame = AudioDataModel()
-    var effectFrame = EffectFrameModel()
+    var audioForFrame = AudioDataModel()                   // привязка фрэйма к музыкальному трэку
+    var effectFrame = EffectFrameModel()                   // набор эффектов к фрэйму
     
-    var addPlayList: Bool  = false                        //признак добавления к проигрованию
-    var isEditing: Bool = false                           //признак активного редактирования
-    var isPlaying: Bool = false                           //признак что началось проигрование
-    var isPlayerReady: Bool = false                       //признак что в плеере смонтирован аудио файл и плеер готов его проиговать
-    var needsFileScheduled: Bool = true                   //признак необходимости смонтировать аудиофайл
+    var addPlayListFrame: Bool  = false                        //признак добавления к проигрованию
+    var isEditingFrame: Bool = false                           //признак активного редактирования
+    var isPlayingFrame: Bool = false                           //признак что началось проигрование
+    var isPlayerReadyFrame: Bool = false                       //признак что в плеере смонтирован аудио файл и плеер готов его проигровать
+    var needsFileScheduledFrame: Bool = true                   //признак необходимости смонтировать аудиофайл
     
-    var currentPosition: AVAudioFramePosition = 0
-    var seekFrame: AVAudioFramePosition = 0
-    var startFrame: AVAudioFramePosition = 0
-    var currentFrame: AVAudioFramePosition = 0
-    var endFrame: AVAudioFramePosition = 0
+    var seekFrame: AVAudioFramePosition = 0                  // смещение по фрэйму
+    var startFrameInNode: AVAudioFramePosition = 0           // стартовая позиция фрэйма в ноде
+    var currentFrame: AVAudioFramePosition = 0               // текущая позиция воспроизведения во фрэйме
+    var lengthFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
     
 }

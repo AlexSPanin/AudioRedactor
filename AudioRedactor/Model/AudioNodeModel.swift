@@ -12,15 +12,16 @@ class AudioNodeModel {
     var framesForNode = [AudioFrameModel()]
     var nodeForSong = AudioDataModel()
     
-    var addPlayList: Bool  = false                        //признак добавления к проигрованию
-    var isEditing: Bool = false                           //признак активного редактирования
-    var isPlaying: Bool = false                           //признак что началось проигрование
-    var isPlayerReady: Bool = false                       //признак что в плеере смонтирован аудио файл и плеер готов его проиговать
-    var needsFileScheduled: Bool = true                   //признак необходимости смонтировать аудиофайл
+    var addPlayListNode: Bool  = false                        //признак добавления к проигрованию
+    var isEditingNode: Bool = false                           //признак активного редактирования
+    var isPlayingNode: Bool = false                           //признак что началось проигрование
+    var isPlayerReadyNode: Bool = false                       //признак что в плеере смонтирован аудио файл и плеер готов его проиговать
+    var needsFileScheduledNode: Bool = true                   //признак необходимости смонтировать аудиофайл
     
-    var seekFrame: AVAudioFramePosition = 0
-    var currentPosition: AVAudioFramePosition = 0
-    var currentFrame: AVAudioFramePosition = 0            //текущий фрэйм
+    var seekFrameNode: AVAudioFramePosition = 0                // смещение позиции в узле
+    var startFrameNodeInNodes: AVAudioFramePosition = 0        // стартовая позиция узла в массиве узлов
+    var currentFrameNode: AVAudioFramePosition = 0             // текущая позиция в узле
+    var audioLengthNode: AVAudioFramePosition = 0              // длина узла изначально равна сумме длин фрэймов
     
     var audioPlayerNode = AVAudioPlayerNode()
     var reverb = AVAudioUnitReverb()

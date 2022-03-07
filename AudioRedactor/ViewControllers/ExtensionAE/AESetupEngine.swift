@@ -12,19 +12,19 @@ extension AudioEngineViewController {
     func clearIsEditing() {
         let count = dataPlayingNodes.count - 1
         for index in 0...count {
-            dataPlayingNodes[index].isEditing = false
+            dataPlayingNodes[index].isEditingNode = false
         }
     }
   
     func checkAddPlayer() {
        isActiveAddPlayer = dataPlayingNodes.contains { data in
-            data.addPlayList
+            data.addPlayListNode
         }
     }
     
     func checkIsPlaying() -> Bool {
         dataPlayingNodes.contains { data in
-            data.isPlaying
+            data.isPlayingNode
         }
     }
     
@@ -55,7 +55,7 @@ extension AudioEngineViewController {
             audioEngine.attach(dataPlayingNode.reverb)
             audioEngine.attach(dataPlayingNode.equalizer)
             
-            let format = dataPlayingNode.nodeForSong.audioFormat
+            let format = dataPlayingNode.framesForNode[0].audioForFrame.audioFormat
             let freeBus = audioEngine.mainMixerNode.nextAvailableInputBus
 
             audioEngine.connect(dataPlayingNode.audioPlayerNode, to: dataPlayingNode.delayEcho, format: format)

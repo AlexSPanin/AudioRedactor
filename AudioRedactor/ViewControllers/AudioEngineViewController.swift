@@ -79,7 +79,12 @@ class AudioEngineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSongs = AudioDataManager.shared.fetchAudioData()
+        let songs = SongsDataManager.shared.fetchSongs()
+        
+        for song in songs {
+            dataSongs.append(AudioDataManager.shared.fetchAudioData(to: song))
+        }
+        
         dataPlayingNodes = AudioNodesDataManager.shared.getDataPlayingNodes()
         
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -131,9 +136,9 @@ class AudioEngineViewController: UIViewController {
     func scheduleAudioFile(_ node: AudioNodeModel) {
         let audioNode = node
         let audioFile = audioNode.nodeForSong.file
-        if audioNode.needsFileScheduled { audioNode.audioPlayerNode.scheduleFile(audioFile, at: nil) }
-        audioNode.needsFileScheduled.toggle()
-        audioNode.isPlayerReady.toggle()
+        if audioNode.needsFileScheduledNode { audioNode.audioPlayerNode.scheduleFile(audioFile, at: nil) }
+        audioNode.needsFileScheduledNode.toggle()
+        audioNode.isPlayerReadyNode.toggle()
     }
     
     // MARK: -  запуск воспроизведения или пауза
@@ -143,18 +148,18 @@ class AudioEngineViewController: UIViewController {
         if isActiveAddPlayer {
             
             for dataPlayingNode in dataPlayingNodes {
-                if dataPlayingNode.addPlayList {
-                    if dataPlayingNode.needsFileScheduled { scheduleAudioFile(dataPlayingNode)}
+                if dataPlayingNode.addPlayListNode {
+                    if dataPlayingNode.needsFileScheduledNode { scheduleAudioFile(dataPlayingNode)}
                     
                     switch isPlaying {
                         
                     case true:
                         dataPlayingNode.audioPlayerNode.pause()
-                        dataPlayingNode.isPlaying = false
+                        dataPlayingNode.isPlayingNode = false
                         displayLink?.isPaused = true
                     case false:
                         dataPlayingNode.audioPlayerNode.play()
-                        dataPlayingNode.isPlaying = true
+                        dataPlayingNode.isPlayingNode = true
                         displayLink?.isPaused = false
                     }
                 }
@@ -168,28 +173,28 @@ class AudioEngineViewController: UIViewController {
     func seekButton(to time: Double) {
         
         for dataPlayingNode in dataPlayingNodes {
-            if dataPlayingNode.isPlaying {
+            if dataPlayingNode.isPlayingNode {
                 
                 let offset = AVAudioFramePosition(time * dataPlayingNode.nodeForSong.audioSampleRate)
-                dataPlayingNode.seekFrame = dataPlayingNode.currentPosition + offset
-                dataPlayingNode.seekFrame = max(dataPlayingNode.seekFrame, 0)
-                dataPlayingNode.seekFrame = min(dataPlayingNode.seekFrame, dataPlayingNode.nodeForSong.audioLengthSamples)
-                dataPlayingNode.currentPosition = dataPlayingNode.seekFrame
+                dataPlayingNode.seekFrameNode = dataPlayingNode.currentFrameNode + offset
+                dataPlayingNode.seekFrameNode = max(dataPlayingNode.seekFrameNode, 0)
+                dataPlayingNode.seekFrameNode = min(dataPlayingNode.seekFrameNode, dataPlayingNode.nodeForSong.audioLengthSamples)
+                dataPlayingNode.currentFrameNode = dataPlayingNode.seekFrameNode
                 
-                if dataPlayingNode.currentPosition < dataPlayingNode.nodeForSong.audioLengthSamples {
+                if dataPlayingNode.currentFrameNode < dataPlayingNode.nodeForSong.audioLengthSamples {
                     updateDisplay()
                     let wasPlaying = dataPlayingNode.audioPlayerNode.isPlaying
                     dataPlayingNode.audioPlayerNode.stop()
-                    dataPlayingNode.needsFileScheduled = false
+                    dataPlayingNode.needsFileScheduledNode = false
                     
-                    let frameCount = AVAudioFrameCount(dataPlayingNode.nodeForSong.audioLengthSamples - dataPlayingNode.seekFrame)
+                    let frameCount = AVAudioFrameCount(dataPlayingNode.nodeForSong.audioLengthSamples - dataPlayingNode.seekFrameNode)
                     dataPlayingNode.audioPlayerNode.scheduleSegment(
                         dataPlayingNode.nodeForSong.file,
-                        startingFrame: dataPlayingNode.seekFrame,
+                        startingFrame: dataPlayingNode.seekFrameNode,
                         frameCount: frameCount,
                         at: nil
                     ) {
-                        dataPlayingNode.needsFileScheduled = true
+                        dataPlayingNode.needsFileScheduledNode = true
                     }
                     if wasPlaying {
                         dataPlayingNode.audioPlayerNode.play()
@@ -210,20 +215,20 @@ class AudioEngineViewController: UIViewController {
         
         for dataPlayingNode in dataPlayingNodes {
             // проверка ноды на воспроизведение
-            if dataPlayingNode.isPlaying {
+            if dataPlayingNode.isPlayingNode {
                 // берем из узла последнее последнее время отработаное
                 guard let lastRenderTime = dataPlayingNode.audioPlayerNode.lastRenderTime else { return }
                 // преобразуем во время плеера
                 guard let playerTime = dataPlayingNode.audioPlayerNode.playerTime(forNodeTime: lastRenderTime) else { return }
                 // Время в виде нескольких аудиосэмплов, которые отслеживает текущее аудиоустройство.
-                dataPlayingNode.currentFrame = playerTime.sampleTime
-                dataPlayingNode.currentPosition = dataPlayingNode.currentFrame + dataPlayingNode.seekFrame
-                dataPlayingNode.currentPosition = max(dataPlayingNode.currentPosition, 0)
-                dataPlayingNode.currentPosition = min(dataPlayingNode.currentPosition, dataPlayingNode.nodeForSong.audioLengthSamples)
+        //        dataPlayingNode.currentFrameNode = playerTime.sampleTime
+                dataPlayingNode.currentFrameNode = playerTime.sampleTime + dataPlayingNode.seekFrameNode
+                dataPlayingNode.currentFrameNode = max(dataPlayingNode.currentFrameNode, 0)
+                dataPlayingNode.currentFrameNode = min(dataPlayingNode.currentFrameNode, dataPlayingNode.nodeForSong.audioLengthSamples)
                 // проверка если текущая позиция равна или больше изначальной длины аудифайла, то останавливаем и обнуляем узел
-                if dataPlayingNode.currentPosition >= dataPlayingNode.nodeForSong.audioLengthSamples {
+                if dataPlayingNode.currentFrameNode >= dataPlayingNode.nodeForSong.audioLengthSamples {
                     dataPlayingNode.audioPlayerNode.stop()
-                    dataPlayingNode.isPlaying = false
+                    dataPlayingNode.isPlayingNode = false
                     
 //                    dataPlayingNode.seekFrame = 0
 //                    dataPlayingNode.currentFrame = 0

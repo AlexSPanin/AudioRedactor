@@ -12,7 +12,7 @@ class AudioDataManager {
     private init() {}
     
     func fetchAudioData(to audio: SongModel) -> AudioDataModel {
-        let audioData = AudioDataModel()
+        var audioData = AudioDataModel()
             guard let url = Bundle.main.url(forResource: audio.name, withExtension: audio.format) else { return audioData }
             do {
                 let file = try AVAudioFile(forReading: url)
@@ -24,6 +24,7 @@ class AudioDataManager {
                 dataSong.audioLengthSeconds = Double(file.length) / format.sampleRate
                 dataSong.audioSampleRate = format.sampleRate
                 dataSong.audioFormat = format
+                audioData = dataSong
             } catch {
                 print("error Setup Audio")
             }

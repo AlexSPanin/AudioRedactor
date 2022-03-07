@@ -57,7 +57,7 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - Data Songs and Settings UI and start value
     var setting = Setting.getSetting()
-    var dataSongs = [AudioDataModel]()
+//    var dataSongs = [AudioDataModel]()
     var dataPlayingNodes = [AudioNodeModel]()
     
     
@@ -76,14 +76,12 @@ class AudioEngineViewController: UIViewController {
     private var displayLink: CADisplayLink?
     
 //MARK: - override func
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let songs = SongsDataManager.shared.fetchSongs()
-        
-        for song in songs {
-            dataSongs.append(AudioDataManager.shared.fetchAudioData(to: song))
-        }
+//        let songs = SongsDataManager.shared.fetchSongs()
+//        for song in songs {
+//            dataSongs.append(AudioDataManager.shared.fetchAudioData(to: song))
+//        }
         
         dataPlayingNodes = AudioNodesDataManager.shared.getDataPlayingNodes()
         
@@ -91,7 +89,7 @@ class AudioEngineViewController: UIViewController {
         setupUI(track: activeEffectNode, type: typeButtosEffect)
         
         setupEffectValue()
-        configureEngine(dataSongs)
+        configureEngine(dataPlayingNodes)
         
         self.tableViewNode.register(NodeTableViewCell.self, forCellReuseIdentifier: "nodeCell")
         self.tableViewNode.dataSource = self
@@ -99,6 +97,7 @@ class AudioEngineViewController: UIViewController {
         setupDisplayLink()
     }
     
+    // MARK: -  create table view for audio nodes
     override func loadView() {
         super.loadView()
         
@@ -116,16 +115,26 @@ class AudioEngineViewController: UIViewController {
     
     //MARK: - Подготовка аудио движка
     
-    func configureEngine(_ dataSongs: [AudioDataModel]) {
-        // setting start value effect
-        configureSetupEffect()
+    func configureEngine(_ dataNodes: [AudioNodeModel]) {
+        audioEngine.attach(audioMixer)
+        audioEngine.attach(micMixer)
         
+        // setting start value effect
+        for dataNode in dataNodes {
+            let frames = dataNode.framesForNode
+            for frame in frames {
+                configureAudioFrame(to: frame)
+            }
+        }
         // старт движка и монтирование аудифайлов
         do {
             try audioEngine.start()
             
-            for dataPlayingNode in dataPlayingNodes {
-                scheduleAudioFile(dataPlayingNode)
+            for dataNode in dataNodes {
+                let frames = dataNode.framesForNode
+                for frame in frames {
+                    scheduleAudioFileFrame(to: frame)
+                }
             }
         } catch {
             print("error configure Engine")
@@ -133,12 +142,11 @@ class AudioEngineViewController: UIViewController {
     }
     
         // MARK: - create audio file and setting sign for ready play
-    func scheduleAudioFile(_ node: AudioNodeModel) {
-        let audioNode = node
-        let audioFile = audioNode.nodeForSong.file
-        if audioNode.needsFileScheduledNode { audioNode.audioPlayerNode.scheduleFile(audioFile, at: nil) }
-        audioNode.needsFileScheduledNode.toggle()
-        audioNode.isPlayerReadyNode.toggle()
+    func scheduleAudioFileFrame(to frame: AudioFrameModel) {
+        let audioFile = frame.audioForFrame.file
+        if frame.needsFileScheduledFrame { frame.playerFrame.scheduleFile(audioFile, at: nil) }
+        frame.needsFileScheduledFrame.toggle()
+        frame.isPlayerReadyFrame.toggle()
     }
     
     // MARK: -  запуск воспроизведения или пауза
@@ -149,7 +157,7 @@ class AudioEngineViewController: UIViewController {
             
             for dataPlayingNode in dataPlayingNodes {
                 if dataPlayingNode.addPlayListNode {
-                    if dataPlayingNode.needsFileScheduledNode { scheduleAudioFile(dataPlayingNode)}
+                    if dataPlayingNode.needsFileScheduledNode { scheduleAudioFileFrame(dataPlayingNode)}
                     
                     switch isPlaying {
                         

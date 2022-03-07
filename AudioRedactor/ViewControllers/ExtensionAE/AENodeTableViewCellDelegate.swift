@@ -13,7 +13,7 @@ extension AudioEngineViewController: NodeTableViewCellDelegate {
         guard let node = cell.indexCell else { return }
         
         if dataPlayingNodes[node].addPlayListNode {
-            clearIsEditing()
+            clearIsEditingFrame()
             viewEffect.isHidden = false
             dataPlayingNodes[node].isEditingNode = true
             activeEffectNode = node

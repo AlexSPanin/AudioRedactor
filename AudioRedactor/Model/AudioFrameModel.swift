@@ -22,4 +22,8 @@ class AudioFrameModel {
     var currentFrame: AVAudioFramePosition = 0               // текущая позиция воспроизведения во фрэйме
     var lengthFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
     
+    var playerFrame = AVAudioPlayerNode()
+    var reverbFrame = AVAudioUnitReverb()
+    var delayEchoFrame = AVAudioUnitDelay()
+    var equalizerFrame = AVAudioUnitEQ()
 }

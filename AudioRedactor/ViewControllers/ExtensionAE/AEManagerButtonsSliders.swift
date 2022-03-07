@@ -17,7 +17,7 @@ extension AudioEngineViewController {
         switch type {
         case .exit:
             hiddenEffectView()
-            clearIsEditing()
+            clearIsEditingFrame()
             tableViewNode.reloadData()
         case .volume:
             typeButtosEffect = .volume

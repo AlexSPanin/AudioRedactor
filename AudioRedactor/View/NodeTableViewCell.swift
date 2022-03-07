@@ -10,8 +10,7 @@ import UIKit
 class NodeTableViewCell: UITableViewCell {
     
     var delegate: NodeTableViewCellDelegate!
-    var node: AudioDataModel?
-    var dataAudioNode: AudioNodeModel?
+    var dataAudioFrame: AudioFrameModel?
     
     var name: String = ""
     var length: Float = 1
@@ -87,8 +86,6 @@ class NodeTableViewCell: UITableViewCell {
         return progress
     }()
     
-    
-    var indexCell: Int?
     private let setting = Setting.getSetting()
     
 //    override func awakeFromNib() {
@@ -116,26 +113,25 @@ class NodeTableViewCell: UITableViewCell {
         delegate.button(for: self)
     }
     
-    func configure( data: AudioNodeModel, isHidingSwitch: Bool, indexRow: Int) {
+    func configure( data: AudioFrameModel, isHidingSwitch: Bool, indexRow: Int) {
    //     automaticallyUpdatesContentConfiguration = true
         configureUICell()
-        self.dataAudioNode = data
-        indexCell = indexRow
+        self.dataAudioFrame = data
         
-        current = Float(data.seekFrameNode)
-        length = Float(data.nodeForSong.audioLengthSeconds)
-        let time = Float(data.currentFrameNode) / Float(data.nodeForSong.audioSampleRate)
-        progress.progress = Float(data.currentFrameNode) / Float(data.nodeForSong.audioLengthSamples)
+        current = Float(data.seekFrame)
+        length = Float(data.lengthFrame) / Float(data.audioForFrame.audioSampleRate)
+        let time = Float(data.currentFrame) / Float(data.audioForFrame.audioSampleRate)
+        progress.progress = ( Float(data.currentFrame) / Float(data.audioForFrame.audioSampleRate) ) / length
         
-        nameLabel.text = String("\(data.nodeForSong.name.name) - \(data.nodeForSong.name.format)")
+        nameLabel.text = String("\(data.audioForFrame.name.name) - \(data.audioForFrame.name.format)")
         
         currentLabel.text = String("Current Time:  \(PlayerTime.getFormattedTime(seconds: time))")
         lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: length))")
         
-        switchAdd.isOn = data.addPlayListNode
+        switchAdd.isOn = data.addPlayListFrame
         switchAdd.isHidden = isHidingSwitch
         
-        buttonFX.backgroundColor = data.isEditingNode ? setting.colorTint : setting.colorBrgndPlayerButton
+        buttonFX.backgroundColor = data.isEditingFrame ? setting.colorTint : setting.colorBrgndPlayerButton
         
         backgroundColor = (indexRow + 1) % 2 == 1 ? .white : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         progress.trackTintColor = (indexRow + 1) % 2 == 1 ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : .white

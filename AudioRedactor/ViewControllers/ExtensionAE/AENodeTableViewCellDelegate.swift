@@ -10,15 +10,15 @@ import UIKit
 extension AudioEngineViewController: NodeTableViewCellDelegate {
     
     func button(for cell: NodeTableViewCell) {
-        guard let node = cell.indexCell else { return }
+        guard let frame = cell.dataAudioFrame else { return }
         
-        if dataPlayingNodes[node].addPlayListNode {
-            clearIsEditingFrame()
+        if frame.addPlayListFrame {
+            clearIsEditingFrames()
             viewEffect.isHidden = false
-            dataPlayingNodes[node].isEditingNode = true
-            activeEffectNode = node
+            frame.isEditingFrame = true
+            activeEffectFrame = frame
             setupEffectValue()
-            setupColorButtonPressedEffect(track: activeEffectNode, type: typeButtosEffect)
+            setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
         }
         tableViewNode.reloadData()
         return
@@ -27,13 +27,12 @@ extension AudioEngineViewController: NodeTableViewCellDelegate {
     func addSwitch(for cell: NodeTableViewCell) {
         //      clearAddPlayer()
         
-        if let node = cell.indexCell {
-            dataPlayingNodes[node].addPlayListNode = cell.switchAdd.isOn
-            
-            activeEffectNode = node
-            
+        if let frame = cell.dataAudioFrame {
+            frame.addPlayListFrame = cell.switchAdd.isOn
+            activeEffectFrame = frame
+ //           print(activeEffectFrame?.audioForFrame.name.name)
         }
-        checkAddPlayer()
+        checkAddPlayerNodes()
         tableViewNode.reloadData()
         return
     }

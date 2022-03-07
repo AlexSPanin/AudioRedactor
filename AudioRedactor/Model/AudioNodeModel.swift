@@ -23,8 +23,8 @@ class AudioNodeModel {
     var currentFrameNode: AVAudioFramePosition = 0             // текущая позиция в узле
     var audioLengthNode: AVAudioFramePosition = 0              // длина узла изначально равна сумме длин фрэймов
     
-    var audioPlayerNode = AVAudioPlayerNode()
-    var reverb = AVAudioUnitReverb()
-    var delayEcho = AVAudioUnitDelay()
-    var equalizer = AVAudioUnitEQ()
+//    var audioPlayerNode = AVAudioPlayerNode()
+//    var reverb = AVAudioUnitReverb()
+//    var delayEcho = AVAudioUnitDelay()
+//    var equalizer = AVAudioUnitEQ()
 }

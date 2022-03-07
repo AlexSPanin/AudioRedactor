@@ -9,35 +9,6 @@ import UIKit
 
 extension AudioEngineViewController {
     
-    func clearIsEditingFrame() {
-        let dataPlayingNodes = dataPlayingNodes
-        for dataPlayingNode in dataPlayingNodes {
-            let frames = dataPlayingNode.framesForNode
-            for frame in frames {
-                frame.isEditingFrame = false
-            }
-        }
-    }
-  
-    func checkAddPlayer() {
-       isActiveAddPlayer = dataPlayingNodes.contains { data in
-            data.addPlayListNode
-        }
-    }
-    
-    func checkIsPlaying() -> Bool {
-        dataPlayingNodes.contains { data in
-            data.isPlayingNode
-        }
-    }
-    
-    func hiddenEffectView() {
-        viewEffect.isHidden = true
-        tableViewNode.reloadData()
-    }
-    
-    
-    
     //MARK: -  первоначальные настройки эффектов по фрэйму
     
     func configureAudioFrame(to frame: AudioFrameModel) {
@@ -67,6 +38,44 @@ extension AudioEngineViewController {
         
         audioEngine.prepare()
     }
+    
+    func clearIsEditingFrames() {
+        let dataPlayingNodes = dataPlayingNodes
+        for dataPlayingNode in dataPlayingNodes {
+            let frames = dataPlayingNode.framesForNode
+            for frame in frames {
+                frame.isEditingFrame = false
+            }
+        }
+    }
+    
+    func checkAddPlayerNodes() {
+        let dataPlaingNodes = dataPlayingNodes
+        for dataPlaingNode in dataPlaingNodes {
+            isActiveAddPlayer = dataPlaingNode.framesForNode.contains { frame in
+                frame.addPlayListFrame
+            }
+            if isActiveAddPlayer { return }
+        }
+    }
+    
+    func checkIsPlayingNodes() -> Bool {
+        var isPlaing = false
+        let dataPlaingNodes = dataPlayingNodes
+        for dataPlaingNode in dataPlaingNodes {
+            isPlaing = dataPlaingNode.framesForNode.contains { frame in
+                frame.isPlayingFrame
+            }
+            if isPlaing { return isPlaing}
+        }
+        return isPlaing
+    }
+    
+    func hiddenEffectView() {
+        viewEffect.isHidden = true
+        tableViewNode.reloadData()
+    }
+    
 }
 
 

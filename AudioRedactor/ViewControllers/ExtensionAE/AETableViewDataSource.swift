@@ -15,7 +15,7 @@ extension AudioEngineViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nodeCell", for: indexPath)  as! NodeTableViewCell
         
-        let data = dataPlayingNodes[indexPath.row]
+        let data = dataPlayingNodes[indexPath.row].framesForNode[0]
         cell.configure( data: data, isHidingSwitch: isPlaying, indexRow: indexPath.row )
         cell.delegate = self
         return cell

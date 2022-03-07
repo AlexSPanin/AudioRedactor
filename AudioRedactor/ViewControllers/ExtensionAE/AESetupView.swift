@@ -10,7 +10,7 @@ import UIKit
 extension AudioEngineViewController {
     
     
-    func setupUI(track: Int, type: ButtonsEffect) {
+    func setupUI(frame: AudioFrameModel, type: ButtonsEffect) {
         createViewEditor()
         createViewEffect()
         
@@ -20,8 +20,8 @@ extension AudioEngineViewController {
         setupLabelEffect()
         setupSladerEffect(type)
         
-        setupColorButtonPressedEffect(track: track, type: type)
-       hiddenEffectView()
+        setupColorButtonPressedEffect(frame: frame, type: type)
+        hiddenEffectView()
     }
     
     // MARK: -  white subview for effect (надо в дальнейшем завести весь интерфес эффектов на него)
@@ -129,11 +129,26 @@ extension AudioEngineViewController {
         }
     }
     
+//    func checkUUID(to index: UUID) -> AudioFrameModel? {
+//        var currentFrame: AudioFrameModel? = nil
+//        let dataPlaingNodes = dataPlayingNodes
+//        for dataPlaingNode in dataPlaingNodes {
+//            let frames = dataPlaingNode.framesForNode
+//            for frame in frames {
+//                if frame.index == index { currentFrame = frame }
+//            }
+//        }
+//        return currentFrame
+//    }
+//
+    
     //MARK: - изменение настроек slider в зависимости от выбранного эффекта
-    func сhangingSettingSliderEffect(track: Int, type: ButtonsEffect) {
+    func сhangingSettingSliderEffect(frame: AudioFrameModel, type: ButtonsEffect) {
+        
         let setting = Setting.getSetting()
         let typeSliders = EffectSliderValue.getEffectSliderValue()
-        let trackSliderValue = tracksSlidersValue[track].slidersValue
+        
+  //      let trackSliderValue = tracksSlidersValue[frame].slidersValue
         let indexValue = type.rawValue
         let typeSlider = typeSliders[indexValue]
         
@@ -153,13 +168,13 @@ extension AudioEngineViewController {
         case .exit:
             return
         case .volume:
-            slidersEffect.value = trackSliderValue.volume
+            slidersEffect.value = frame.effectFrame.volume
         case .eq:
-            slidersEffect.value = trackSliderValue.eq
+            slidersEffect.value = frame.effectFrame.eqHight
         case .reverb:
-            slidersEffect.value = trackSliderValue.reverb
+            slidersEffect.value = frame.effectFrame.reverb
         case .delay:
-            slidersEffect.value = trackSliderValue.delay
+            slidersEffect.value = frame.effectFrame.delay
         }
         
         slidersEffect.isContinuous = true
@@ -254,9 +269,9 @@ extension AudioEngineViewController {
  
     //MARK: - hidden view Effect and change color pressed button effect
     // смена цвета нажатой кнопки
-    func setupColorButtonPressedEffect(track: Int, type: ButtonsEffect) {
+    func setupColorButtonPressedEffect(frame: AudioFrameModel, type: ButtonsEffect) {
         clearColorButtonEffect(type)
-        сhangingSettingSliderEffect(track: track, type: type)
+        сhangingSettingSliderEffect(frame: frame, type: type)
         сhangingSettingLabelEffect(type)
         сhangingSettingImageEffect(type)
     }

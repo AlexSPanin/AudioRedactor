@@ -13,38 +13,39 @@ extension AudioEngineViewController {
     
     @objc func pressEffectButtons(_ sender: UIButton) {
         guard let type = ButtonsEffect(rawValue: sender.tag) else { return }
-
+        guard let frame = activeEffectFrame else { return }
         switch type {
         case .exit:
             hiddenEffectView()
-            clearIsEditingFrame()
+            clearIsEditingFrames()
             tableViewNode.reloadData()
         case .volume:
             typeButtosEffect = .volume
-            setupColorButtonPressedEffect(track: activeEffectNode, type: typeButtosEffect)
+            setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
             return
         case .eq:
             typeButtosEffect = .eq
-            setupColorButtonPressedEffect(track: activeEffectNode, type: typeButtosEffect)
+            setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
             return
         case .reverb:
             typeButtosEffect = .reverb
-            setupColorButtonPressedEffect(track: activeEffectNode, type: typeButtosEffect)
+            setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
             return
         case .delay:
             typeButtosEffect = .delay
-            setupColorButtonPressedEffect(track: activeEffectNode, type: typeButtosEffect)
+            setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
             return
         }
     }
     
     @objc func pressEditorButtons(_ sender: UIButton) {
+        guard let frame = activeEffectFrame else { return }
         guard let type = ButtonsEditor(rawValue: sender.tag) else { return }
         switch type {
         case .effect:
             if isActiveAddPlayer {
                 viewEffect.isHidden = false
-                dataPlayingNodes[activeEffectNode].isEditingNode = true
+                frame.isEditingFrame = true
                 tableViewNode.reloadData()
             }
         case .copy:
@@ -82,50 +83,56 @@ extension AudioEngineViewController {
     // MARK: - обработка слайдера
     // сохранение значений в массиве и передача данных в функции установок значений
     @objc func turnEffectSlider(_ sender: UISlider) {
+        guard let effectFrame = activeEffectFrame?.effectFrame else { return }
         switch typeButtosEffect {
         case .exit:
             return
         case .volume:
-            tracksSlidersValue[activeEffectNode].slidersValue.volume = sender.value
+            effectFrame.volume = sender.value
         case .eq:
-            tracksSlidersValue[activeEffectNode].slidersValue.eq = sender.value
+            effectFrame.eqHight = sender.value
         case .reverb:
-            tracksSlidersValue[activeEffectNode].slidersValue.reverb = sender.value
+            effectFrame.reverb = sender.value
         case .delay:
-            tracksSlidersValue[activeEffectNode].slidersValue.delay = sender.value
+            effectFrame.delay = sender.value
         }
         setupEffectValue()
     }
     // менеджер передачи значений типа сладера в функцию устанок значений
     func setupEffectValue() {
+        guard let effectFrame = activeEffectFrame?.effectFrame else { return }
         switch typeButtosEffect {
         case .exit:
             return
         case .volume:
-            editingVolume(tracksSlidersValue[activeEffectNode].slidersValue.volume)
+            editingVolume(effectFrame.volume)
         case .eq:
-            editingEQ(tracksSlidersValue[activeEffectNode].slidersValue.eq)
+            editingEQ(effectFrame.eqHight)
         case .reverb:
-            editingReverb(tracksSlidersValue[activeEffectNode].slidersValue.reverb)
+            editingReverb(effectFrame.reverb)
         case .delay:
-            editingDelay(tracksSlidersValue[activeEffectNode].slidersValue.delay)
+            editingDelay(effectFrame.delay)
         }
     }
     // установка громкости
     func editingVolume(_ value: Float) {
-        dataPlayingNodes[activeEffectNode].audioPlayerNode.volume = value
+        guard let frame = activeEffectFrame else { return }
+        frame.playerFrame.volume = value
     }
     // установка среза низкой частоты
     func editingEQ(_ value: Float) {
-            let bands = dataPlayingNodes[activeEffectNode].equalizer.bands
-            bands[0].frequency = value * value * value / 10 // гипербола значений обработки частоты и положения слайдера
+        guard let frame = activeEffectFrame else { return }
+        let bands = frame.equalizerFrame.bands
+        bands[0].frequency = value * value * value / 10 // гипербола значений обработки частоты и положения слайдера
     }
     // установка объемного эффекта
     func editingReverb(_ value: Float) {
-        dataPlayingNodes[activeEffectNode].reverb.wetDryMix = value
+        guard let frame = activeEffectFrame else { return }
+        frame.reverbFrame.wetDryMix = value
     }
     // установка времени задержки для эха
     func editingDelay(_ value: Float) {
-        dataPlayingNodes[activeEffectNode].delayEcho.delayTime = Double(value)
+        guard let frame = activeEffectFrame else { return }
+        frame.delayEchoFrame.delayTime = Double(value)
     }
 }

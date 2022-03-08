@@ -20,8 +20,9 @@ class AudioFrameModel {
     
     var seekFrame: AVAudioFramePosition = 0                  // смещение по фрэйму
     var startFrameInNode: AVAudioFramePosition = 0           // стартовая позиция фрэйма в ноде
+    var startFrame: AVAudioFramePosition = 0
     var currentFrame: AVAudioFramePosition = 0               // текущая позиция воспроизведения во фрэйме
-    var lengthFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
+    var countFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
     
     var playerFrame = AVAudioPlayerNode()
     var reverbFrame = AVAudioUnitReverb()

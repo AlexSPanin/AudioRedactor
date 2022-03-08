@@ -92,7 +92,7 @@ class NodeTableViewCell: UITableViewCell {
         
      //   let data = data.framesForNode[0]
         let time = Float(frame.currentFrame) / Float(frame.audioForFrame.audioSampleRate)
-        let length = Float(frame.lengthFrame) / Float(frame.audioForFrame.audioSampleRate)
+        let length = Float(frame.countFrame) / Float(frame.audioForFrame.audioSampleRate)
         
         self.dataAudioFrame = frame
        

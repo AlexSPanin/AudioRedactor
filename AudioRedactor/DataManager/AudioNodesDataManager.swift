@@ -5,6 +5,8 @@
 //  Created by Александр Панин on 22.02.2022.
 //
 
+//MARK: - настройка какие фреймы привязываю к трэкам
+
 import AVFAudio
 
 class AudioNodesDataManager {

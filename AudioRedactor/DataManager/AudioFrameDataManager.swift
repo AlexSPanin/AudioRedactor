@@ -13,7 +13,7 @@ class AudioFrameDataManager {
         let dataAudioFrame = AudioFrameModel()
         dataAudioFrame.audioForFrame = audio
         dataAudioFrame.effectFrame = EffectFrameModel()
-        dataAudioFrame.lengthFrame = audio.audioLengthSamples
+        dataAudioFrame.countFrame = audio.audioLengthSamples
         return dataAudioFrame
     }
 }

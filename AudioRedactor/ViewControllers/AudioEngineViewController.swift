@@ -18,6 +18,7 @@ class AudioEngineViewController: UIViewController {
     // MARK: - User Interface
     
     weak var tableViewNode: UITableView!
+  //  var tableViewNodesScroll = 
     
     // Player View
     var buttonsPlayer: [UIButton] = []

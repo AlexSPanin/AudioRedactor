@@ -11,16 +11,7 @@ class NodeTableViewCell: UITableViewCell {
     
     var delegate: NodeTableViewCellDelegate!
     var dataAudioFrame: AudioFrameModel?
-    
-    var name: String = ""
-    var length: Float = 1
-    
-    var current: Float! {
-        didSet {
-            let currentValue = current / length
-            progress.progress = currentValue
-        }
-    }
+   
     let buttonFX: UIButton = {
         let setting = Setting.getSetting()
         let button = UIButton(frame: setting.sizeButton)
@@ -87,24 +78,7 @@ class NodeTableViewCell: UITableViewCell {
     }()
     
     private let setting = Setting.getSetting()
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
 
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
-//    override func prepareForReuse() {
-//        <#code#>
-//    }
-    
-   
-    
     @objc func selectSwitch(_ sender: UISwitch) {
         delegate.addSwitch(for: self)
     }
@@ -113,28 +87,29 @@ class NodeTableViewCell: UITableViewCell {
         delegate.button(for: self)
     }
     
-    func configure( data: AudioFrameModel, isHidingSwitch: Bool, indexRow: Int) {
-   //     automaticallyUpdatesContentConfiguration = true
+    func configure( frame: AudioFrameModel, isHidingSwitch: Bool, indexRow: Int) {
         configureUICell()
-        self.dataAudioFrame = data
         
-        current = Float(data.seekFrame)
-        length = Float(data.lengthFrame) / Float(data.audioForFrame.audioSampleRate)
-        let time = Float(data.currentFrame) / Float(data.audioForFrame.audioSampleRate)
-        progress.progress = ( Float(data.currentFrame) / Float(data.audioForFrame.audioSampleRate) ) / length
+     //   let data = data.framesForNode[0]
+        let time = Float(frame.currentFrame) / Float(frame.audioForFrame.audioSampleRate)
+        let length = Float(frame.lengthFrame) / Float(frame.audioForFrame.audioSampleRate)
         
-        nameLabel.text = String("\(data.audioForFrame.name.name) - \(data.audioForFrame.name.format)")
+        self.dataAudioFrame = frame
+       
         
+        progress.progress = ( Float(frame.currentFrame) / Float(frame.audioForFrame.audioSampleRate) ) / length
+        progress.trackTintColor = (indexRow + 1) % 2 == 1 ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : .white
+       
+        nameLabel.text = String("\(frame.audioForFrame.name.name) - \(frame.audioForFrame.name.format)")
         currentLabel.text = String("Current Time:  \(PlayerTime.getFormattedTime(seconds: time))")
         lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: length))")
         
-        switchAdd.isOn = data.addPlayListFrame
+        switchAdd.isOn = frame.addPlayListFrame
         switchAdd.isHidden = isHidingSwitch
         
-        buttonFX.backgroundColor = data.isEditingFrame ? setting.colorTint : setting.colorBrgndPlayerButton
+        buttonFX.backgroundColor = frame.isEditingFrame ? setting.colorTint : setting.colorBrgndPlayerButton
         
         backgroundColor = (indexRow + 1) % 2 == 1 ? .white : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        progress.trackTintColor = (indexRow + 1) % 2 == 1 ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : .white
         selectionStyle = .none
         
     }

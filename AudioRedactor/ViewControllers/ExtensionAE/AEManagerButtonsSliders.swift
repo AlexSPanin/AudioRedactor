@@ -68,7 +68,7 @@ extension AudioEngineViewController {
         
         switch type {
         case .gobackward:
-            seekButton(to: -10)
+            seekButton(to: -15)
         case .backward:
             return
         case .play:
@@ -76,7 +76,7 @@ extension AudioEngineViewController {
         case .forward:
             return
         case .goforward:
-            seekButton(to: 10)
+            seekButton(to: 15)
         }
     }
     

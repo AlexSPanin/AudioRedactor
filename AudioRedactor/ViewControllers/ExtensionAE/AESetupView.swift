@@ -129,19 +129,6 @@ extension AudioEngineViewController {
         }
     }
     
-//    func checkUUID(to index: UUID) -> AudioFrameModel? {
-//        var currentFrame: AudioFrameModel? = nil
-//        let dataPlaingNodes = dataPlayingNodes
-//        for dataPlaingNode in dataPlaingNodes {
-//            let frames = dataPlaingNode.framesForNode
-//            for frame in frames {
-//                if frame.index == index { currentFrame = frame }
-//            }
-//        }
-//        return currentFrame
-//    }
-//
-    
     //MARK: - изменение настроек slider в зависимости от выбранного эффекта
     func сhangingSettingSliderEffect(frame: AudioFrameModel, type: ButtonsEffect) {
         
@@ -222,13 +209,8 @@ extension AudioEngineViewController {
     
     // смена вида пауза или игра проигрователя
     func changeImageButtonPlayPause(_ playOrPause: Bool) {
-        if playOrPause {
-            let image = UIImage(systemName: "pause")
-            buttonsPlayer[2].setImage(image, for: .normal)
-        } else {
-            let image = UIImage(systemName: "play")
-            buttonsPlayer[2].setImage(image, for: .normal)
-        }
+        let imageName = playOrPause ? "pause" : "play"
+        buttonsPlayer[2].setImage(UIImage(systemName: imageName), for: .normal)
     }
     //MARK: - setup Buttons for Editor
     func createViewEditor() {

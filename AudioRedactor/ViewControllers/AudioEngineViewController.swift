@@ -74,6 +74,10 @@ class AudioEngineViewController: UIViewController {
     
     
     private var displayLink: CADisplayLink?
+    var timer: Timer?
+    
+ 
+    
     
 //MARK: - override func
     override func viewDidLoad() {
@@ -100,6 +104,7 @@ class AudioEngineViewController: UIViewController {
         self.tableViewNode.dataSource = self
         
         setupDisplayLink()
+        
     }
     
     // MARK: -  create table view for audio nodes
@@ -113,7 +118,7 @@ class AudioEngineViewController: UIViewController {
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         
         self.tableViewNode = tableView
     }
@@ -121,17 +126,7 @@ class AudioEngineViewController: UIViewController {
     //MARK: - Подготовка аудио движка
     
     func configureEngine(_ dataNodes: [AudioNodeModel]) {
-        audioEngine.attach(audioMixer)
-        audioEngine.attach(micMixer)
-        
-        // setting start value effect
-        for dataNode in dataNodes {
-            let frames = dataNode.framesForNode
-            for frame in frames {
-                configureAudioFrame(to: frame)
-            }
-        }
-        // старт движка и монтирование аудифайлов
+        configureAudioFrame()
         do {
             try audioEngine.start()
             
@@ -178,13 +173,14 @@ class AudioEngineViewController: UIViewController {
                         case true:
                             frame.playerFrame.pause()
                             frame.isPlayingFrame = false
-                            displayLink?.isPaused = true
-                            print("pause")
+                           displayLink?.isPaused = true
+ 
                         case false:
+                           
                             frame.playerFrame.play()
                             frame.isPlayingFrame = true
                             displayLink?.isPaused = false
-                            print("play")
+    
                         }
                     }
                 }
@@ -194,15 +190,15 @@ class AudioEngineViewController: UIViewController {
             tableViewNode.reloadData()
         }
     }
-
+    
     func seekButton(to time: Double) {
         
         for dataPlayingNode in dataPlayingNodes {
-            if dataPlayingNode.isPlayingNode {
-                let frames = dataPlayingNode.framesForNode
-                for frame in frames {
+            let frames = dataPlayingNode.framesForNode
+            for frame in frames {
+                if frame.isPlayingFrame {
                     let offset = AVAudioFramePosition(time * frame.audioForFrame.audioSampleRate)
-                    frame.seekFrame = dataPlayingNode.currentFrameNode + offset
+                    frame.seekFrame = frame.currentFrame + offset
                     frame.seekFrame = max(frame.seekFrame, 0)
                     frame.seekFrame = min(frame.seekFrame, frame.audioForFrame.audioLengthSamples)
                     frame.currentFrame = frame.seekFrame
@@ -226,25 +222,33 @@ class AudioEngineViewController: UIViewController {
                             frame.playerFrame.play()
                         }
                     }
+                    
                 }
-                
             }
         }
     }
     
     func setupDisplayLink() {
         
+//        if timer == nil {
+//            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateDisplay), userInfo: nil, repeats: true)
+//        }
+//        timer?.tolerance = 0.5
+//
+       
+    
         displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))
         displayLink?.add(to: .current, forMode: .default)
+        displayLink?.preferredFrameRateRange = CAFrameRateRange(minimum: 15, maximum: 30, preferred: 15) // частота обновления экрана с секунду
         displayLink?.isPaused = true
     }
     
     @objc func updateDisplay() {
+       
         for dataPlayingNode in dataPlayingNodes {
             let frames = dataPlayingNode.framesForNode
             for frame in frames {
-                
-                    // проверка ноды на воспроизведение
+                    // проверка фрэйма на воспроизведение
                     if frame.isPlayingFrame {
                         // берем из узла последнее последнее время отработаное
                         guard let lastRenderTime = frame.playerFrame.lastRenderTime else { return }
@@ -255,23 +259,20 @@ class AudioEngineViewController: UIViewController {
                         frame.currentFrame = playerTime.sampleTime + frame.seekFrame
                         frame.currentFrame = max(frame.currentFrame, 0)
                         frame.currentFrame = min(frame.currentFrame, frame.audioForFrame.audioLengthSamples)
+                        
                         // проверка если текущая позиция равна или больше изначальной длины аудифайла, то останавливаем и обнуляем узел
                         if frame.currentFrame >= frame.audioForFrame.audioLengthSamples {
                             frame.playerFrame.stop()
                             frame.isPlayingFrame = false
-                            
-        //                    dataPlayingNode.seekFrame = 0
-        //                    dataPlayingNode.currentFrame = 0
-        //                    dataPlayingNode.addPlayList = false
-        //                    dataPlayingNode.isPlayerReady = false
                         }
-                        tableViewNode.reloadData()
                     }
                 }
             }
-        
+
+        tableViewNode.reloadData()
         isPlaying = checkIsPlayingNodes()
         displayLink?.isPaused = !isPlaying
+        
     }
     
     

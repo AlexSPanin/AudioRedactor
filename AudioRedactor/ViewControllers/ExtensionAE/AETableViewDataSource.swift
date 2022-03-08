@@ -8,16 +8,23 @@
 import UIKit
 
 extension AudioEngineViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataPlayingNodes.count
+    func numberOfSections(in tableView: UITableView) -> Int {
+        dataPlayingNodes.count
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        dataPlayingNodes[section].framesForNode.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Node :\(section)"
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nodeCell", for: indexPath)  as! NodeTableViewCell
         
-        let data = dataPlayingNodes[indexPath.row].framesForNode[0]
-        cell.configure( data: data, isHidingSwitch: isPlaying, indexRow: indexPath.row )
+        let frame = dataPlayingNodes[indexPath.section].framesForNode[indexPath.row]
         cell.delegate = self
+        cell.configure( frame: frame, isHidingSwitch: isPlaying, indexRow: indexPath.section )
         return cell
     }
 }

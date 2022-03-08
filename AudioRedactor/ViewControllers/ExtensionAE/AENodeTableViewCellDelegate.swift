@@ -10,30 +10,51 @@ import UIKit
 extension AudioEngineViewController: NodeTableViewCellDelegate {
     
     func button(for cell: NodeTableViewCell) {
-        guard let frame = cell.dataAudioFrame else { return }
         
-        if frame.addPlayListFrame {
-            clearIsEditingFrames()
-            viewEffect.isHidden = false
-            frame.isEditingFrame = true
-            activeEffectFrame = frame
-            setupEffectValue()
-            setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
+        guard let index = cell.dataAudioFrame?.index else { return }
+        
+        for dataPlayingNode in dataPlayingNodes {
+            let frames = dataPlayingNode.framesForNode
+            for frame in frames {
+                if frame.addPlayListFrame {
+                    if frame.index == index {
+                        print(frame.audioForFrame.name.name)
+                        clearIsEditingFrames()
+                        viewEffect.isHidden = false
+                        frame.isEditingFrame = true
+                        activeEffectFrame = frame
+                        setupEffectValue()
+                        setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
+                        tableViewNode.reloadData()
+                        return
+                    }
+                }
+            }
         }
-        tableViewNode.reloadData()
         return
     }
     
     func addSwitch(for cell: NodeTableViewCell) {
-        //      clearAddPlayer()
         
-        if let frame = cell.dataAudioFrame {
-            frame.addPlayListFrame = cell.switchAdd.isOn
-            activeEffectFrame = frame
- //           print(activeEffectFrame?.audioForFrame.name.name)
+        guard let index = cell.dataAudioFrame?.index else { return }
+        
+        for dataPlayingNode in dataPlayingNodes {
+            let frames = dataPlayingNode.framesForNode
+            for frame in frames {
+                if frame.index == index {
+                    frame.addPlayListFrame = cell.switchAdd.isOn
+                    if frame.isEditingFrame {
+                        hiddenEffectView()
+                        frame.isEditingFrame.toggle()
+                    }
+                    activeEffectFrame = frame
+                    checkAddPlayerNodes()
+                    tableViewNode.reloadData()
+                    return
+                }
+            }
         }
-        checkAddPlayerNodes()
-        tableViewNode.reloadData()
         return
     }
+
 }

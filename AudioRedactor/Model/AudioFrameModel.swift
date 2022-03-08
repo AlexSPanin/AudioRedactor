@@ -8,6 +8,7 @@
 import AVFAudio
 
 class AudioFrameModel {
+    var index = UUID()
     var audioForFrame = AudioDataModel()                   // привязка фрэйма к музыкальному трэку
     var effectFrame = EffectFrameModel()                   // набор эффектов к фрэйму
     

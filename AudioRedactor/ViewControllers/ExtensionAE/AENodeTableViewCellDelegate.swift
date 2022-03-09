@@ -32,28 +32,4 @@ extension AudioEngineViewController: NodeTableViewCellDelegate {
         }
         return
     }
-    
-//    func addSwitch(for cell: NodeTableViewCell) {
-//        
-//        guard let index = cell.dataAudioFrame?.index else { return }
-//        
-//        for dataPlayingNode in dataPlayingNodes {
-//            let frames = dataPlayingNode.framesForNode
-//            for frame in frames {
-//                if frame.index == index {
-//                    frame.addPlayListFrame = cell.switchAdd.isOn
-//                    if frame.isEditingFrame {
-//                        hiddenEffectView()
-//                        frame.isEditingFrame.toggle()
-//                    }
-//                    activeEffectFrame = frame
-//                    checkAddPlayerNodes()
-//                    tableViewNode.reloadData()
-//                    return
-//                }
-//            }
-//        }
-//        return
-//    }
-
 }

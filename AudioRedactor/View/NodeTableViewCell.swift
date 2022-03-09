@@ -10,17 +10,7 @@ import UIKit
 class NodeTableViewCell: UITableViewCell {
     
     var delegate: NodeTableViewCellDelegate!
-    var dataAudioFrame: AudioFrameModel?
-   
-//    let buttonFX: UIButton = {
-//        let setting = Setting.getSetting()
-//        let button = UIButton(frame: setting.sizeButton)
-//        button.setImage(UIImage(systemName: "fx"), for: .normal)
-//        button.tintColor = setting.colorBgrnd
-//        button.backgroundColor = setting.colorBrgndPlayerButton
-//        return button
-//    }()
-    
+
     let nameLabel: UILabel = {
         let label = UILabel()
         let setting = Setting.getSetting()
@@ -59,15 +49,7 @@ class NodeTableViewCell: UITableViewCell {
         label.textAlignment = .left
         return label
     }()
-    
-//    let switchAdd: UISwitch = {
-//        let switchAdd = UISwitch()
-//        let setting = Setting.getSetting()
-//        switchAdd.setOn(false, animated: true)
-//        switchAdd.onTintColor = setting.colorTint
-//        return switchAdd
-//    }()
-    
+ 
     let progress: UIProgressView = {
         let progress = UIProgressView()
         let setting = Setting.getSetting()
@@ -83,10 +65,6 @@ class NodeTableViewCell: UITableViewCell {
     
     private let setting = Setting.getSetting()
 
-//    @objc func selectSwitch(_ sender: UISwitch) {
-//        delegate.addSwitch(for: self)
-//    }
-    
     @objc func selectButton(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         guard  let index = imageView.restorationIdentifier else { return }
@@ -163,29 +141,6 @@ class NodeTableViewCell: UITableViewCell {
         lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: length))")
         
 
-//        let stack = UIStackView(arrangedSubviews: [nameLabel, stackLengthCurrent, progress])
-//        stack.axis = .vertical
-//        stack.spacing = 2
-//        stack.distribution = UIStackView.Distribution.equalSpacing
-//
-//        self.contentView.addSubview(stack)
-//        stack.translatesAutoresizingMaskIntoConstraints = false
-//        stack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 5).isActive = true
-//        stack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5).isActive = true
-//        stack.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-//        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
-        
-//        self.contentView.addSubview(buttonFX)
-//        buttonFX.addTarget(self, action: #selector(selectButton), for: .touchUpInside)
-//        buttonFX.translatesAutoresizingMaskIntoConstraints = false
-//        buttonFX.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5).isActive = true
-//        buttonFX.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-//
-//        self.contentView.addSubview(switchAdd)
-//        switchAdd.addTarget(self, action: #selector(selectSwitch), for: .valueChanged)
-//        switchAdd.translatesAutoresizingMaskIntoConstraints = false
-//        switchAdd.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -5).isActive = true
-//        switchAdd.topAnchor.constraint(equalTo: buttonFX.bottomAnchor, constant: 5).isActive = true
     }
 
 }

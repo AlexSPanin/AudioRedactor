@@ -12,7 +12,6 @@ class AudioFrameModel {
     var audioForFrame = AudioDataModel()                   // привязка фрэйма к музыкальному трэку
     var effectFrame = EffectFrameModel()                   // набор эффектов к фрэйму
     
-//    var addPlayListFrame: Bool  = false                        //признак добавления к проигрованию
     var isEditingFrame: Bool = false                           //признак активного редактирования
     var isPlayingFrame: Bool = false                           //признак что началось проигрование
     var isPlayerReadyFrame: Bool = false                       //признак что в плеере смонтирован аудио файл и плеер готов его проигровать

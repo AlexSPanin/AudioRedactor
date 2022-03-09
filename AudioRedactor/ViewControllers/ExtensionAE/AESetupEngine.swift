@@ -56,10 +56,6 @@ extension AudioEngineViewController {
         }
     }
     
-//    func checkAddPlayerNodes() {
-//        isActiveAddPlayer = !dataPlayingNodes.isEmpty
-//    }
-    
     func checkIsPlayingNodes() -> Bool {
         var isPlaing = false
         let dataPlaingNodes = dataPlayingNodes

@@ -54,13 +54,11 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - Data Songs and Settings UI and start value
     var setting = Setting.getSetting()
-//    var dataSongs = [AudioDataModel]()
     var dataPlayingNodes = [AudioNodeModel]()
     
     
     // MARK: - number song and start button effect
     var activeEffectFrame: AudioFrameModel?
- //   var isActiveAddPlayer: Bool = false
     var typeButtosEffect: ButtonsEffect = .volume
    
     // состояние плееров общее играют или нет
@@ -162,52 +160,6 @@ class AudioEngineViewController: UIViewController {
         tableViewNode.heightAnchor.constraint(equalToConstant: sizeTableView.height).isActive = true
 
 
-    }
-    
-    // MARK: -  create table view for audio nodes
-    override func loadView() {
-        super.loadView()
-        
-//
-//
-//
-//
-//
-//        view.addSubview(tableViewNode)
-//
-//        tableViewNode.translatesAutoresizingMaskIntoConstraints = false
-//        tableViewNode.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//
-//        tableViewNode.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        tableViewNode.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-//        tableViewNode.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:  -200 ).isActive = true
-//
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//
-//
-//        let tableView = UITableView()
-//        tableView.rowHeight = 100
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(tableView)
-//        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-//        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//   //     tableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-//
-//        self.tableViewNode = tableView
     }
     
     //MARK: - Подготовка аудио движка

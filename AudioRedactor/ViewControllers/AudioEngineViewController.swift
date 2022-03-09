@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-protocol NodeTableViewCellDelegate {
+protocol FrameForTrackCollectionViewCellDelegate {
     func button (for index: String)
  //   func addSwitch ( for cell: NodeTableViewCell)
 }
@@ -54,7 +54,7 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - Data Songs and Settings UI and start value
     var setting = Setting.getSetting()
-    var dataPlayingNodes = [AudioNodeModel]()
+    var dataPlayingNodes = [AudioTrackModel]()
     
     
     // MARK: - number song and start button effect
@@ -67,10 +67,9 @@ class AudioEngineViewController: UIViewController {
     // значения настроек слайдеров по песням
     var tracksSlidersValue = TrackSlidersValue.getTrackSlidersValue()
     
-    
-    private var displayLink: CADisplayLink?
-    var timer: Timer?
-    
+    // таймер привязанный к частоте обновления экрана
+    var displayLink: CADisplayLink?
+ 
     // MARK: - User Interface
     var sizeTableView: CGSize = CGSize(width: 800, height: 400)
     var tableViewNode = UITableView()
@@ -119,52 +118,11 @@ class AudioEngineViewController: UIViewController {
     
     
   
-    func setupScrollTableView() {
-        
-        sizeTableView = CGSize(
-            width: setWidthContext(),
-            height: setHeightContext()
-        )
-        
-        scrollTableView.contentSize = sizeTableView
-        scrollTableView.showsVerticalScrollIndicator = false
-        scrollTableView.isScrollEnabled = true
-        scrollTableView.showsLargeContentViewer = true
-        scrollTableView.bounces = false
-
-        self.view.addSubview(scrollTableView)
-
-        scrollTableView.translatesAutoresizingMaskIntoConstraints = false
-        scrollTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -270).isActive = true
-        scrollTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        scrollTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-
-        tableViewNode.register(NodeTableViewCell.self, forCellReuseIdentifier: "nodeCell")
-        tableViewNode.dataSource = self
-        scrollTableView.showsVerticalScrollIndicator = false
-        tableViewNode.bounces = false
-        tableViewNode.rowHeight = 80
-        
-        
-
-        self.scrollTableView.addSubview(tableViewNode)
-        
-        tableViewNode.translatesAutoresizingMaskIntoConstraints = false
-        tableViewNode.topAnchor.constraint(equalTo: scrollTableView.topAnchor).isActive = true
-        tableViewNode.leftAnchor.constraint(equalTo: scrollTableView.leftAnchor).isActive = true
-        tableViewNode.rightAnchor.constraint(equalTo: scrollTableView.rightAnchor).isActive = true
-        tableViewNode.bottomAnchor.constraint(equalTo: scrollTableView.bottomAnchor).isActive = true
-        
-        tableViewNode.widthAnchor.constraint(equalToConstant: sizeTableView.width).isActive = true
-        tableViewNode.heightAnchor.constraint(equalToConstant: sizeTableView.height).isActive = true
-
-
-    }
+   
     
     //MARK: - Подготовка аудио движка
     
-    func configureEngine(_ dataNodes: [AudioNodeModel]) {
+    func configureEngine(_ dataNodes: [AudioTrackModel]) {
         configureAudioFrame()
         do {
             try audioEngine.start()
@@ -178,7 +136,7 @@ class AudioEngineViewController: UIViewController {
     }
     
         // MARK: - create audio file and setting sign for ready play
-    func scheduleAllAudioFileFramesForNode(to node: AudioNodeModel) {
+    func scheduleAllAudioFileFramesForNode(to node: AudioTrackModel) {
         let frames = node.framesForNode
         for frame in frames {
             scheduleAudioFileFrame(to: frame)
@@ -265,13 +223,7 @@ class AudioEngineViewController: UIViewController {
         }
     }
     
-    func setupDisplayLink() {
-
-        displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))
-        displayLink?.add(to: .current, forMode: .default)
-        displayLink?.preferredFrameRateRange = CAFrameRateRange(minimum: 15, maximum: 30, preferred: 15) // частота обновления экрана с секунду
-        displayLink?.isPaused = true
-    }
+   
     
     @objc func updateDisplay() {
        

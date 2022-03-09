@@ -35,14 +35,16 @@
 		E22AAC4B27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */; };
 		E22AAC5A27C5596D007ADAF1 /* otbivka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC5727C5590E007ADAF1 /* otbivka.mp3 */; };
 		E22AAC5B27C55974007ADAF1 /* 01 The St. Louis Blues.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E22AAC5627C55900007ADAF1 /* 01 The St. Louis Blues.m4a */; };
-		E2A1096827D24CC200B29E87 /* AudioNodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1096727D24CC200B29E87 /* AudioNodeModel.swift */; };
+		E2A1096827D24CC200B29E87 /* AudioTrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1096727D24CC200B29E87 /* AudioTrackModel.swift */; };
 		E2A1096A27D250B600B29E87 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1096927D250B600B29E87 /* SongModel.swift */; };
 		E2A1096E27D2526000B29E87 /* AudioDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A1096D27D2526000B29E87 /* AudioDataModel.swift */; };
 		E2A37A3027D4B832008041ED /* EffectFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A2F27D4B832008041ED /* EffectFrameModel.swift */; };
 		E2A37A3227D4B85F008041ED /* VolumeFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */; };
 		E2A37A3427D4BB67008041ED /* AudioFrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */; };
 		E2A37A3627D4BF94008041ED /* AudioFrameDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3527D4BF94008041ED /* AudioFrameDataManager.swift */; };
-		E2A37A3A27D4C63C008041ED /* AudioNodeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3927D4C63C008041ED /* AudioNodeDataManager.swift */; };
+		E2A37A3A27D4C63C008041ED /* AudioTrackDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A37A3927D4C63C008041ED /* AudioTrackDataManager.swift */; };
+		E2F1FD0327D92A4F0000E6F2 /* FrameForTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1FD0227D92A4F0000E6F2 /* FrameForTrackCollectionViewCell.swift */; };
+		E2F1FD0527D92B510000E6F2 /* TrackCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1FD0427D92B510000E6F2 /* TrackCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,14 +78,16 @@
 		E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Scott Buckley - Life In Silico.mp3"; sourceTree = "<group>"; };
 		E22AAC5627C55900007ADAF1 /* 01 The St. Louis Blues.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "01 The St. Louis Blues.m4a"; sourceTree = "<group>"; };
 		E22AAC5727C5590E007ADAF1 /* otbivka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = otbivka.mp3; sourceTree = "<group>"; };
-		E2A1096727D24CC200B29E87 /* AudioNodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioNodeModel.swift; sourceTree = "<group>"; };
+		E2A1096727D24CC200B29E87 /* AudioTrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackModel.swift; sourceTree = "<group>"; };
 		E2A1096927D250B600B29E87 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		E2A1096D27D2526000B29E87 /* AudioDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDataModel.swift; sourceTree = "<group>"; };
 		E2A37A2F27D4B832008041ED /* EffectFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectFrameModel.swift; sourceTree = "<group>"; };
 		E2A37A3127D4B85F008041ED /* VolumeFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeFrameModel.swift; sourceTree = "<group>"; };
 		E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFrameModel.swift; sourceTree = "<group>"; };
 		E2A37A3527D4BF94008041ED /* AudioFrameDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFrameDataManager.swift; sourceTree = "<group>"; };
-		E2A37A3927D4C63C008041ED /* AudioNodeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioNodeDataManager.swift; sourceTree = "<group>"; };
+		E2A37A3927D4C63C008041ED /* AudioTrackDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrackDataManager.swift; sourceTree = "<group>"; };
+		E2F1FD0227D92A4F0000E6F2 /* FrameForTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameForTrackCollectionViewCell.swift; sourceTree = "<group>"; };
+		E2F1FD0427D92B510000E6F2 /* TrackCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,11 +160,13 @@
 		E22AAC2927C54A4D007ADAF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E2F1FD0427D92B510000E6F2 /* TrackCollectionView.swift */,
+				E2F1FD0227D92A4F0000E6F2 /* FrameForTrackCollectionViewCell.swift */,
+				E22AAC3227C54B08007ADAF1 /* NodeTableViewCell.swift */,
 				E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */,
 				E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */,
 				E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */,
 				E22AAC3027C54AE6007ADAF1 /* ButtonEditorView.swift */,
-				E22AAC3227C54B08007ADAF1 /* NodeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,7 +174,7 @@
 		E22AAC3427C54B40007ADAF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E2A1096727D24CC200B29E87 /* AudioNodeModel.swift */,
+				E2A1096727D24CC200B29E87 /* AudioTrackModel.swift */,
 				E2A37A3327D4BB67008041ED /* AudioFrameModel.swift */,
 				E2A1096D27D2526000B29E87 /* AudioDataModel.swift */,
 				E2A1096927D250B600B29E87 /* SongModel.swift */,
@@ -183,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				E22AAC4727C54CD3007ADAF1 /* AudioNodesDataManager.swift */,
-				E2A37A3927D4C63C008041ED /* AudioNodeDataManager.swift */,
+				E2A37A3927D4C63C008041ED /* AudioTrackDataManager.swift */,
 				E2A37A3527D4BF94008041ED /* AudioFrameDataManager.swift */,
 				E22AAC4527C54CB2007ADAF1 /* AudioDataManager.swift */,
 				E22AAC3A27C54BB0007ADAF1 /* SongsDataManager.swift */,
@@ -305,19 +311,21 @@
 				E22AAC3927C54B8B007ADAF1 /* SettingManager.swift in Sources */,
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,
 				E2A37A3227D4B85F008041ED /* VolumeFrameModel.swift in Sources */,
+				E2F1FD0327D92A4F0000E6F2 /* FrameForTrackCollectionViewCell.swift in Sources */,
 				E22AAC3D27C54BEA007ADAF1 /* ButtonsEditor.swift in Sources */,
 				E2A1096E27D2526000B29E87 /* AudioDataModel.swift in Sources */,
 				E22AAC4227C54C32007ADAF1 /* ButtonsPlayer.swift in Sources */,
 				E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */,
 				E2A37A3427D4BB67008041ED /* AudioFrameModel.swift in Sources */,
+				E2F1FD0527D92B510000E6F2 /* TrackCollectionView.swift in Sources */,
 				E22AAC0A27C547A8007ADAF1 /* AppDelegate.swift in Sources */,
 				E22AAC2F27C54AC5007ADAF1 /* SliderEffectView.swift in Sources */,
 				E22AAC3B27C54BB0007ADAF1 /* SongsDataManager.swift in Sources */,
 				E22AAC3F27C54C0B007ADAF1 /* ButtonsEffect.swift in Sources */,
 				E22AAC3127C54AE6007ADAF1 /* ButtonEditorView.swift in Sources */,
-				E2A37A3A27D4C63C008041ED /* AudioNodeDataManager.swift in Sources */,
+				E2A37A3A27D4C63C008041ED /* AudioTrackDataManager.swift in Sources */,
 				E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */,
-				E2A1096827D24CC200B29E87 /* AudioNodeModel.swift in Sources */,
+				E2A1096827D24CC200B29E87 /* AudioTrackModel.swift in Sources */,
 				E2A1096A27D250B600B29E87 /* SongModel.swift in Sources */,
 				E22AAC2027C548FE007ADAF1 /* AESetupView.swift in Sources */,
 				E22AAC4427C54C72007ADAF1 /* SlidersEffect.swift in Sources */,

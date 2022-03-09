@@ -7,7 +7,7 @@
 
 import AVFAudio
 
-class AudioNodeModel {
+class AudioTrackModel {
     
     var framesForNode = [AudioFrameModel()]
     var nodeForSong = AudioDataModel()

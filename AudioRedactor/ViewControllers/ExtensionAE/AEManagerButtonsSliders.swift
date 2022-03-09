@@ -37,6 +37,8 @@ extension AudioEngineViewController {
         }
     }
     
+    // MARK: -  обработка кнопок редактора
+    
     @objc func pressEditorButtons(_ sender: UIButton) {
         guard let frame = activeEffectFrame else { return }
         guard let type = ButtonsEditor(rawValue: sender.tag) else { return }

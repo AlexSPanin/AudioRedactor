@@ -23,6 +23,19 @@ extension AudioEngineViewController {
         setupColorButtonPressedEffect(frame: frame, type: type)
         hiddenEffectView()
     }
+    //MARK: - setup Buttons for Editor
+    func createViewEditor() {
+        viewEditor.backgroundColor = setting.colorBgrnd
+        viewEditor.layer.cornerRadius = 5
+        
+        view.addSubview(viewEditor)
+        
+        viewEditor.translatesAutoresizingMaskIntoConstraints = false
+        viewEditor.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        viewEditor.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        viewEditor.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        viewEditor.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
     
     // MARK: -  white subview for effect (надо в дальнейшем завести весь интерфес эффектов на него)
     
@@ -38,6 +51,37 @@ extension AudioEngineViewController {
         viewEffect.leftAnchor.constraint(equalTo: viewEditor.leftAnchor).isActive = true
         viewEffect.bottomAnchor.constraint(equalTo: viewEditor.topAnchor, constant: 5).isActive = true
     }
+    
+    //MARK: - setup Buttons for Player
+    // установка кнопок плеера
+    func setupButtonsPlayer() {
+        let height = view.bounds.width / 8
+        buttonsPlayer = ButtonPlayerView.shared.getButtonsPlayer()
+        for button in buttonsPlayer {
+            button.addTarget(self, action: #selector(pressPlayerButtons), for: .touchDown)
+        }
+        stackPlayer = UIStackView(arrangedSubviews: buttonsPlayer)
+        
+        stackPlayer.axis = .horizontal
+        stackPlayer.spacing = 5
+        stackPlayer.distribution = UIStackView.Distribution.fillEqually
+        stackPlayer.backgroundColor = setting.colorBrgndPlayerButton
+        
+        view.addSubview(stackPlayer )
+        
+        stackPlayer.translatesAutoresizingMaskIntoConstraints = false
+        stackPlayer.heightAnchor.constraint(equalToConstant: height).isActive = true
+        stackPlayer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        stackPlayer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        stackPlayer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    // смена вида пауза или игра проигрователя
+    func changeImageButtonPlayPause(_ playOrPause: Bool) {
+        let imageName = playOrPause ? "pause" : "play"
+        buttonsPlayer[2].setImage(UIImage(systemName: imageName), for: .normal)
+    }
+   
     //MARK: - setup Buttons and names for Labels Buttons for Effect
     // установка меню кнопок эффектов
     func setupButtonsEffect() {
@@ -183,48 +227,7 @@ extension AudioEngineViewController {
         slidersImageEffect[1].image = UIImage(systemName: typeImage.maxImage)
     }
     
-    //MARK: - setup Buttons for Player
-    // установка кнопок плеера
-    func setupButtonsPlayer() {
-        let height = view.bounds.width / 8
-        buttonsPlayer = ButtonPlayerView.shared.getButtonsPlayer()
-        for button in buttonsPlayer {
-            button.addTarget(self, action: #selector(pressPlayerButtons), for: .touchDown)
-        }
-        stackPlayer = UIStackView(arrangedSubviews: buttonsPlayer)
-        
-        stackPlayer.axis = .horizontal
-        stackPlayer.spacing = 5
-        stackPlayer.distribution = UIStackView.Distribution.fillEqually
-        stackPlayer.backgroundColor = setting.colorBrgndPlayerButton
-        
-        view.addSubview(stackPlayer )
-        
-        stackPlayer.translatesAutoresizingMaskIntoConstraints = false
-        stackPlayer.heightAnchor.constraint(equalToConstant: height).isActive = true
-        stackPlayer.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        stackPlayer.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        stackPlayer.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-    
-    // смена вида пауза или игра проигрователя
-    func changeImageButtonPlayPause(_ playOrPause: Bool) {
-        let imageName = playOrPause ? "pause" : "play"
-        buttonsPlayer[2].setImage(UIImage(systemName: imageName), for: .normal)
-    }
-    //MARK: - setup Buttons for Editor
-    func createViewEditor() {
-        viewEditor.backgroundColor = setting.colorBgrnd
-        viewEditor.layer.cornerRadius = 5
-        
-        view.addSubview(viewEditor)
-        
-        viewEditor.translatesAutoresizingMaskIntoConstraints = false
-        viewEditor.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        viewEditor.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        viewEditor.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        viewEditor.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
+   
     
     // установка кнопок редактора
     func setupButtonsEditor() {

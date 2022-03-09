@@ -14,6 +14,7 @@ class AudioFrameDataManager {
         dataAudioFrame.audioForFrame = audio
         dataAudioFrame.effectFrame = EffectFrameModel()
         dataAudioFrame.countFrame = audio.audioLengthSamples
+        dataAudioFrame.lengthSecondsFrame = audio.audioLengthSeconds
         return dataAudioFrame
     }
 }

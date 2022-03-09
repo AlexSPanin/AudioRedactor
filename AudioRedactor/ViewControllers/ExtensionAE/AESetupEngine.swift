@@ -56,15 +56,9 @@ extension AudioEngineViewController {
         }
     }
     
-    func checkAddPlayerNodes() {
-        let dataPlaingNodes = dataPlayingNodes
-        for dataPlaingNode in dataPlaingNodes {
-            isActiveAddPlayer = dataPlaingNode.framesForNode.contains { frame in
-                frame.addPlayListFrame
-            }
-            if isActiveAddPlayer { return }
-        }
-    }
+//    func checkAddPlayerNodes() {
+//        isActiveAddPlayer = !dataPlayingNodes.isEmpty
+//    }
     
     func checkIsPlayingNodes() -> Bool {
         var isPlaing = false

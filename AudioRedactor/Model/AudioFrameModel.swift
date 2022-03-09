@@ -8,11 +8,11 @@
 import AVFAudio
 
 class AudioFrameModel {
-    var index = UUID()
+    var index = UUID().uuidString
     var audioForFrame = AudioDataModel()                   // привязка фрэйма к музыкальному трэку
     var effectFrame = EffectFrameModel()                   // набор эффектов к фрэйму
     
-    var addPlayListFrame: Bool  = false                        //признак добавления к проигрованию
+//    var addPlayListFrame: Bool  = false                        //признак добавления к проигрованию
     var isEditingFrame: Bool = false                           //признак активного редактирования
     var isPlayingFrame: Bool = false                           //признак что началось проигрование
     var isPlayerReadyFrame: Bool = false                       //признак что в плеере смонтирован аудио файл и плеер готов его проигровать
@@ -23,6 +23,7 @@ class AudioFrameModel {
     var startFrame: AVAudioFramePosition = 0
     var currentFrame: AVAudioFramePosition = 0               // текущая позиция воспроизведения во фрэйме
     var countFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
+    var lengthSecondsFrame: Double = 0
     
     var playerFrame = AVAudioPlayerNode()
     var reverbFrame = AVAudioUnitReverb()

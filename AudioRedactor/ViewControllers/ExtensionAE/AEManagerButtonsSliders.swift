@@ -18,7 +18,6 @@ extension AudioEngineViewController {
         case .exit:
             hiddenEffectView()
             clearIsEditingFrames()
-            tableViewNode.reloadData()
         case .volume:
             typeButtosEffect = .volume
             setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
@@ -43,7 +42,7 @@ extension AudioEngineViewController {
         guard let type = ButtonsEditor(rawValue: sender.tag) else { return }
         switch type {
         case .effect:
-            if isActiveAddPlayer {
+            if !dataPlayingNodes.isEmpty {
                 viewEffect.isHidden = false
                 frame.isEditingFrame = true
                 tableViewNode.reloadData()

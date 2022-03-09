@@ -15,8 +15,9 @@ class AudioNodeDataManager {
         let audioNode = AudioNodeModel()
         audioNode.framesForNode = frames
         for frame in frames {
-            frame.startFrameInNode = audioNode.audioLengthNode
-            audioNode.audioLengthNode += frame.countFrame
+            frame.startFrameInNode = audioNode.lengthFrameNode
+            audioNode.lengthFrameNode += frame.countFrame
+            audioNode.lengthSecondsNode += frame.lengthSecondsFrame
         }
         return audioNode
     }

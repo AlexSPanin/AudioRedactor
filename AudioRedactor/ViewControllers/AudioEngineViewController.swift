@@ -73,6 +73,7 @@ class AudioEngineViewController: UIViewController {
     // MARK: - User Interface
     var sizeTableView: CGSize = CGSize(width: 800, height: 400)
     var tableViewNode = UITableView()
+    var trackCollectionView = UICollectionView()
     var scrollTableView = UIScrollView()
     
    
@@ -96,7 +97,7 @@ class AudioEngineViewController: UIViewController {
         configureEngine(dataPlayingNodes)
         
         // prepare scrollview and table view wich track
-        setupScrollTableView()
+  //      setupScrollTableView()
         
         // настройка таймера прерываний
         setupDisplayLink()
@@ -116,6 +117,25 @@ class AudioEngineViewController: UIViewController {
         return view.bounds.height - 270
     }
     
+    func configureCollectionView() {
+        
+        let collectionView = UICollectionView()
+        
+        self.view.addSubview(collectionView)
+
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -270).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        
+        collectionView.register(FrameForTrackCollectionViewCell.self, forCellWithReuseIdentifier: FrameForTrackCollectionViewCell.reuseId)
+        collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        
+    }
     
   
    

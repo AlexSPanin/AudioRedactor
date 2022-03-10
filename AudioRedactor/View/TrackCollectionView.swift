@@ -38,18 +38,7 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     
     
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        frames.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: FrameForTrackCollectionViewCell.reuseId, for: indexPath) as! FrameForTrackCollectionViewCell
-      //  cell.frameImageView.frame = CGRect(x: 0, y: 0, width: (frames[indexPath.row].lengthSecondsFrame * 5), height: 80)
-        cell.frameInTrack = frames[indexPath.row]
-        cell.restorationIdentifier = frames[indexPath.row].index
-        cell.configure()
-        return cell
-    }
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: frames[indexPath.row].lengthSecondsFrame * 5, height: 80)

@@ -73,7 +73,9 @@ class AudioEngineViewController: UIViewController {
     // MARK: - User Interface
     var sizeTableView: CGSize = CGSize(width: 800, height: 400)
     var tableViewNode = UITableView()
-    var trackCollectionView = UICollectionView()
+    var trackCollectionView = TrackCollectionView()
+    
+    
     var scrollTableView = UIScrollView()
     
    
@@ -99,8 +101,12 @@ class AudioEngineViewController: UIViewController {
         // prepare scrollview and table view wich track
   //      setupScrollTableView()
         
+       configureCollectionView()
+        
         // настройка таймера прерываний
         setupDisplayLink()
+        
+       
         
     }
     
@@ -118,23 +124,17 @@ class AudioEngineViewController: UIViewController {
     }
     
     func configureCollectionView() {
-        
-        let collectionView = UICollectionView()
-        
-        self.view.addSubview(collectionView)
 
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -270).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        view.addSubview(trackCollectionView)
         
+        trackCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        collectionView.register(FrameForTrackCollectionViewCell.self, forCellWithReuseIdentifier: FrameForTrackCollectionViewCell.reuseId)
-        collectionView.backgroundColor = .white
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
+        trackCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        trackCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -270).isActive = true
+        trackCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        trackCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
+        trackCollectionView.setTracks(to: dataPlayingNodes)
     }
     
   

@@ -9,44 +9,44 @@ import UIKit
 
 extension AudioEngineViewController {
     
-    func setupScrollTableView() {
-        
-        sizeTableView = CGSize(
-            width: setWidthContext(),
-            height: setHeightContext()
-        )
-        
-        scrollTableView.contentSize = sizeTableView
-        scrollTableView.showsVerticalScrollIndicator = false
-        scrollTableView.isScrollEnabled = true
-        scrollTableView.showsLargeContentViewer = true
-        scrollTableView.bounces = false
-
-        self.view.addSubview(scrollTableView)
-
-        scrollTableView.translatesAutoresizingMaskIntoConstraints = false
-        scrollTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -270).isActive = true
-        scrollTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        scrollTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-
-        tableViewNode.register(NodeTableViewCell.self, forCellReuseIdentifier: "nodeCell")
-        tableViewNode.dataSource = self
-        scrollTableView.showsVerticalScrollIndicator = false
-        tableViewNode.bounces = false
-        tableViewNode.rowHeight = 80
-        
-        self.scrollTableView.addSubview(tableViewNode)
-        
-        tableViewNode.translatesAutoresizingMaskIntoConstraints = false
-        tableViewNode.topAnchor.constraint(equalTo: scrollTableView.topAnchor).isActive = true
-        tableViewNode.leftAnchor.constraint(equalTo: scrollTableView.leftAnchor).isActive = true
-        tableViewNode.rightAnchor.constraint(equalTo: scrollTableView.rightAnchor).isActive = true
-        tableViewNode.bottomAnchor.constraint(equalTo: scrollTableView.bottomAnchor).isActive = true
-        
-        tableViewNode.widthAnchor.constraint(equalToConstant: sizeTableView.width).isActive = true
-        tableViewNode.heightAnchor.constraint(equalToConstant: sizeTableView.height).isActive = true
-    }
+//    func setupScrollTableView() {
+//        
+//        sizeTableView = CGSize(
+//            width: setWidthContext(),
+//            height: setHeightContext()
+//        )
+//        
+//        scrollTableView.contentSize = sizeTableView
+//        scrollTableView.showsVerticalScrollIndicator = false
+//        scrollTableView.isScrollEnabled = true
+//        scrollTableView.showsLargeContentViewer = true
+//        scrollTableView.bounces = false
+//
+//        self.view.addSubview(scrollTableView)
+//
+//        scrollTableView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        scrollTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -270).isActive = true
+//        scrollTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        scrollTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//
+//        tableViewNode.register(NodeTableViewCell.self, forCellReuseIdentifier: "nodeCell")
+//        tableViewNode.dataSource = self
+//        scrollTableView.showsVerticalScrollIndicator = false
+//        tableViewNode.bounces = false
+//        tableViewNode.rowHeight = 80
+//        
+//        self.scrollTableView.addSubview(tableViewNode)
+//        
+//        tableViewNode.translatesAutoresizingMaskIntoConstraints = false
+//        tableViewNode.topAnchor.constraint(equalTo: scrollTableView.topAnchor).isActive = true
+//        tableViewNode.leftAnchor.constraint(equalTo: scrollTableView.leftAnchor).isActive = true
+//        tableViewNode.rightAnchor.constraint(equalTo: scrollTableView.rightAnchor).isActive = true
+//        tableViewNode.bottomAnchor.constraint(equalTo: scrollTableView.bottomAnchor).isActive = true
+//        
+//        tableViewNode.widthAnchor.constraint(equalToConstant: sizeTableView.width).isActive = true
+//        tableViewNode.heightAnchor.constraint(equalToConstant: sizeTableView.height).isActive = true
+//    }
     
     
     func setupUI(frame: AudioFrameModel, type: ButtonsEffect) {

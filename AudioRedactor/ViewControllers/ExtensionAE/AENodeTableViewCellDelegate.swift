@@ -32,7 +32,7 @@ extension AudioEngineViewController: FrameForTrackCollectionViewCellDelegate {
                     setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
                     
                     // обновление представлений
-                    setupScrollTableView()
+   //                 setupScrollTableView()
                     tableViewNode.reloadData()
                     return
                 }

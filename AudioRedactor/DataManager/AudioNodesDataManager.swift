@@ -24,7 +24,7 @@ class AudioNodesDataManager {
         var dataFrames2 = [AudioFrameModel]()
         
         dataFrames1.append(AudioFrameDataManager.shared.getFrameDate(to: AudioDataManager.shared.fetchAudioData(to: song2)))
-        dataFrames1.append(AudioFrameDataManager.shared.getFrameDate(to: AudioDataManager.shared.fetchAudioData(to: song1)))
+    // dataFrames1.append(AudioFrameDataManager.shared.getFrameDate(to: AudioDataManager.shared.fetchAudioData(to: song1)))
         dataFrames2.append(AudioFrameDataManager.shared.getFrameDate(to: AudioDataManager.shared.fetchAudioData(to: song3)))
         
        dataNodes.append(AudioTrackDataManager.shared.getAudioTrackData(to: dataFrames1))

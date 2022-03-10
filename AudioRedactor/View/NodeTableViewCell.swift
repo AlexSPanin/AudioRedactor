@@ -22,7 +22,7 @@ class NodeTableViewCell: UITableViewCell {
         
         self.contentView.addSubview(trackCollectionView)
         
-        trackCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         trackCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         trackCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         trackCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true

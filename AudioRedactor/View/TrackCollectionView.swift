@@ -20,6 +20,12 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
         delegate = self
         dataSource = self
         register(FrameForTrackCollectionViewCell.self, forCellWithReuseIdentifier: FrameForTrackCollectionViewCell.reuseId)
+      translatesAutoresizingMaskIntoConstraints = false
+      
+      layout.minimumInteritemSpacing = 0
+      showsVerticalScrollIndicator = false
+      showsHorizontalScrollIndicator = false
+      isScrollEnabled = false
     }
     
     required init?(coder: NSCoder) {
@@ -29,6 +35,7 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     func setFrames(to frames: [AudioFrameModel]) {
         self.frames = frames
     }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -8,14 +8,13 @@
 import UIKit
 import AVFoundation
 
-protocol FrameForTrackCollectionViewCellDelegate {
-    func button (for index: String)
+protocol AudioEngineViewControllerDelegate {
+    func update (for index: String)
  //   func addSwitch ( for cell: NodeTableViewCell)
 }
 
 class AudioEngineViewController: UIViewController {
     
-   
     // Player View
     var buttonsPlayer: [UIButton] = []
     var stackPlayer = UIStackView()
@@ -24,7 +23,6 @@ class AudioEngineViewController: UIViewController {
     let viewEditor = UIView()
     var buttonsEditor: [UIButton] = []
     var stackEditor = UIStackView()
-    
     
     // MARK: - Effect View
     // Effect View
@@ -59,6 +57,11 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - number song and start button effect
     var activeEffectFrame: AudioFrameModel?
+    var indexActiveFrame: String? {
+        didSet {
+            updateIndexActiveFrame()
+        }
+    }
     var typeButtosEffect: ButtonsEffect = .volume
    
     // состояние плееров общее играют или нет
@@ -75,6 +78,8 @@ class AudioEngineViewController: UIViewController {
     var tableViewNode = UITableView()
     var scrollTableView = UIScrollView()
     
+    
+    
    
     
     //MARK: - override func
@@ -88,6 +93,7 @@ class AudioEngineViewController: UIViewController {
         // init first active frame
         let startFrame = dataPlayingNodes[0].framesForNode[0]
         activeEffectFrame = startFrame
+        indexActiveFrame = startFrame.index
         
         setupUI(frame: startFrame, type: typeButtosEffect)
         setupEffectValue()
@@ -103,22 +109,34 @@ class AudioEngineViewController: UIViewController {
         
     }
     
-    func setWidthContext() -> CGFloat {
-        var width: CGFloat = view.bounds.width
+    
+    func updateIndexActiveFrame() {
         for dataPlayingNode in dataPlayingNodes {
-            if width < CGFloat(dataPlayingNode.lengthSecondsNode) * 5 { width = CGFloat(dataPlayingNode.lengthSecondsNode * 5) }
+            let frames = dataPlayingNode.framesForNode
+            for frame in frames {
+                if frame.index == indexActiveFrame {
+                    
+                    // отчистка признака редактирования у всех фрэймов и включение эффектов
+                    clearIsEditingFrames()
+                    viewEffect.isHidden = false
+                    
+                    // установка выбранному фрэйму признака редактирования и признака активного фрэйма
+                    frame.isEditingFrame = true
+                    activeEffectFrame = frame
+                    
+                    // установка текущих значений эффектов и активных кнопок
+                    setupEffectValue()
+                    setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
+                    
+                    // обновление представлений
+                    setupScrollTableView()
+                    tableViewNode.reloadData()
+                    return
+                }
+            }
         }
-        return width
     }
     
-    func setHeightContext() -> CGFloat {
-
-        return view.bounds.height - 270
-    }
-    
-    
-  
-   
     
     //MARK: - Подготовка аудио движка
     

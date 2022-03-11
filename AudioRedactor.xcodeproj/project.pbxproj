@@ -17,7 +17,7 @@
 		E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */; };
 		E22AAC2427C5499A007ADAF1 /* AEManagerButtonsSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */; };
 		E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */; };
-		E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */; };
+		E22AAC2827C54A0B007ADAF1 /* AEViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2727C54A0B007ADAF1 /* AEViewControllerDelegate.swift */; };
 		E22AAC2B27C54A66007ADAF1 /* ButtonPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */; };
 		E22AAC2D27C54A8F007ADAF1 /* ButtonEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */; };
 		E22AAC2F27C54AC5007ADAF1 /* SliderEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */; };
@@ -60,7 +60,7 @@
 		E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESetupEngine.swift; sourceTree = "<group>"; };
 		E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEManagerButtonsSliders.swift; sourceTree = "<group>"; };
 		E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AETableViewDataSource.swift; sourceTree = "<group>"; };
-		E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AENodeTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		E22AAC2727C54A0B007ADAF1 /* AEViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AEViewControllerDelegate.swift; sourceTree = "<group>"; };
 		E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPlayerView.swift; sourceTree = "<group>"; };
 		E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonEffectView.swift; sourceTree = "<group>"; };
 		E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderEffectView.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */,
 				E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */,
 				E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */,
-				E22AAC2727C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift */,
+				E22AAC2727C54A0B007ADAF1 /* AEViewControllerDelegate.swift */,
 			);
 			path = ExtensionAE;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 				E22AAC0E27C547A8007ADAF1 /* AudioEngineViewController.swift in Sources */,
 				E22AAC3727C54B6F007ADAF1 /* TimeManager.swift in Sources */,
 				E22AAC2627C549CE007ADAF1 /* AETableViewDataSource.swift in Sources */,
-				E22AAC2827C54A0B007ADAF1 /* AENodeTableViewCellDelegate.swift in Sources */,
+				E22AAC2827C54A0B007ADAF1 /* AEViewControllerDelegate.swift in Sources */,
 				E2A37A3027D4B832008041ED /* EffectFrameModel.swift in Sources */,
 				E22AAC3927C54B8B007ADAF1 /* SettingManager.swift in Sources */,
 				E22AAC2227C5493F007ADAF1 /* AESetupEngine.swift in Sources */,

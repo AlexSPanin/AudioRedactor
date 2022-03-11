@@ -12,7 +12,7 @@ class FrameForTrackCollectionViewCell: UICollectionViewCell {
     static let reuseId = "Frame"
     
     var frameInTrack: AudioFrameModel?
-    var delegate: FrameForTrackCollectionViewCellDelegate!
+    var delegate: AudioEngineViewControllerDelegate!
     
     private var frameImageView: UIImageView = {
         let imageView = UIImageView()

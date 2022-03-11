@@ -9,6 +9,18 @@ import UIKit
 
 extension AudioEngineViewController {
     
+    func setWidthContext() -> CGFloat {
+        var width: CGFloat = view.bounds.width
+        for dataPlayingNode in dataPlayingNodes {
+            if width < CGFloat(dataPlayingNode.lengthSecondsNode) * 5 { width = CGFloat(dataPlayingNode.lengthSecondsNode * 5) }
+        }
+        return width
+    }
+    
+    func setHeightContext() -> CGFloat {
+        return view.bounds.height - 270
+    }
+    
     func setupScrollTableView() {
         
         sizeTableView = CGSize(

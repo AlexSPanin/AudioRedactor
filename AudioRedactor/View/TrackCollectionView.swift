@@ -10,7 +10,7 @@ import UIKit
 class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var frames = [AudioFrameModel]()
-    
+    var delegateTVCellToAE: AudioEngineViewControllerDelegate?
     
   init() {
       let layout = UICollectionViewFlowLayout()
@@ -57,7 +57,7 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let index = cellForItem(at: indexPath)?.restorationIdentifier else { return }
-        
+        delegateTVCellToAE?.update(for: index)
         
     }
 }

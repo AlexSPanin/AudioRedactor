@@ -151,8 +151,8 @@
 				E22AAC1F27C548FE007ADAF1 /* AESetupView.swift */,
 				E22AAC2127C5493F007ADAF1 /* AESetupEngine.swift */,
 				E22AAC2327C5499A007ADAF1 /* AEManagerButtonsSliders.swift */,
-				E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */,
 				E22AAC2727C54A0B007ADAF1 /* AEViewControllerDelegate.swift */,
+				E22AAC2527C549CE007ADAF1 /* AETableViewDataSource.swift */,
 			);
 			path = ExtensionAE;
 			sourceTree = "<group>";
@@ -160,13 +160,10 @@
 		E22AAC2927C54A4D007ADAF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E22AAC3227C54B08007ADAF1 /* NodeTableViewCell.swift */,
 				E2F1FD0427D92B510000E6F2 /* TrackCollectionView.swift */,
 				E2F1FD0227D92A4F0000E6F2 /* FrameForTrackCollectionViewCell.swift */,
-				E22AAC3227C54B08007ADAF1 /* NodeTableViewCell.swift */,
-				E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */,
-				E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */,
-				E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */,
-				E22AAC3027C54AE6007ADAF1 /* ButtonEditorView.swift */,
+				E29B71FD27DB1C5400042441 /* ViewButtons */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -205,6 +202,17 @@
 				E22AAC4A27C54CFF007ADAF1 /* Scott Buckley - Life In Silico.mp3 */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		E29B71FD27DB1C5400042441 /* ViewButtons */ = {
+			isa = PBXGroup;
+			children = (
+				E22AAC3027C54AE6007ADAF1 /* ButtonEditorView.swift */,
+				E22AAC2A27C54A66007ADAF1 /* ButtonPlayerView.swift */,
+				E22AAC2C27C54A8F007ADAF1 /* ButtonEffectView.swift */,
+				E22AAC2E27C54AC5007ADAF1 /* SliderEffectView.swift */,
+			);
+			path = ViewButtons;
 			sourceTree = "<group>";
 		};
 		E2A1096B27D251DF00B29E87 /* Services */ = {

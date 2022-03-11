@@ -79,7 +79,7 @@ class FrameForTrackCollectionViewCell: UICollectionViewCell {
         guard let frameInTrack = frameInTrack else { return }
        
         let time = Float(frameInTrack.currentFrame) / Float(frameInTrack.audioForFrame.audioSampleRate)
-        let length = Float(frameInTrack.countFrame) / Float(frameInTrack.audioForFrame.audioSampleRate)
+        let length = Float(frameInTrack.lengthFrame) / Float(frameInTrack.audioForFrame.audioSampleRate)
         
         frameImageView.backgroundColor = frameInTrack.isEditingFrame ? #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1) : #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         frameImageView.layer.borderColor =  frameInTrack.isEditingFrame ? #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)

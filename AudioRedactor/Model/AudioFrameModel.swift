@@ -18,10 +18,14 @@ class AudioFrameModel {
     var needsFileScheduledFrame: Bool = true                   //признак необходимости смонтировать аудиофайл
     
     var seekFrame: AVAudioFramePosition = 0                  // смещение по фрэйму
-    var startFrameInNode: AVAudioFramePosition = 0           // стартовая позиция фрэйма в ноде
-    var startFrame: AVAudioFramePosition = 0
+    var startFrameInTrack: AVAudioFramePosition = 0           // стартовая позиция фрэйма в ноде
+    var startFrameInAudio: AVAudioFramePosition = 0
     var currentFrame: AVAudioFramePosition = 0               // текущая позиция воспроизведения во фрэйме
-    var countFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
+    var lengthFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
+    
+    var startSecondFrameInTrack: Double = 0
+    var startSecondFrameInAudio: Double = 0
+    var currentSecondFrame: Double = 0
     var lengthSecondsFrame: Double = 0
     
     var playerFrame = AVAudioPlayerNode()

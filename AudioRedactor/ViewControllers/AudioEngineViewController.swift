@@ -57,7 +57,7 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - number song and start button effect
     var activeEffectFrame: AudioFrameModel?
-    var indexActiveFrame: String? {
+    var indexActiveFrame: String = "" {
         didSet {
             updateIndexActiveFrame()
         }
@@ -92,7 +92,6 @@ class AudioEngineViewController: UIViewController {
         
         // init first active frame
         let startFrame = dataPlayingNodes[0].framesForNode[0]
-        activeEffectFrame = startFrame
         indexActiveFrame = startFrame.index
         
         setupUI(frame: startFrame, type: typeButtosEffect)

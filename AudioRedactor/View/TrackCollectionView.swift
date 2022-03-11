@@ -36,8 +36,7 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
         self.frames = frames
     }
     
-    
-    
+   
     
     
     
@@ -54,7 +53,6 @@ extension TrackCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: FrameForTrackCollectionViewCell.reuseId, for: indexPath) as! FrameForTrackCollectionViewCell
-      //  cell.frameImageView.frame = CGRect(x: 0, y: 0, width: (frames[indexPath.row].lengthSecondsFrame * 5), height: 80)
         cell.frameInTrack = frames[indexPath.row]
         cell.restorationIdentifier = frames[indexPath.row].index
         cell.configure()
@@ -62,7 +60,8 @@ extension TrackCollectionView {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: frames[indexPath.row].lengthSecondFrame * 5, height: 80)
+        let widthLengthOffset = CGFloat((frames[indexPath.row].lengthSecFrame + frames[indexPath.row].offsetSecFrameToFrame) * 5)
+        return CGSize(width: widthLengthOffset, height: 80)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

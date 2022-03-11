@@ -12,11 +12,11 @@ extension AudioEngineViewController {
     //MARK: -  первоначальные настройки эффектов по фрэйму
     
     func configureAudioFrame() {
-        let dataPlayingNodes = dataPlayingNodes
+        let dataPlayingTracks = dataPlayingTracks.trackForTracks
         audioEngine.attach(audioMixer)
         audioEngine.attach(micMixer)
-        for dataPlayingNode in dataPlayingNodes {
-            let frames = dataPlayingNode.framesForNode
+        for dataPlayingTrack in dataPlayingTracks {
+            let frames = dataPlayingTrack.framesForTrack
             for frame in frames {
                 
                 let bands = frame.equalizerFrame.bands
@@ -56,9 +56,9 @@ extension AudioEngineViewController {
         
     // отчистка признака редактирования у всех фрэймов
     func clearIsEditingFrames() {
-        let dataPlayingNodes = dataPlayingNodes
-        for dataPlayingNode in dataPlayingNodes {
-            let frames = dataPlayingNode.framesForNode
+        let dataPlayingTracks = dataPlayingTracks.trackForTracks
+        for dataPlayingTrack in dataPlayingTracks {
+            let frames = dataPlayingTrack.framesForTrack
             for frame in frames {
                 frame.isEditingFrame = false
             }
@@ -67,9 +67,9 @@ extension AudioEngineViewController {
     // проверка готовности фрэймов к воспроизведению
     func checkIsPlayingNodes() -> Bool {
         var isPlaing = false
-        let dataPlaingNodes = dataPlayingNodes
-        for dataPlaingNode in dataPlaingNodes {
-            isPlaing = dataPlaingNode.framesForNode.contains { frame in
+        let dataPlayingTracks = dataPlayingTracks.trackForTracks
+        for dataPlaingTrack in dataPlayingTracks {
+            isPlaing = dataPlaingTrack.framesForTrack.contains { frame in
                 frame.isPlayingFrame
             }
             if isPlaing { return isPlaing}

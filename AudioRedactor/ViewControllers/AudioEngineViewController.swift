@@ -52,7 +52,7 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - Data Songs and Settings UI and start value
     var setting = Setting.getSetting()
-    var dataPlayingNodes = [AudioTrackModel]()
+    var dataPlayingTracks = AudioTracksDataManager.shared.getDataPlayingTracks()
     
     
     // MARK: - number song and start button effect
@@ -84,10 +84,10 @@ class AudioEngineViewController: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
         // get data for AudioEngine
-        dataPlayingNodes = AudioNodesDataManager.shared.getDataPlayingNodes()
+  //      dataPlayingNodes = AudioTracksDataManager.shared.getDataPlayingTracks()
         
         // init first active frame
-        let startFrame = dataPlayingNodes[0].framesForNode[0]
+        let startFrame = dataPlayingTracks.trackForTracks[0].framesForTrack[0]
         activeEffectFrame = startFrame
         indexActiveFrame = startFrame.index
         
@@ -95,7 +95,7 @@ class AudioEngineViewController: UIViewController {
         setupEffectValue()
         
         // prepare AudoiEngine
-        configureEngine(dataPlayingNodes)
+        configureEngine(dataPlayingTracks.trackForTracks)
         
         // prepare scrollview and table view wich track
         setupScrollTableView()
@@ -125,7 +125,7 @@ class AudioEngineViewController: UIViewController {
     
         // MARK: - create audio file and setting sign for ready play
     func scheduleAllAudioFileFramesForNode(to node: AudioTrackModel) {
-        let frames = node.framesForNode
+        let frames = node.framesForTrack
         for frame in frames {
             scheduleAudioFileFrame(to: frame)
         }
@@ -135,36 +135,42 @@ class AudioEngineViewController: UIViewController {
     
     func scheduleAudioFileFrame(to frame: AudioFrameModel) {
         let audioFile = frame.audioForFrame.file
-        if frame.needsFileScheduledFrame { frame.playerFrame.scheduleFile(audioFile, at: nil) }
+        if frame.needsFileScheduledFrame {
+            let frameCount = AVAudioFrameCount(frame.lengthFrame)
+            frame.playerFrame.scheduleSegment(
+                audioFile,
+                startingFrame: frame.startFrameInAudio,
+                frameCount: frameCount,
+                at: nil)
+        }
         frame.needsFileScheduledFrame.toggle()
         frame.isPlayerReadyFrame.toggle()
     }
     
+
    
     
     // MARK: -  запуск воспроизведения или пауза
     
     func playButton() {
         
-        if !dataPlayingNodes.isEmpty {
-            for dataPlayingNode in dataPlayingNodes {
+        if !dataPlayingTracks.trackForTracks.isEmpty {
+            for dataPlayingTrack in dataPlayingTracks.trackForTracks {
+                let frames = dataPlayingTrack.framesForTrack
+                let currentSecondTrack = dataPlayingTrack.currentSecTrack
+                for frame in frames {
                     
-                    let frames = dataPlayingNode.framesForNode
-                    for frame in frames {
-                      
-                        if frame.needsFileScheduledFrame { scheduleAudioFileFrame(to: frame)}
-                        switch isPlaying {
-                            
-                        case true:
-                            frame.playerFrame.pause()
-                            frame.isPlayingFrame = false
-                           displayLink?.isPaused = true
- 
-                        case false:
-                           
-                            frame.playerFrame.play()
-                            frame.isPlayingFrame = true
-                            displayLink?.isPaused = false
+                    if frame.needsFileScheduledFrame { scheduleAudioFileFrame(to: frame)}
+                    switch isPlaying {
+                        
+                    case true:
+                        frame.playerFrame.pause()
+                        frame.isPlayingFrame = false
+                        displayLink?.isPaused = true
+                        
+                    case false:
+                        checkIsPlaingFrame(frame: frame, currentSecondTrack: currentSecondTrack)
+                        
                     }
                 }
             }
@@ -174,25 +180,37 @@ class AudioEngineViewController: UIViewController {
         }
     }
     
+    func checkIsPlaingFrame(frame: AudioFrameModel, currentSecondTrack: Double) {
+        let currentTrack = currentSecondTrack
+        let start = frame.startSecFrameInTracks
+        if start >= currentTrack {
+            frame.playerFrame.play()
+            frame.isPlayingFrame = true
+            displayLink?.isPaused = false
+        }
+        
+    }
+    
+    
     func seekButton(to time: Double) {
         
-        for dataPlayingNode in dataPlayingNodes {
-            let frames = dataPlayingNode.framesForNode
+        for dataPlayingTrack in dataPlayingTracks.trackForTracks {
+            let frames = dataPlayingTrack.framesForTrack
             for frame in frames {
                 if frame.isPlayingFrame {
                     let offset = AVAudioFramePosition(time * frame.audioForFrame.audioSampleRate)
                     frame.seekFrame = frame.currentFrame + offset
                     frame.seekFrame = max(frame.seekFrame, 0)
-                    frame.seekFrame = min(frame.seekFrame, frame.audioForFrame.audioLengthSamples)
+                    frame.seekFrame = min(frame.seekFrame, AVAudioFramePosition(frame.lengthFrame))
                     frame.currentFrame = frame.seekFrame
                     
-                    if frame.currentFrame < frame.audioForFrame.audioLengthSamples {
+                    if frame.currentFrame < frame.lengthFrame {
                         updateDisplay()
                         let wasPlaying = frame.playerFrame.isPlaying
                         frame.playerFrame.stop()
                         frame.needsFileScheduledFrame = false
                         
-                        let frameCount = AVAudioFrameCount(frame.audioForFrame.audioLengthSamples - frame.seekFrame)
+                        let frameCount = frame.lengthFrame - AVAudioFrameCount(frame.seekFrame)
                         frame.playerFrame.scheduleSegment(
                             frame.audioForFrame.file,
                             startingFrame: frame.seekFrame,
@@ -215,8 +233,9 @@ class AudioEngineViewController: UIViewController {
     
     @objc func updateDisplay() {
        
-        for dataPlayingNode in dataPlayingNodes {
-            let frames = dataPlayingNode.framesForNode
+        for dataPlayingTrack in dataPlayingTracks.trackForTracks {
+            var currentSecondTrack: Double = 0
+            let frames = dataPlayingTrack.framesForTrack
             for frame in frames {
                     // проверка фрэйма на воспроизведение
                     if frame.isPlayingFrame {
@@ -228,15 +247,18 @@ class AudioEngineViewController: UIViewController {
                 //        dataPlayingNode.currentFrameNode = playerTime.sampleTime
                         frame.currentFrame = playerTime.sampleTime + frame.seekFrame
                         frame.currentFrame = max(frame.currentFrame, 0)
-                        frame.currentFrame = min(frame.currentFrame, frame.audioForFrame.audioLengthSamples)
-                        
+                        frame.currentFrame = min(frame.currentFrame, AVAudioFramePosition(frame.lengthFrame))
+                        frame.currentSecFrame = Double(frame.currentFrame) / frame.audioForFrame.audioSampleRate
+                        currentSecondTrack = frame.currentSecFrame
                         // проверка если текущая позиция равна или больше изначальной длины аудифайла, то останавливаем и обнуляем узел
-                        if frame.currentFrame >= frame.audioForFrame.audioLengthSamples {
+                        if frame.currentFrame >= frame.lengthFrame {
                             frame.playerFrame.stop()
                             frame.isPlayingFrame = false
                         }
+                        
                     }
                 }
+            dataPlayingTrack.currentSecTrack = currentSecondTrack
             }
 
         tableViewNode.reloadData()

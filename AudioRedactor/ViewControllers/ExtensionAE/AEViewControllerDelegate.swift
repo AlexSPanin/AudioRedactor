@@ -17,8 +17,8 @@ extension AudioEngineViewController: AudioEngineViewControllerDelegate {
     }
     
     func updateIndexActiveFrame() {
-        for dataPlayingNode in dataPlayingNodes {
-            let frames = dataPlayingNode.framesForNode
+        for dataPlayingTrack in dataPlayingTracks.trackForTracks {
+            let frames = dataPlayingTrack.framesForTrack
             for frame in frames {
                 if frame.index == indexActiveFrame {
                     

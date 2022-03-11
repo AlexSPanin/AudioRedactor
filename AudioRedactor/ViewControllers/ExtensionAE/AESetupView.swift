@@ -11,15 +11,15 @@ extension AudioEngineViewController {
     
     func setWidthContext() -> CGFloat {
         var width: CGFloat = view.bounds.width
-        for dataPlayingNode in dataPlayingNodes {
-            if width < CGFloat(dataPlayingNode.lengthSecondTrack) * 5 { width = CGFloat(dataPlayingNode.lengthSecondTrack * 5) }
+        for dataPlayingTrack in dataPlayingTracks.trackForTracks {
+            if width < CGFloat(dataPlayingTrack.lengthSecTrack) * 5 { width = CGFloat(dataPlayingTrack.lengthSecTrack * 5) }
         }
         return width
     }
     
     func setHeightContext() -> CGFloat {
         
-        return CGFloat(dataPlayingNodes.count * 80)
+        return CGFloat(dataPlayingTracks.trackForTracks.count * 80)
     }
     
     func setupScrollTableView() {

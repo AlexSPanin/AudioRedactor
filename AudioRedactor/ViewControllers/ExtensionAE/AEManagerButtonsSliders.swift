@@ -44,7 +44,7 @@ extension AudioEngineViewController {
         guard let type = ButtonsEditor(rawValue: sender.tag) else { return }
         switch type {
         case .effect:
-            if !dataPlayingNodes.isEmpty {
+            if !dataPlayingTracks.trackForTracks.isEmpty {
                 viewEffect.isHidden = false
                 frame.isEditingFrame = true
                 tableViewNode.reloadData()

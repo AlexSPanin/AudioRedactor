@@ -18,14 +18,17 @@ class AudioFrameDataManager {
         dataAudioFrame.effectFrame = EffectFrameModel()
         
         let sampleRate = audio.audioSampleRate
+        
         // начало фрэйма в связанном аудиофайле
-        dataAudioFrame.startSecondFrameInAudio = startInAudio
+        dataAudioFrame.startSecFrameInAudio = startInAudio
         dataAudioFrame.startFrameInAudio = AVAudioFramePosition(startInAudio * sampleRate)
+       
         // длина фрэйма в связанном аудиофайле
-        dataAudioFrame.lengthSecondFrame = length
-        dataAudioFrame.lengthFrame = AVAudioFramePosition(length * sampleRate)
+        dataAudioFrame.lengthSecFrame = length
+        dataAudioFrame.lengthFrame = AVAudioFrameCount(length * sampleRate)
+        
         // смещение фрэйма от предыдущего фрейма или начала трэка
-        dataAudioFrame.offsetSecondFrameToFrame = offset
+        dataAudioFrame.offsetSecFrameToFrame = offset
         dataAudioFrame.offsetFrameToFrame = AVAudioFramePosition(offset * sampleRate)
         
         return dataAudioFrame

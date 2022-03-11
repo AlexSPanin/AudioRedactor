@@ -19,16 +19,19 @@ class AudioFrameModel {
     
     var seekFrame: AVAudioFramePosition = 0                  // смещение по фрэйму
     
+    // samples
+    var startFrameInTrack: AVAudioFramePosition = 0
     var startFrameInAudio: AVAudioFramePosition = 0          // начало фрэйма в связанном аудиофайле
     var currentFrame: AVAudioFramePosition = 0               // текущая позиция воспроизведения во фрэйме
-    var lengthFrame: AVAudioFramePosition = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
+    var lengthFrame: AVAudioFrameCount = 0                // длина фрэйма изначально равна длинне музыкальноко трэка
     var offsetFrameToFrame: AVAudioFramePosition = 0         // смещение фрэйма от предыдущего или от начала трэка
     
     // в секундах frame / sampleRate
-    var startSecondFrameInAudio: Double = 0
-    var currentSecondFrame: Double = 0
-    var lengthSecondFrame: Double = 0
-    var offsetSecondFrameToFrame: Double = 0
+    var startSecFrameInTracks: Double = 0
+    var startSecFrameInAudio: Double = 0
+    var currentSecFrame: Double = 0
+    var lengthSecFrame: Double = 0
+    var offsetSecFrameToFrame: Double = 0
     
     var playerFrame = AVAudioPlayerNode()
     var reverbFrame = AVAudioUnitReverb()

@@ -11,13 +11,13 @@ extension AudioEngineViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataPlayingNodes.count
+        dataPlayingTracks.trackForTracks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nodeCell", for: indexPath)  as! NodeTableViewCell
         
-        let frames = dataPlayingNodes[indexPath.row].framesForNode
+        let frames = dataPlayingTracks.trackForTracks[indexPath.row].framesForTrack
         cell.delegate = self
         cell.configure(frames: frames)
         return cell

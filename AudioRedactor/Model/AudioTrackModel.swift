@@ -9,8 +9,8 @@ import AVFAudio
 
 class AudioTrackModel {
     
-    var framesForNode = [AudioFrameModel()]
-    var nodeForSong = AudioDataModel()
+    var framesForTrack = [AudioFrameModel()]
+    
     
 //    var addPlayListNode: Bool  = false                        //признак добавления к проигрованию
     var isEditingNode: Bool = false                           //признак активного редактирования
@@ -23,7 +23,7 @@ class AudioTrackModel {
 //    var currentFrameNode: AVAudioFramePosition = 0             // текущая позиция в узле
 //    var lengthFrameNode: AVAudioFramePosition = 0              // длина узла изначально равна сумме длин фрэймов
     
-    var currentSecondTrack: Double = 0                            // текущая позиция проигрования в треке в секундах
-    var lengthSecondTrack: Double = 0                             // длина узла изначально равна сумме длин фрэймов в секундах
+    var currentSecTrack: Double = 0                            // текущая позиция проигрования в треке в секундах
+    var lengthSecTrack: Double = 0                             // длина узла изначально равна сумме длин фрэймов в секундах
  
 }

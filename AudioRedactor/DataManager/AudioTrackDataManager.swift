@@ -15,9 +15,8 @@ class AudioTrackDataManager {
         let audioTrack = AudioTrackModel()
         audioTrack.framesForNode = frames
         for frame in frames {
-            frame.startFrameInTrack = audioTrack.lengthFrameNode
-            audioTrack.lengthFrameNode += frame.lengthFrame
-            audioTrack.lengthSecondsNode += frame.lengthSecondsFrame
+           
+            audioTrack.lengthSecondTrack += frame.lengthSecondFrame
         }
         return audioTrack
     }

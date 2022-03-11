@@ -52,7 +52,7 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: frames[indexPath.row].lengthSecondsFrame * 5, height: 80)
+        CGSize(width: frames[indexPath.row].lengthSecondFrame * 5, height: 80)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -22,6 +22,9 @@ class AudioTrackModel {
     var startFrameNodeInNodes: AVAudioFramePosition = 0        // стартовая позиция узла в массиве узлов
     var currentFrameNode: AVAudioFramePosition = 0             // текущая позиция в узле
     var lengthFrameNode: AVAudioFramePosition = 0              // длина узла изначально равна сумме длин фрэймов
-    var lengthSecondsNode: Double = 0
     
+
+    var currentSecondTrack: Double = 0
+    var lengthSecondTrack: Double = 0
+ 
 }

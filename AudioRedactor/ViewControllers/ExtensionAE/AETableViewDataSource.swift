@@ -19,9 +19,13 @@ extension AudioEngineViewController: UITableViewDataSource {
         
         let frames = dataPlayingTracks.trackForTracks[indexPath.row].framesForTrack
         cell.delegate = self
-        cell.configure(frames: frames)
+        cell.configure(frames: frames, index: indexPath.row, currentTime: dataPlayingTracks.currentSecTime, lengthTime: dataPlayingTracks.lengthSecTime)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Tracks"
+    }
+
 }
 

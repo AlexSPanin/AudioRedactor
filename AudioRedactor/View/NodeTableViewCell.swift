@@ -8,24 +8,25 @@
 import UIKit
 
 class NodeTableViewCell: UITableViewCell, AudioEngineViewControllerDelegate {
-   
+    
     var delegate: AudioEngineViewControllerDelegate!
-
-    func configure( frames: [AudioFrameModel]) {
+    
+    func configure(frames: [AudioFrameModel], index: Int, currentTime: Double, lengthTime: Double) {
         
-        let trackCollectionView = TrackCollectionView()
-        trackCollectionView.backgroundColor = .white
+            let trackCollectionView = TrackCollectionView()
+            trackCollectionView.backgroundColor = .white
+            
+            self.contentView.addSubview(trackCollectionView)
+            
+            trackCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            trackCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+            trackCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+            trackCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            trackCollectionView.delegateTVCellToAE = self
+            trackCollectionView.setFrames(to: frames)
+            
+            selectionStyle = .none
         
-        self.contentView.addSubview(trackCollectionView)
-        
-        trackCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        trackCollectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        trackCollectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        trackCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        trackCollectionView.delegateTVCellToAE = self
-        trackCollectionView.setFrames(to: frames)
- 
-        selectionStyle = .none
     }
     
     func update(for index: String) {

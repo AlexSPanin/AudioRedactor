@@ -29,8 +29,6 @@ class FrameForTrackCollectionViewCell: UICollectionViewCell {
         guard let font = UIFont(name: setting.nameFont, size: setting.normalSize) else {return label }
         label.font = font
         label.textColor = setting.colorTint
-        label.minimumScaleFactor = 0.5
-        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -42,8 +40,6 @@ class FrameForTrackCollectionViewCell: UICollectionViewCell {
         guard let font = UIFont(name: setting.nameFont, size: setting.normalSize) else {return label }
         label.font = font
         label.textColor = setting.colorTint
-        label.minimumScaleFactor = 0.5
-        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         label.textAlignment = .left
         
@@ -56,8 +52,6 @@ class FrameForTrackCollectionViewCell: UICollectionViewCell {
         guard let font = UIFont(name: setting.nameFont, size: setting.normalSize) else {return label }
         label.font = font
         label.textColor = setting.colorTint
-        label.minimumScaleFactor = 0.5
-        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -84,9 +78,7 @@ class FrameForTrackCollectionViewCell: UICollectionViewCell {
         
         frameImageView.backgroundColor = frameInTrack.isEditingFrame ? #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1) : #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         frameImageView.layer.borderColor =  frameInTrack.isEditingFrame ? #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        
-        
-        
+
         frameImageView.restorationIdentifier = frameInTrack.index
         
         frameImageView.addSubview(progress)
@@ -119,7 +111,7 @@ class FrameForTrackCollectionViewCell: UICollectionViewCell {
         nameLabel.text = String("\(frameInTrack.audioForFrame.name.name) - \(frameInTrack.audioForFrame.name.format)")
         lengthLabel.text = String("Total length: \(PlayerTime.getFormattedTime(seconds: length))")
         currentLabel.text = String("Current Time:  \(PlayerTime.getFormattedTime(seconds: time))")
-        progress.progress = Float(frameInTrack.currentSecFrame) / length
+        progress.progress = time / length
     }
     
 }

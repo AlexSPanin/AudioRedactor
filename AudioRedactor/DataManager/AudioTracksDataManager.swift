@@ -5,7 +5,7 @@
 //  Created by Александр Панин on 22.02.2022.
 //
 
-//MARK: - настройка какие фреймы привязываю к трэкам
+//MARK: - настройка какие фреймы привязываю к трэкам и с какими парраметрами
 
 import AVFAudio
 
@@ -26,18 +26,15 @@ class AudioTracksDataManager {
         var dataFrames1 = [AudioFrameModel]()
         var dataFrames2 = [AudioFrameModel]()
         
-        let frame1 = AudioFrameDataManager.shared.getFrameDate(audio: audioData1, startInAudio: 5, length: 60, offset: 5)
-        let frame2 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 10, length: 30, offset: 10)
-        let frame3 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 5, length: 30, offset: 0)
-        let frame4 = AudioFrameDataManager.shared.getFrameDate(audio: audioData3, startInAudio: 0, length: 160, offset: 8)
-        let frame5 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 0, length: 40, offset: 5)
+        let frame1 = AudioFrameDataManager.shared.getFrameDate(audio: audioData1, startInAudio: 15, length: 15, offset: 0)
+        let frame2 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 10, length: 25, offset: 10)
+        let frame3 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 20, length: 30, offset: 0)
+        let frame4 = AudioFrameDataManager.shared.getFrameDate(audio: audioData3, startInAudio: 150, length: 40, offset: 10)
+        let frame5 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 0, length: 60, offset: 0)
         
-        var startSecondFrameInTracks: Double = 0
-        var startFrameInTracks: AVAudioFramePosition = 0
-        
+        var minOffset: Double = 0
         let tracksModel = AudioTracksModel()
         var dataTracks = [AudioTrackModel]()
-        
         
         dataFrames1.append(frame1)
         dataFrames1.append(frame2)
@@ -49,20 +46,36 @@ class AudioTracksDataManager {
         dataTracks.append(AudioTrackDataManager.shared.getAudioTrackData(to: dataFrames1))
         dataTracks.append(AudioTrackDataManager.shared.getAudioTrackData(to: dataFrames2))
         
-        
+        // MARK: -  прижатие хотябы одного первого фрэйма к началу проекта
         
         for dataTrack in dataTracks {
+            minOffset = max(minOffset, dataTrack.framesForTrack[0].offsetSecFrameToFrame)
+        }
+        for dataTrack in dataTracks {
+            minOffset = min(minOffset, dataTrack.framesForTrack[0].offsetSecFrameToFrame)
+        }
+        for dataTrack in dataTracks {
+            dataTrack.framesForTrack[0].offsetSecFrameToFrame = dataTrack.framesForTrack[0].offsetSecFrameToFrame - minOffset
+        }
+        
+        //  расстановка позиций фрэймов и вычисление максимальной длинны дорожки и проверка смещения первого фрэйма каждого трэка
+        for dataTrack in dataTracks {
             let frames = dataTrack.framesForTrack
+            var length: Double = 0
+            var startSecondFrameInTracks: Double = 0
+            var startFrameInTracks: AVAudioFramePosition = 0
+            
             for frame in frames {
                 
-                frame.startSecFrameInTracks = startSecondFrameInTracks
-                startSecondFrameInTracks += (frame.lengthSecFrame + frame.offsetSecFrameToFrame)
+                frame.startSecFrameInTracks = (startSecondFrameInTracks + frame.offsetSecFrameToFrame)
+                startSecondFrameInTracks += frame.lengthSecFrame
                 
-                frame.startFrameInTrack = startFrameInTracks
-                startFrameInTracks += (AVAudioFramePosition(frame.lengthFrame) + frame.offsetFrameToFrame)
+                frame.startFrameInTrack = (startFrameInTracks + frame.offsetFrameToFrame)
+                startFrameInTracks += AVAudioFramePosition(frame.lengthFrame)
                 
-                tracksModel.lengthSecondTime += (frame.lengthSecFrame + frame.offsetSecFrameToFrame)
+                length += (frame.lengthSecFrame + frame.offsetSecFrameToFrame)
             }
+            if length > tracksModel.currentSecTime { tracksModel.lengthSecTime = length}
         }
         tracksModel.trackForTracks = dataTracks
         return tracksModel

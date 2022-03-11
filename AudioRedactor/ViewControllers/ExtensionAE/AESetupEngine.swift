@@ -50,7 +50,7 @@ extension AudioEngineViewController {
 
         displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))  // возможно надо заменить на простой таймер для синхронизации всего аудио трэка
         displayLink?.add(to: .current, forMode: .default)
-        displayLink?.preferredFrameRateRange = CAFrameRateRange(minimum: 15, maximum: 30, preferred: 15) // частота обновления экрана с секунду
+        displayLink?.preferredFrameRateRange = CAFrameRateRange(minimum: 10, maximum: 15, preferred: 10) // частота обновления экрана с секунду
         displayLink?.isPaused = true
     }
         
@@ -65,7 +65,7 @@ extension AudioEngineViewController {
         }
     }
     // проверка готовности фрэймов к воспроизведению
-    func checkIsPlayingNodes() -> Bool {
+    func checkIsPlayingFrame() -> Bool {
         var isPlaing = false
         let dataPlayingTracks = dataPlayingTracks.trackForTracks
         for dataPlaingTrack in dataPlayingTracks {

@@ -21,7 +21,7 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
         dataSource = self
         register(FrameForTrackCollectionViewCell.self, forCellWithReuseIdentifier: FrameForTrackCollectionViewCell.reuseId)
       translatesAutoresizingMaskIntoConstraints = false
-      
+      layout.minimumLineSpacing = 0
       layout.minimumInteritemSpacing = 0
       showsVerticalScrollIndicator = false
       showsHorizontalScrollIndicator = false
@@ -35,14 +35,6 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     func setFrames(to frames: [AudioFrameModel]) {
         self.frames = frames
     }
-    
-   
-    
-    
-    
-    
-    
-    
    
 }
 extension TrackCollectionView {

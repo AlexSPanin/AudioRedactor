@@ -12,13 +12,14 @@ extension AudioEngineViewController {
     func setWidthContext() -> CGFloat {
         var width: CGFloat = view.bounds.width
         for dataPlayingNode in dataPlayingNodes {
-            if width < CGFloat(dataPlayingNode.lengthSecondsNode) * 5 { width = CGFloat(dataPlayingNode.lengthSecondsNode * 5) }
+            if width < CGFloat(dataPlayingNode.lengthSecondTrack) * 5 { width = CGFloat(dataPlayingNode.lengthSecondTrack * 5) }
         }
         return width
     }
     
     func setHeightContext() -> CGFloat {
-        return view.bounds.height - 270
+        
+        return CGFloat(dataPlayingNodes.count * 80)
     }
     
     func setupScrollTableView() {
@@ -30,6 +31,7 @@ extension AudioEngineViewController {
         
         scrollTableView.contentSize = sizeTableView
         scrollTableView.showsVerticalScrollIndicator = false
+        scrollTableView.contentOffset.y = 0
         scrollTableView.isScrollEnabled = true
         scrollTableView.showsLargeContentViewer = true
         scrollTableView.bounces = false
@@ -37,14 +39,15 @@ extension AudioEngineViewController {
         self.view.addSubview(scrollTableView)
 
         scrollTableView.translatesAutoresizingMaskIntoConstraints = false
-        scrollTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         scrollTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -270).isActive = true
         scrollTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
         tableViewNode.register(NodeTableViewCell.self, forCellReuseIdentifier: "nodeCell")
         tableViewNode.dataSource = self
-        scrollTableView.showsVerticalScrollIndicator = false
+        tableViewNode.showsVerticalScrollIndicator = false
+        tableViewNode.isScrollEnabled = true
         tableViewNode.bounces = false
         tableViewNode.rowHeight = 80
         
@@ -57,7 +60,7 @@ extension AudioEngineViewController {
         tableViewNode.bottomAnchor.constraint(equalTo: scrollTableView.bottomAnchor).isActive = true
         
         tableViewNode.widthAnchor.constraint(equalToConstant: sizeTableView.width).isActive = true
-        tableViewNode.heightAnchor.constraint(equalToConstant: sizeTableView.height).isActive = true
+        tableViewNode.heightAnchor.constraint(equalTo: scrollTableView.heightAnchor).isActive = true
     }
     
     

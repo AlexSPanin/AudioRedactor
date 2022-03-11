@@ -14,6 +14,8 @@ class NodeTableViewCell: UITableViewCell, AudioEngineViewControllerDelegate {
     func configure( frames: [AudioFrameModel]) {
         
         let trackCollectionView = TrackCollectionView()
+        trackCollectionView.backgroundColor = .white
+        
         self.contentView.addSubview(trackCollectionView)
         
         trackCollectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true

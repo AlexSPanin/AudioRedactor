@@ -33,8 +33,9 @@ class AudioNodesDataManager {
         
         dataFrames1.append(frame1)
         dataFrames1.append(frame2)
-        dataFrames2.append(frame4)
         dataFrames2.append(frame3)
+        dataFrames2.append(frame4)
+        
         
         var dataNodes = [AudioTrackModel]()
         

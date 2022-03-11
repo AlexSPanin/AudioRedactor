@@ -38,6 +38,16 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     
     
     
+    
+    
+    
+    
+    
+    
+   
+}
+extension TrackCollectionView {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         frames.count
     }
@@ -58,6 +68,5 @@ class TrackCollectionView: UICollectionView, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let index = cellForItem(at: indexPath)?.restorationIdentifier else { return }
         delegateTVCellToAE?.update(for: index)
-        
     }
 }

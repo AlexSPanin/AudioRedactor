@@ -57,11 +57,7 @@ class AudioEngineViewController: UIViewController {
     
     // MARK: - number song and start button effect
     var activeEffectFrame: AudioFrameModel?
-    var indexActiveFrame: String = "" {
-        didSet {
-            updateIndexActiveFrame()
-        }
-    }
+    var indexActiveFrame: String = "" 
     var typeButtosEffect: ButtonsEffect = .volume
    
     // состояние плееров общее играют или нет
@@ -92,6 +88,7 @@ class AudioEngineViewController: UIViewController {
         
         // init first active frame
         let startFrame = dataPlayingNodes[0].framesForNode[0]
+        activeEffectFrame = startFrame
         indexActiveFrame = startFrame.index
         
         setupUI(frame: startFrame, type: typeButtosEffect)
@@ -109,32 +106,6 @@ class AudioEngineViewController: UIViewController {
     }
     
     
-    func updateIndexActiveFrame() {
-        for dataPlayingNode in dataPlayingNodes {
-            let frames = dataPlayingNode.framesForNode
-            for frame in frames {
-                if frame.index == indexActiveFrame {
-                    
-                    // отчистка признака редактирования у всех фрэймов и включение эффектов
-                    clearIsEditingFrames()
-                    viewEffect.isHidden = false
-                    
-                    // установка выбранному фрэйму признака редактирования и признака активного фрэйма
-                    frame.isEditingFrame = true
-                    activeEffectFrame = frame
-                    
-                    // установка текущих значений эффектов и активных кнопок
-                    setupEffectValue()
-                    setupColorButtonPressedEffect(frame: frame, type: typeButtosEffect)
-                    
-                    // обновление представлений
-                    setupScrollTableView()
-                    tableViewNode.reloadData()
-                    return
-                }
-            }
-        }
-    }
     
     
     //MARK: - Подготовка аудио движка

@@ -12,6 +12,10 @@ class AudioFrameDataManager {
     private init() {}
     
     func getFrameDate(audio: AudioDataModel, startInAudio: Double, length: Double, offset: Double ) -> AudioFrameModel {
+        
+        // прверка если 0 или больше длины аудиофайла то длинна всего аудиофайла
+        
+        let length = length == 0 || length > audio.audioLengthSeconds ? audio.audioLengthSeconds : length
            
         let dataAudioFrame = AudioFrameModel()
         dataAudioFrame.audioForFrame = audio
@@ -24,6 +28,7 @@ class AudioFrameDataManager {
         dataAudioFrame.startFrameInAudio = AVAudioFramePosition(startInAudio * sampleRate)
        
         // длина фрэйма в связанном аудиофайле
+       
         dataAudioFrame.lengthSecFrame = length
         dataAudioFrame.lengthFrame = AVAudioFrameCount(length * sampleRate)
         

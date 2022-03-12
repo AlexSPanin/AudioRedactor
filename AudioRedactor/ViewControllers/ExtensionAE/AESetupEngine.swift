@@ -47,10 +47,11 @@ extension AudioEngineViewController {
     }
     // MARK: - настройка таймера обновления экрана
     func setupDisplayLink() {
+        
 
         displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))  // возможно надо заменить на простой таймер для синхронизации всего аудио трэка
         displayLink?.add(to: .current, forMode: .default)
-        displayLink?.preferredFrameRateRange = CAFrameRateRange(minimum: 10, maximum: 15, preferred: 10) // частота обновления экрана с секунду
+        displayLink?.preferredFrameRateRange = CAFrameRateRange(minimum: 2, maximum: 2, __preferred: 2) // частота обновления экрана с секунду
         displayLink?.isPaused = true
     }
         

@@ -25,12 +25,14 @@ class AudioTracksDataManager {
         
         var dataFrames1 = [AudioFrameModel]()
         var dataFrames2 = [AudioFrameModel]()
+        var dataFrames3 = [AudioFrameModel]()
         
         let frame1 = AudioFrameDataManager.shared.getFrameDate(audio: audioData1, startInAudio: 15, length: 15, offset: 0)
         let frame2 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 10, length: 30, offset: 10)
         let frame3 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 20, length: 30, offset: 0)
         let frame4 = AudioFrameDataManager.shared.getFrameDate(audio: audioData3, startInAudio: 150, length: 40, offset: 10)
-        let frame5 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 0, length: 60, offset: 0)
+        let frame5 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 0, length: 60, offset: 10)
+        let frame6 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 0, length: 0, offset: 10)
         
         var minOffset: Double = 0
         let tracksModel = AudioTracksModel()
@@ -43,8 +45,11 @@ class AudioTracksDataManager {
         dataFrames2.append(frame3)
         dataFrames2.append(frame4)
         
+        dataFrames3.append(frame6)
+        
         dataTracks.append(AudioTrackDataManager.shared.getAudioTrackData(to: dataFrames1))
         dataTracks.append(AudioTrackDataManager.shared.getAudioTrackData(to: dataFrames2))
+        dataTracks.append(AudioTrackDataManager.shared.getAudioTrackData(to: dataFrames3))
         
         // MARK: -  прижатие хотябы одного первого фрэйма к началу проекта
         

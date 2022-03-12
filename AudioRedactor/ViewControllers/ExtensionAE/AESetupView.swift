@@ -11,7 +11,7 @@ extension AudioEngineViewController {
     
     func setWidthContext() -> CGFloat {
         var width: CGFloat = view.bounds.width
-        if width < CGFloat(dataPlayingTracks.lengthSecTime) * 5 { width = CGFloat(dataPlayingTracks.lengthSecTime * 5) }
+        if width < CGFloat(dataPlayingTracks.lengthSecTime) * 5 { width = CGFloat(dataPlayingTracks.lengthSecTime * 5) + 50}
         return width
     }
     

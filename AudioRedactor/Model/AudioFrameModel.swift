@@ -20,7 +20,7 @@ class AudioFrameModel {
     var seekFrame: AVAudioFramePosition = 0                  // смещение по фрэйму
     
     // samples
-    var startFrameInTrack: AVAudioFramePosition = 0
+    var startFrameInTracks: AVAudioFramePosition = 0
     var startFrameInAudio: AVAudioFramePosition = 0          // начало фрэйма в связанном аудиофайле
     var currentFrame: AVAudioFramePosition = 0               // текущая позиция воспроизведения во фрэйме
     var lengthFrame: AVAudioFrameCount = 0                // длина фрэйма изначально равна длинне музыкальноко трэка

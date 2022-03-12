@@ -108,9 +108,9 @@ class AudioEngineViewController: UIViewController {
         do {
             try audioEngine.start()
             
-            for dataNode in dataNodes {
-                scheduleAllAudioFileFramesForNode(to: dataNode)
-            }
+//            for dataNode in dataNodes {
+//                scheduleAllAudioFileFramesForNode(to: dataNode)
+//           }
         } catch {
             print("error configure Engine")
         }
@@ -122,8 +122,6 @@ class AudioEngineViewController: UIViewController {
         for frame in frames {
             scheduleAudioFileFrame(to: frame)
         }
-        node.needsFileScheduledNode.toggle()
-        node.isPlayerReadyNode.toggle()
     }
     
     func scheduleAudioFileFrame(to frame: AudioFrameModel) {
@@ -197,6 +195,9 @@ class AudioEngineViewController: UIViewController {
         
         let currentTime = dataPlayingTracks.currentSecTime
         let endTime = dataPlayingTracks.lengthSecTime
+        
+        
+        
         if endTime <= currentTime {
             dataPlayingTracks.currentSecTime = 0
             isPlaying = false

@@ -13,21 +13,27 @@ class AudioTrackDataManager {
     
     func getAudioTrackData(to frames: [AudioFrameModel]) -> AudioTrackModel {
         let audioTrack = AudioTrackModel()
-        var startSecondFrameInTrack: Double = 0
-        var startFrameInTrack: AVAudioFramePosition = 0
+        var startSecondFrameInTracks: Double = 0
+        var startFrameInTracks: AVAudioFramePosition = 0
         
         audioTrack.framesForTrack = frames
         
         for frame in frames {
             
-            frame.startSecFrameInTracks = startSecondFrameInTrack
-            startSecondFrameInTrack += (frame.lengthSecFrame + frame.offsetSecFrameToFrame)
+            // расстановка фрэймов по трэку
+            // определяем точку старта по трэку с учетом смещения от предыдущего и задем стартовую точку
+            startSecondFrameInTracks += frame.offsetSecFrameToFrame
+            frame.startSecFrameInTracks = startSecondFrameInTracks
+            // увеличиваем стартовую точку на продолжительность фрэйма
+            startSecondFrameInTracks += frame.lengthSecFrame
             
-            frame.startFrameInTrack = startFrameInTrack
-            startFrameInTrack += (AVAudioFramePosition(frame.lengthFrame) + frame.offsetFrameToFrame)
+            startFrameInTracks += frame.offsetFrameToFrame
+            frame.startFrameInTracks = startFrameInTracks
+            startFrameInTracks += AVAudioFramePosition(frame.lengthFrame)
             
-            audioTrack.lengthSecTrack += frame.lengthSecFrame
-            audioTrack.currentSecTrack = 0
+        
+//            audioTrack.lengthSecTrack += frame.lengthSecFrame
+//            audioTrack.currentSecTrack = 0
             
         }
         return audioTrack

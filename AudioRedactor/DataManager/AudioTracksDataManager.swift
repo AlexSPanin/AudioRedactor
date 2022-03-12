@@ -27,7 +27,7 @@ class AudioTracksDataManager {
         var dataFrames2 = [AudioFrameModel]()
         
         let frame1 = AudioFrameDataManager.shared.getFrameDate(audio: audioData1, startInAudio: 15, length: 15, offset: 0)
-        let frame2 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 10, length: 25, offset: 10)
+        let frame2 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 10, length: 30, offset: 10)
         let frame3 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 20, length: 30, offset: 0)
         let frame4 = AudioFrameDataManager.shared.getFrameDate(audio: audioData3, startInAudio: 150, length: 40, offset: 10)
         let frame5 = AudioFrameDataManager.shared.getFrameDate(audio: audioData2, startInAudio: 0, length: 60, offset: 0)
@@ -58,7 +58,7 @@ class AudioTracksDataManager {
             dataTrack.framesForTrack[0].offsetSecFrameToFrame = dataTrack.framesForTrack[0].offsetSecFrameToFrame - minOffset
         }
         
-        //  расстановка позиций фрэймов и вычисление максимальной длинны дорожки и проверка смещения первого фрэйма каждого трэка
+       //   расстановка позиций фрэймов и вычисление максимальной длинны дорожки и проверка смещения первого фрэйма каждого трэка
         for dataTrack in dataTracks {
             let frames = dataTrack.framesForTrack
             var length: Double = 0
@@ -67,15 +67,17 @@ class AudioTracksDataManager {
             
             for frame in frames {
                 
-                frame.startSecFrameInTracks = (startSecondFrameInTracks + frame.offsetSecFrameToFrame)
+                startSecondFrameInTracks += frame.offsetSecFrameToFrame
+                frame.startSecFrameInTracks = startSecondFrameInTracks
                 startSecondFrameInTracks += frame.lengthSecFrame
                 
-                frame.startFrameInTrack = (startFrameInTracks + frame.offsetFrameToFrame)
+                startFrameInTracks += frame.offsetFrameToFrame
+                frame.startFrameInTracks = startFrameInTracks
                 startFrameInTracks += AVAudioFramePosition(frame.lengthFrame)
                 
                 length += (frame.lengthSecFrame + frame.offsetSecFrameToFrame)
             }
-            if length > tracksModel.currentSecTime { tracksModel.lengthSecTime = length}
+            if length > tracksModel.lengthSecTime { tracksModel.lengthSecTime = length}
         }
         tracksModel.trackForTracks = dataTracks
         return tracksModel
